@@ -2,7 +2,7 @@ package protohash
 
 import "fmt"
 
-func floatNormalize(originalFloat float64) (s string, err error) {
+func floatNormalize(originalFloat float64) (string, error) {
 	// Sign
 	f := originalFloat
 	s = `+`
@@ -40,5 +40,5 @@ func floatNormalize(originalFloat float64) (s string, err error) {
 		}
 		f *= 2
 	}
-	return
+	return s, nil
 }
