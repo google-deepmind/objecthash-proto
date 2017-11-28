@@ -126,11 +126,11 @@ func isEmpty(v reflect.Value) (bool, error) {
 	}
 }
 
-// `ensureHashable` returns an error if the provided field cannot be hashed reliably.
+// `failIfUnsupported` returns an error if the provided field cannot be hashed reliably.
 //
-// Note that those fields are safe to ignore if empty, so an `isEmpty` check
-// should be used before this.
-func ensureHashable(v reflect.Value, sf reflect.StructField) error {
+// Note that unsupported fields are safe to ignore if they're empty, so an
+// `isEmpty` check should be used before this check.
+func failIfUnsupported(v reflect.Value, sf reflect.StructField) error {
 	// Check "XXX_" fields.
 	if name := sf.Name; strings.HasPrefix(name, "XXX_") {
 		switch name {

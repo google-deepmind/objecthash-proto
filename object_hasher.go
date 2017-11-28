@@ -133,7 +133,7 @@ func (hasher *ObjectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
 			continue
 		}
 
-		if err = ensureHashable(v, sf); err != nil {
+		if err = failIfUnsupported(v, sf); err != nil {
 			return nil, err
 		}
 
