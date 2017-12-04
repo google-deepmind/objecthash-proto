@@ -16,7 +16,7 @@ const (
 	intIdentifier      = `i`
 	listIdentifier     = `l`
 	nilIdentifier      = `n`
-	byteIdentifier     = `t`
+	byteIdentifier     = `r`
 	unicodeIndentifier = `u`
 
 	// Proto-specific identifiers.
