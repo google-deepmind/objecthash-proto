@@ -33,7 +33,7 @@ func isExtendable(sv reflect.Value) bool {
 		ExtensionRangeArray() []proto.ExtensionRange
 	}
 
-	_, ok := sv.Interface().(extendableProto)
+	_, ok := sv.Addr().Interface().(extendableProto)
 	return ok
 }
 
