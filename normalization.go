@@ -3,9 +3,15 @@ package protohash
 import "fmt"
 
 func floatNormalize(originalFloat float64) (string, error) {
+	// Special case 0
+	// Note that if we allowed f to end up > .5 or == 0, we'd get the same thing.
+	if originalFloat == 0 {
+		return "+0:", nil
+	}
+
 	// Sign
 	f := originalFloat
-	s = `+`
+	s := `+`
 	if f < 0 {
 		s = `-`
 		f = -f
