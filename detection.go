@@ -111,7 +111,10 @@ func isEmpty(v reflect.Value) (bool, error) {
 			return true, nil
 		}
 
-		return isEmpty(reflect.Indirect(v))
+		// If a pointer is not a null pointer, this means that the value it points
+		// to is distinguishable from it being missing. Usually, that value would
+		// be another proto message or a proto2 scalar value.
+		return false, nil
 	case reflect.Struct:
 		for i := 0; i < v.NumField(); i++ {
 			fv := v.Field(i)
