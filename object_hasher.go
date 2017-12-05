@@ -124,12 +124,12 @@ func (hasher *ObjectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
 		v := sv.Field(i)
 		sf := st.Field(i)
 
-		// Ignore unused/empty fields.
-		empty, err := isEmpty(v)
+		// Ignore unset fields (and empty proto3 scalar fields).
+		unset, err := isUnset(v)
 		if err != nil {
 			return nil, err
 		}
-		if empty {
+		if unset {
 			continue
 		}
 
@@ -201,7 +201,7 @@ func (hasher *ObjectHasher) hashValue(v reflect.Value, sf reflect.StructField, p
 	case reflect.Bool:
 		return hashBool(v.Bool())
 	case reflect.Ptr:
-		// We know that this is not a null pointer because empty values (incl. null
+		// We know that this is not a null pointer because unset values (incl. null
 		// pointer) get skipped and should not get hashed.
 		return hasher.hashValue(reflect.Indirect(v), sf, props)
 	default:
@@ -256,7 +256,7 @@ func (hasher *ObjectHasher) hashOneOf(v reflect.Value, sf reflect.StructField, p
 	innerProps := new(proto.Properties)
 	innerProps.Parse(innerTag)
 
-	// The inner field (which is a struct field) cannot be considered empty even
-	// if the value is a zero value.
+	// The inner field (which is a struct field) should never be considered unset
+	// even if the value is a zero value.
 	return hasher.hashStructField(innerValue, innerFd, innerProps)
 }

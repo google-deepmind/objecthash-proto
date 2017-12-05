@@ -57,8 +57,10 @@ func isAOneOfField(v reflect.Value, sf reflect.StructField) bool {
 	return v.Kind() == reflect.Interface && sf.Tag.Get("protobuf_oneof") != ""
 }
 
-// `isEmpty` checks if the proto field is empty.
-func isEmpty(v reflect.Value) (bool, error) {
+// `isUnset` checks if the proto field has not been set.
+//
+// This also includes empty proto3 scalar values.
+func isUnset(v reflect.Value) (bool, error) {
 	// Default values are considered empty. Otherwise, adding those kinds of
 	// fields to a proto's definition would break all older hashes.
 	switch v.Kind() {
@@ -107,18 +109,14 @@ func isEmpty(v reflect.Value) (bool, error) {
 		//   invalid. The check for this error is made when hashing the oneof value.
 		return v.IsNil(), nil
 	case reflect.Ptr:
-		if v.IsNil() {
-			return true, nil
-		}
-
 		// If a pointer is not a null pointer, this means that the value it points
 		// to is distinguishable from it being missing. Usually, that value would
 		// be another proto message or a proto2 scalar value.
-		return false, nil
+		return v.IsNil(), nil
 	case reflect.Struct:
 		for i := 0; i < v.NumField(); i++ {
 			fv := v.Field(i)
-			e, err := isEmpty(fv)
+			e, err := isUnset(fv)
 			if !e { // e is always false when an error occurs.
 				return e, err
 			}
@@ -131,8 +129,8 @@ func isEmpty(v reflect.Value) (bool, error) {
 
 // `failIfUnsupported` returns an error if the provided field cannot be hashed reliably.
 //
-// Note that unsupported fields are safe to ignore if they're empty, so an
-// `isEmpty` check should be used before this check.
+// Note that unsupported fields are safe to ignore if they've not been set, so
+// an `isUnset` check should be used before this check.
 func failIfUnsupported(v reflect.Value, sf reflect.StructField) error {
 	// Check "XXX_" fields.
 	if name := sf.Name; strings.HasPrefix(name, "XXX_") {
