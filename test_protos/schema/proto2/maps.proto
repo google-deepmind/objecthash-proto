@@ -1,0 +1,97 @@
+// Copyright 2017 The ObjectHash-Proto Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto2";
+
+package schema.proto2;
+
+import "simple.proto";
+import "planets.proto";
+
+message BoolMaps {
+  map<bool, bool> bool_to_bool = 1;
+  map<bool, bytes> bool_to_bytes = 2;
+  map<bool, double> bool_to_double = 3;
+  map<bool, fixed32> bool_to_fixed32 = 4;
+  map<bool, fixed64> bool_to_fixed64 = 5;
+  map<bool, float> bool_to_float = 6;
+  map<bool, int32> bool_to_int32 = 7;
+  map<bool, int64> bool_to_int64 = 8;
+  map<bool, sfixed32> bool_to_sfixed32 = 9;
+  map<bool, sfixed64> bool_to_sfixed64 = 10;
+  map<bool, sint32> bool_to_sint32 = 11;
+  map<bool, sint64> bool_to_sint64 = 12;
+  map<bool, string> bool_to_string = 13;
+  map<bool, uint32> bool_to_uint32 = 14;
+  map<bool, uint64> bool_to_uint64 = 15;
+  map<bool, PlanetV1> bool_to_planet_v1 = 16;
+  map<bool, Simple> bool_to_simple = 17;
+  map<bool, Repetitive> bool_to_repetitive = 18;
+  map<bool, Singleton> bool_to_singleton = 19;
+}
+
+// This also covers the cases where the key type is of a similar int value.
+// ex: fixed32, fixed64, int32, sfixed32, sfixed64, sint32, sint64, uint32,
+//     uint64
+message IntMaps {
+  map<int64, bool> int_to_bool = 1;
+  map<int64, bytes> int_to_bytes = 2;
+  map<int64, double> int_to_double = 3;
+  map<int64, fixed32> int_to_fixed32 = 4;
+  map<int64, fixed64> int_to_fixed64 = 5;
+  map<int64, float> int_to_float = 6;
+  map<int64, int32> int_to_int32 = 7;
+  map<int64, int64> int_to_int64 = 8;
+  map<int64, sfixed32> int_to_sfixed32 = 9;
+  map<int64, sfixed64> int_to_sfixed64 = 10;
+  map<int64, sint32> int_to_sint32 = 11;
+  map<int64, sint64> int_to_sint64 = 12;
+  map<int64, string> int_to_string = 13;
+  map<int64, uint32> int_to_uint32 = 14;
+  map<int64, uint64> int_to_uint64 = 15;
+  map<int64, PlanetV1> int_to_planet_v1 = 16;
+  map<int64, Simple> int_to_simple = 17;
+  map<int64, Repetitive> int_to_repetitive = 18;
+  map<int64, Singleton> int_to_singleton = 19;
+}
+
+message StringMaps {
+  map<string, bool> string_to_bool = 1;
+  map<string, bytes> string_to_bytes = 2;
+  map<string, double> string_to_double = 3;
+  map<string, fixed32> string_to_fixed32 = 4;
+  map<string, fixed64> string_to_fixed64 = 5;
+  map<string, float> string_to_float = 6;
+  map<string, int32> string_to_int32 = 7;
+  map<string, int64> string_to_int64 = 8;
+  map<string, sfixed32> string_to_sfixed32 = 9;
+  map<string, sfixed64> string_to_sfixed64 = 10;
+  map<string, sint32> string_to_sint32 = 11;
+  map<string, sint64> string_to_sint64 = 12;
+  map<string, string> string_to_string = 13;
+  map<string, uint32> string_to_uint32 = 14;
+  map<string, uint64> string_to_uint64 = 15;
+  map<string, PlanetV1> string_to_planet_v1 = 16;
+  map<string, Simple> string_to_simple = 17;
+  map<string, Repetitive> string_to_repetitive = 18;
+  map<string, Singleton> string_to_singleton = 19;
+}
+
+// The following types cannot be used as key values, which is why there's no map
+// definition here using them:
+//   - bytes
+//   - double
+//   - enums
+//   - float
+//   - messages
