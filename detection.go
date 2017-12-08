@@ -114,14 +114,11 @@ func isUnset(v reflect.Value) (bool, error) {
 		// be another proto message or a proto2 scalar value.
 		return v.IsNil(), nil
 	case reflect.Struct:
-		for i := 0; i < v.NumField(); i++ {
-			fv := v.Field(i)
-			e, err := isUnset(fv)
-			if !e { // e is always false when an error occurs.
-				return e, err
-			}
-		}
-		return true, nil
+		// This should never happen because protobuf generated code never uses structs
+		// as fields, and uses pointers to structs instead.
+		// This means that emptiness checks for nested messages would happen in the
+		// `reflect.Ptr` case rather than here.
+		return false, fmt.Errorf("Got an unexpected struct type: %T", v)
 	default:
 		return false, fmt.Errorf("Unsupported type: %T", v)
 	}
