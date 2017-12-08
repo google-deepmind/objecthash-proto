@@ -24,23 +24,23 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
-// ObjectHasher is a configurable object for hashing protocol buffer objects.
-type ObjectHasher struct {
+// `objectHasher` is a configurable object for hashing protocol buffer objects.
+// It implements the `ProtoHasher` interface.
+type objectHasher struct {
 	// Whether to hash enum values as strings, as opposed to as integer values.
-	EnumsAsStrings bool
+	enumsAsStrings bool
 
-	// Whether to use the proto field name its key, as opposed to using the tag
-	// number as the key.
-	FieldNamesAsKeys bool
+	// Whether to use the proto field name as its key, as opposed to using the
+	// tag number as the key.
+	fieldNamesAsKeys bool
 
-	// Whether to hash proto messages as maps, as opposed to using a separate
-	// hash identifier for them. Enabling this will make the ObjectHash of a
-	// proto message equivalent to the ObjectHash of an equivalent map object.
-	TreatMessagesAsMaps bool
+	// Custom type identifier for hashing proto messages, as opposed to using
+	// the map identifier.
+	messageIdentifier string
 }
 
 // `HashProto` returns the object hash of a given protocol buffer message.
-func (hasher *ObjectHasher) HashProto(pb proto.Message) ([]byte, error) {
+func (hasher *objectHasher) HashProto(pb proto.Message) ([]byte, error) {
 	val := reflect.ValueOf(pb)
 	// The Go generated code defines protos as pointers to structs.
 	// This means that the `IsNil` check here is safe to make and wont panic.
@@ -54,7 +54,7 @@ func (hasher *ObjectHasher) HashProto(pb proto.Message) ([]byte, error) {
 	return hasher.hashStruct(v)
 }
 
-func (hasher *ObjectHasher) hashRepeatedField(v reflect.Value, sf reflect.StructField, props *proto.Properties) ([]byte, error) {
+func (hasher *objectHasher) hashRepeatedField(v reflect.Value, sf reflect.StructField, props *proto.Properties) ([]byte, error) {
 	b := new(bytes.Buffer)
 	for j := 0; j < v.Len(); j++ {
 
@@ -72,7 +72,7 @@ func (hasher *ObjectHasher) hashRepeatedField(v reflect.Value, sf reflect.Struct
 	return hash(listIdentifier, b.Bytes())
 }
 
-func (hasher *ObjectHasher) hashMap(v reflect.Value, sf reflect.StructField, props *proto.Properties) ([]byte, error) {
+func (hasher *objectHasher) hashMap(v reflect.Value, sf reflect.StructField, props *proto.Properties) ([]byte, error) {
 	mapHashEntries := make([]hashEntry, v.Len())
 	n := 0
 
@@ -118,7 +118,7 @@ func (hasher *ObjectHasher) hashMap(v reflect.Value, sf reflect.StructField, pro
 	return hash(mapIdentifier, h.Bytes())
 }
 
-func (hasher *ObjectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
+func (hasher *objectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
 	if isAny(sv) {
 		return nil, errors.New("google.protobuf.Any messages cannot be hashed reliably.")
 	}
@@ -170,9 +170,9 @@ func (hasher *ObjectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
 		h.Write(e.vhash[:])
 	}
 
-	identifier := protoMessageIdentifier
-	if hasher.TreatMessagesAsMaps {
-		identifier = mapIdentifier
+	identifier := mapIdentifier
+	if hasher.messageIdentifier != "" {
+		identifier = hasher.messageIdentifier
 	}
 	return hash(identifier, h.Bytes())
 }
@@ -183,7 +183,7 @@ func (hasher *ObjectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
 // exist within structs (ie. repeated fields and maps). Therefore, when the
 // value does not exist within a struct, it is safe to call this function with
 // an empty StructField (ie. `reflect.StructField{}`).
-func (hasher *ObjectHasher) hashValue(v reflect.Value, sf reflect.StructField, props *proto.Properties) ([]byte, error) {
+func (hasher *objectHasher) hashValue(v reflect.Value, sf reflect.StructField, props *proto.Properties) ([]byte, error) {
 	switch v.Kind() {
 	case reflect.Struct:
 		return hasher.hashStruct(v)
@@ -202,7 +202,7 @@ func (hasher *ObjectHasher) hashValue(v reflect.Value, sf reflect.StructField, p
 		return hashFloat(v.Float())
 	case reflect.Int32, reflect.Int64:
 		// This also includes enums, which are represented as integers.
-		if hasher.EnumsAsStrings && props.Enum != "" {
+		if hasher.enumsAsStrings && props.Enum != "" {
 			str, err := stringify(v)
 			if err != nil {
 				return nil, err
@@ -223,13 +223,13 @@ func (hasher *ObjectHasher) hashValue(v reflect.Value, sf reflect.StructField, p
 	}
 }
 
-func (hasher *ObjectHasher) hashStructField(v reflect.Value, sf reflect.StructField, props *proto.Properties) (hashEntry, error) {
+func (hasher *objectHasher) hashStructField(v reflect.Value, sf reflect.StructField, props *proto.Properties) (hashEntry, error) {
 	var err error
 	var khash []byte
 	var vhash []byte
 
 	// Hash the tag.
-	if hasher.FieldNamesAsKeys {
+	if hasher.fieldNamesAsKeys {
 		khash, err = hashUnicode(props.OrigName)
 	} else {
 		khash, err = hashInt64(int64(props.Tag))
@@ -247,7 +247,7 @@ func (hasher *ObjectHasher) hashStructField(v reflect.Value, sf reflect.StructFi
 	return hashEntry{khash: khash, vhash: vhash}, nil
 }
 
-func (hasher *ObjectHasher) hashOneOf(v reflect.Value, sf reflect.StructField, props *proto.Properties) (hashEntry, error) {
+func (hasher *objectHasher) hashOneOf(v reflect.Value, sf reflect.StructField, props *proto.Properties) (hashEntry, error) {
 	// A oneof field is an interface which contains a pointer to an inner struct that contains the value.
 	fieldPointer := v.Elem()                      // Get the pointer to the inner struct.
 	innerStruct := reflect.Indirect(fieldPointer) // Get the inner struct.
