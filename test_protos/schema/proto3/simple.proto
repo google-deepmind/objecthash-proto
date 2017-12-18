@@ -1,0 +1,88 @@
+// Copyright 2017 The ObjectHash-Proto Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package schema.proto3;
+
+message Empty {
+}
+
+message Simple {
+  bool bool_field = 1;
+  bytes bytes_field = 3;
+  double double_field = 5;
+  fixed32 fixed32_field = 7;
+  fixed64 fixed64_field = 9;
+  float float_field = 11;
+  int32 int32_field = 13;
+  int64 int64_field = 15;
+  sfixed32 sfixed32_field = 17;
+  sfixed64 sfixed64_field = 19;
+  sint32 sint32_field = 21;
+  sint64 sint64_field = 23;
+  string string_field = 25;
+  uint32 uint32_field = 27;
+  uint64 uint64_field = 29;
+
+  Simple simple_field = 31;
+  Repetitive repetitive_field = 33;
+  Singleton singleton_field = 35;
+}
+
+message Repetitive {
+  repeated bool bool_field = 1;
+  repeated bytes bytes_field = 3;
+  repeated double double_field = 5;
+  repeated fixed32 fixed32_field = 7;
+  repeated fixed64 fixed64_field = 9;
+  repeated float float_field = 11;
+  repeated int32 int32_field = 13;
+  repeated int64 int64_field = 15;
+  repeated sfixed32 sfixed32_field = 17;
+  repeated sfixed64 sfixed64_field = 19;
+  repeated sint32 sint32_field = 21;
+  repeated sint64 sint64_field = 23;
+  repeated string string_field = 25;
+  repeated uint32 uint32_field = 27;
+  repeated uint64 uint64_field = 29;
+
+  repeated Simple simple_field = 31;
+  repeated Repetitive repetitive_field = 33;
+  repeated Singleton singleton_field = 35;
+}
+
+message Singleton {
+  oneof singleton {
+    bool the_bool = 1;
+    bytes the_bytes = 3;
+    double the_double = 5;
+    fixed32 the_fixed32 = 7;
+    fixed64 the_fixed64 = 9;
+    float the_float = 11;
+    int32 the_int32 = 13;
+    int64 the_int64 = 15;
+    sfixed32 the_sfixed32 = 17;
+    sfixed64 the_sfixed64 = 19;
+    sint32 the_sint32 = 21;
+    sint64 the_sint64 = 23;
+    string the_string = 25;
+    uint32 the_uint32 = 27;
+    uint64 the_uint64 = 29;
+
+    Simple the_simple = 31;
+    Repetitive the_repetitive = 33;
+    Singleton the_singleton = 35;
+  }
+}

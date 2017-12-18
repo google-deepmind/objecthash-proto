@@ -1,0 +1,44 @@
+// Copyright 2017 The ObjectHash-Proto Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// This is used for tests that ensure that the objecthash of well-known types is
+// correctly calculated.
+
+syntax = "proto2";
+
+package schema.proto2;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+message KnownTypes {
+  optional google.protobuf.Any any_field = 1;
+  optional google.protobuf.BoolValue bool_value_field = 2;
+  optional google.protobuf.BytesValue bytes_value_field = 3;
+  optional google.protobuf.DoubleValue double_value_field = 4;
+  optional google.protobuf.Duration duration_field = 5;
+  optional google.protobuf.FloatValue float_value_field = 6;
+  optional google.protobuf.Int32Value int32_value_field = 7;
+  optional google.protobuf.Int64Value int64_value_field = 8;
+  optional google.protobuf.ListValue list_value_field = 9;
+  optional google.protobuf.StringValue string_value_field = 10;
+  optional google.protobuf.Struct struct_field = 11;
+  optional google.protobuf.Timestamp timestamp_field = 12;
+  optional google.protobuf.UInt32Value uint32_value_field = 13;
+  optional google.protobuf.UInt64Value uint64_value_field = 14;
+  optional google.protobuf.Value value_field = 15;
+}

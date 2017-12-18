@@ -1,0 +1,69 @@
+// Copyright 2017 The ObjectHash-Proto Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// This is used for tests that involve integers.
+
+syntax = "proto2";
+
+package schema.proto2;
+
+message Fixed32Message {
+  optional fixed32 value = 1;
+  repeated fixed32 values = 2;
+}
+
+message Fixed64Message {
+  optional fixed64 value = 1;
+  repeated fixed64 values = 2;
+}
+
+message Int32Message {
+  optional int32 value = 1;
+  repeated int32 values = 2;
+}
+
+message Int64Message {
+  optional int64 value = 1;
+  repeated int64 values = 2;
+}
+
+message Sfixed32Message {
+  optional sfixed32 value = 1;
+  repeated sfixed32 values = 2;
+}
+
+message Sfixed64Message {
+  optional sfixed64 value = 1;
+  repeated sfixed64 values = 2;
+}
+
+message Sint32Message {
+  optional sint32 value = 1;
+  repeated sint32 values = 2;
+}
+
+message Sint64Message {
+  optional sint64 value = 1;
+  repeated sint64 values = 2;
+}
+
+message Uint32Message {
+  optional uint32 value = 1;
+  repeated uint32 values = 2;
+}
+
+message Uint64Message {
+  optional uint64 value = 1;
+  repeated uint64 values = 2;
+}
