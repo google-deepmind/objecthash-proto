@@ -32,9 +32,6 @@ const (
 	nilIdentifier      = `n`
 	byteIdentifier     = `r`
 	unicodeIndentifier = `u`
-
-	// Proto-specific identifiers.
-	protoMessageIdentifier = `m`
 )
 
 func hash(t string, b []byte) ([]byte, error) {
