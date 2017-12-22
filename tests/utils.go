@@ -15,7 +15,7 @@
 package tests
 
 import (
-	pb2_latest "../test_protos/generated/latest/proto2"
+	pb2_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto2"
 
 	"github.com/golang/protobuf/proto"
 )

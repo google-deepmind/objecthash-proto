@@ -16,7 +16,7 @@ package protohash
 
 import "testing"
 
-import "./tests"
+import "github.com/deepmind/objecthash-proto/tests"
 
 func TestFunctional(t *testing.T) {
 	protoHashers := tests.ProtoHashers{

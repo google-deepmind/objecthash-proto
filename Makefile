@@ -15,5 +15,4 @@
 .PHONY: test
 test:
 	go test -cover -covermode=count -coverprofile=coverage.out .
-	sed -i "s/_$${PWD//\//\\\/}/./" coverage.out
 	go tool cover -html=coverage.out -o coverage.html
