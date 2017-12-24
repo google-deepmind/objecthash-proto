@@ -41,12 +41,24 @@ type objectHasher struct {
 
 // `HashProto` returns the object hash of a given protocol buffer message.
 func (hasher *objectHasher) HashProto(pb proto.Message) ([]byte, error) {
-	val := reflect.ValueOf(pb)
-	// The Go generated code defines protos as pointers to structs.
-	// This means that the `IsNil` check here is safe to make and wont panic.
-	if pb == nil || val.IsNil() {
+	// Check if the value is nil.
+	if pb == nil {
 		return hashNil()
 	}
+
+	// Expliclity set any custom default values. This is done in order to detect
+	// proto2 custom default values and return errors for them as soon as they're
+	// introduced to the schema.
+	proto.SetDefaults(pb)
+
+	// Make sure the proto itself is actually valid (ie. can be marshalled).
+	// If this fails, it probably means there are unset required fields or invalid
+	// values.
+	if _, err := proto.Marshal(pb); err != nil {
+		return nil, err
+	}
+
+	val := reflect.ValueOf(pb)
 
 	// Dereference the proto pointer and return its underlying struct.
 	v := reflect.Indirect(val)
@@ -227,6 +239,14 @@ func (hasher *objectHasher) hashStructField(v reflect.Value, sf reflect.StructFi
 	var err error
 	var khash []byte
 	var vhash []byte
+
+	if props.Required {
+		return hashEntry{}, errors.New("Required fields are not allowed because they're bad for backwards compatibility.")
+	}
+
+	if props.HasDefault {
+		return hashEntry{}, errors.New("Fields with explicit defaults are not allowed because they're bad for backwards compatibility.")
+	}
 
 	// Hash the tag.
 	if hasher.fieldNamesAsKeys {
