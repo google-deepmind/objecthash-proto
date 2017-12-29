@@ -86,6 +86,16 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 		//////////////////////////
 		{
 			protos: []proto.Message{
+				&pb2_latest.Repetitive{StringField: []string{""}},
+				&pb3_latest.Repetitive{StringField: []string{""}},
+			},
+			equivalentJsonString: "{\"string_field\": [\"\"]}",
+			equivalentObject:     map[string][]string{"string_field": []string{""}},
+			expectedHashString:   "63e64f0ed286e0d8f30735e6646ea9ef48174c23ba09a05288b4233c6e6a9419",
+		},
+
+		{
+			protos: []proto.Message{
 				&pb2_latest.Repetitive{StringField: []string{"foo"}},
 				&pb3_latest.Repetitive{StringField: []string{"foo"}},
 			},
@@ -112,6 +122,15 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 
 		{
 			protos: []proto.Message{
+				&pb2_latest.Repetitive{Int64Field: []int64{0}},
+				&pb3_latest.Repetitive{Int64Field: []int64{0}},
+			},
+			equivalentObject:   map[string][]int64{"int64_field": []int64{0}},
+			expectedHashString: "b7e7afd1c1c7beeec4dcc0ced0ec4af2c850add686a12987e8f0b6fcb603733a",
+		},
+
+		{
+			protos: []proto.Message{
 				&pb2_latest.Repetitive{Int64Field: []int64{-2, -1, 0, 1, 2}},
 				&pb3_latest.Repetitive{Int64Field: []int64{-2, -1, 0, 1, 2}},
 			},
@@ -131,6 +150,16 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 		/////////////////////////
 		//  Lists with floats. //
 		/////////////////////////
+		{
+			protos: []proto.Message{
+				&pb2_latest.Repetitive{FloatField: []float32{0}},
+				&pb3_latest.Repetitive{FloatField: []float32{0}},
+			},
+			equivalentJsonString: "{\"float_field\": [0]}",
+			equivalentObject:     map[string][]float32{"float_field": []float32{0}},
+			expectedHashString:   "63b09f87ed057a88b38e2a69b6dde327d9e2624384542853327d6b90c83046f9",
+		},
+
 		{
 			protos: []proto.Message{
 				&pb2_latest.Repetitive{FloatField: []float32{-2, -1, 0, 1, 2}},
