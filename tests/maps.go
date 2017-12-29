@@ -65,6 +65,31 @@ func TestMaps(t *testing.T, hashers ProtoHashers) {
 			equivalentObject:     map[string]map[string]string{"string_to_string": map[string]string{"foo": "bar"}},
 			expectedHashString:   "cadfe560995647c63c20234a6409d2b1b8cf8dcf7d8e420ca33f23ff9ca9abfa",
 		},
+
+		{
+			protos: []proto.Message{
+				&pb2_latest.StringMaps{StringToString: map[string]string{
+					"": "你好", "你好": "\u03d3", "\u03d3": "\u03d2\u0301"}},
+				&pb3_latest.StringMaps{StringToString: map[string]string{
+					"": "你好", "你好": "\u03d3", "\u03d3": "\u03d2\u0301"}},
+			},
+			equivalentJsonString: "{\"string_to_string\": {\"\": \"你好\", \"你好\": \"\u03d3\", \"\u03d3\": \"\u03d2\u0301\"}}",
+			equivalentObject:     map[string]map[string]string{"string_to_string": map[string]string{"": "你好", "你好": "\u03d3", "\u03d3": "\u03d2\u0301"}},
+			expectedHashString:   "be8b5ae6d5986cde37ab8b395c66045fbb69a8b3b534fa34df7c19a640f4cd66",
+		},
+
+		//////////////////////////////
+		//  Maps of proto messages. //
+		//////////////////////////////
+		{
+			protos: []proto.Message{
+				&pb2_latest.StringMaps{StringToSimple: map[string]*pb2_latest.Simple{"foo": &pb2_latest.Simple{}}},
+				&pb3_latest.StringMaps{StringToSimple: map[string]*pb3_latest.Simple{"foo": &pb3_latest.Simple{}}},
+			},
+			equivalentJsonString: "{\"string_to_simple\": {\"foo\": {}}}",
+			equivalentObject:     map[string]map[string]map[string]string{"string_to_simple": map[string]map[string]string{"foo": map[string]string{}}},
+			expectedHashString:   "58057927bb1a123452a2d75071b55b08e426490ca42c3dd14e3be59183ac4751",
+		},
 	}
 
 	for _, tc := range testCases {
