@@ -40,7 +40,15 @@ type objectHasher struct {
 }
 
 // `HashProto` returns the object hash of a given protocol buffer message.
-func (hasher *objectHasher) HashProto(pb proto.Message) ([]byte, error) {
+func (hasher *objectHasher) HashProto(pb proto.Message) (h []byte, err error) {
+	// Ensure that we can recover if the proto library panics.
+	// See: https://github.com/golang/protobuf/issues/478
+	defer func() {
+		if r := recover(); r != nil {
+			err = r.(error)
+		}
+	}()
+
 	// Check if the value is nil.
 	if pb == nil {
 		return hashNil()
@@ -54,7 +62,7 @@ func (hasher *objectHasher) HashProto(pb proto.Message) ([]byte, error) {
 	// Make sure the proto itself is actually valid (ie. can be marshalled).
 	// If this fails, it probably means there are unset required fields or invalid
 	// values.
-	if _, err := proto.Marshal(pb); err != nil {
+	if _, err = proto.Marshal(pb); err != nil {
 		return nil, err
 	}
 
