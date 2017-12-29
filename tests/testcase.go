@@ -32,15 +32,15 @@ func (tc testCase) check(hasher ProtoHasher) error {
 	for _, message := range tc.protos {
 		messageHash, err := hasher.HashProto(message)
 		if err != nil {
-			return fmt.Errorf("Attempting to hash %T{ %+v } returned an error.", message, message)
+			return fmt.Errorf("Attempting to hash %T{ %[1]v } returned an error: %v", message, err)
 		}
 		messageHashStr := fmt.Sprintf("%x", messageHash)
 
 		// If the test case has an expected hash string, check it.
 		if tc.expectedHashString != "" {
 			if messageHashStr != tc.expectedHashString {
-				return fmt.Errorf("Got the wrong objecthash for %T{ %+v }.\n"+
-					"Actual:   %v\nExpected: %v\n", message, message, messageHashStr, tc.expectedHashString)
+				return fmt.Errorf("Got the wrong objecthash for %T{ %[1]v }.\n"+
+					"Actual:   %v\nExpected: %v\n", message, messageHashStr, tc.expectedHashString)
 			}
 		}
 
@@ -48,13 +48,13 @@ func (tc testCase) check(hasher ProtoHasher) error {
 		if tc.equivalentJsonString != "" {
 			commonJsonHash, err := objecthash.CommonJSONHash(tc.equivalentJsonString)
 			if err != nil {
-				return fmt.Errorf("Attempting to hash %+v returned an error.", tc.equivalentJsonString)
+				return fmt.Errorf("Attempting to hash %+v returned an error: %v", tc.equivalentJsonString, err)
 			}
 			commonJsonHashStr := fmt.Sprintf("%x", commonJsonHash)
 
 			if messageHashStr != commonJsonHashStr {
-				return fmt.Errorf("The objecthash for %T{ %+v } was expected to be the same as that of %+v.\n"+
-					"Actual:   %v\nExpected: %v\n", message, message, tc.equivalentJsonString, messageHashStr, commonJsonHashStr)
+				return fmt.Errorf("The objecthash for %T{ %[1]v } was expected to be the same as that of %+v.\n"+
+					"Actual:   %v\nExpected: %v\n", message, tc.equivalentJsonString, messageHashStr, commonJsonHashStr)
 			}
 		}
 
@@ -62,13 +62,13 @@ func (tc testCase) check(hasher ProtoHasher) error {
 		if tc.equivalentObject != nil {
 			equivalentObjectHash, err := objecthash.ObjectHash(tc.equivalentObject)
 			if err != nil {
-				return fmt.Errorf("Attempting to hash %+v returned an error.", tc.equivalentObject)
+				return fmt.Errorf("Attempting to hash %+v returned an error: %v", tc.equivalentObject, err)
 			}
 			equivalentObjectHashStr := fmt.Sprintf("%x", equivalentObjectHash)
 
 			if messageHashStr != equivalentObjectHashStr {
-				return fmt.Errorf("The objecthash for %T{ %+v } was expected to be the same as that of %+v.\n"+
-					"Actual:   %v\nExpected: %v\n", message, message, tc.equivalentObject, messageHashStr, equivalentObjectHashStr)
+				return fmt.Errorf("The objecthash for %T{ %[1]v } was expected to be the same as that of %+v.\n"+
+					"Actual:   %v\nExpected: %v\n", message, tc.equivalentObject, messageHashStr, equivalentObjectHashStr)
 			}
 		}
 	}
