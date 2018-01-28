@@ -35,6 +35,16 @@ func TestBadness(t *testing.T, hashers ProtoHashers) {
 		&pb2_latest.IntMaps{IntToSimple: map[int64]*pb2_latest.Simple{3: nil}},
 		&pb3_latest.IntMaps{IntToSimple: map[int64]*pb3_latest.Simple{3: nil}},
 
+		// Malformed oneof fields are bad.
+		&pb2_latest.Singleton{Singleton: (*pb2_latest.Singleton_TheString)(nil)},
+		&pb3_latest.Singleton{Singleton: (*pb3_latest.Singleton_TheString)(nil)},
+
+		&pb2_latest.Singleton{Singleton: &pb2_latest.Singleton_TheSimple{nil}},
+		&pb3_latest.Singleton{Singleton: &pb3_latest.Singleton_TheSimple{nil}},
+
+		&pb2_latest.Singleton{Singleton: &pb2_latest.Singleton_TheSimple{TheSimple: nil}},
+		&pb3_latest.Singleton{Singleton: &pb3_latest.Singleton_TheSimple{TheSimple: nil}},
+
 		// Custom default values are bad.
 		&pb2_latest.BadWithDefaults{},
 
@@ -48,13 +58,30 @@ func TestBadness(t *testing.T, hashers ProtoHashers) {
 		// Extensions are bad.
 		&pb2_latest.BadWithExtensions{},
 
+		// Write some data to the extension field.
+		func() proto.Message {
+			// Use an unregistered extension to keep each test simple and self-contained.
+			var E_SpecialNumber = &proto.ExtensionDesc{
+				ExtendedType:  (*pb2_latest.BadWithExtensions)(nil),
+				ExtensionType: (*int32)(nil),
+				Field:         123,
+				Name:          "schema.proto2.special_number",
+				Tag:           "varint,123,opt,name=special_number,json=specialNumber",
+				Filename:      "bad.proto",
+			}
+
+			v := &pb2_latest.BadWithExtensions{Text: proto.String("Test")}
+			proto.SetExtension(v, E_SpecialNumber, 42)
+			return v
+		}(),
+
 		// Create proto messages with unknown fields. That's bad.
 		forgetAllFields(&pb2_latest.PersonV1{Name: proto.String("Unbekannt")}),
 	}
 	for _, message := range badProtos {
 		_, err := hasher.HashProto(message)
 		if err == nil {
-			t.Errorf("Attempting to hash %T{ %+v} should have returned an error.", message, message)
+			t.Errorf("Attempting to hash %T{ %[1]v } should have returned an error.", message)
 		}
 	}
 }
