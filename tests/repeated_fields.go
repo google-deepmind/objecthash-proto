@@ -182,6 +182,26 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 
 		{
 			protos: []proto.Message{
+				&pb2_latest.Repetitive{DoubleField: []float64{1.2345, -10.1234}},
+				&pb3_latest.Repetitive{DoubleField: []float64{1.2345, -10.1234}},
+			},
+			equivalentJsonString: "{\"double_field\": [1.2345, -10.1234]}",
+			equivalentObject:     map[string][]float64{"double_field": []float64{1.2345, -10.1234}},
+			expectedHashString:   "2e60f6cdebfeb5e705666e9b0ff0ec652320ae27d77ad89bd4c7ddc632d0b93c",
+		},
+
+		{
+			protos: []proto.Message{
+				&pb2_latest.Repetitive{DoubleField: []float64{1.0, 1.5, 0.0001, 1000.9999999, 2.0, -23.1234, 2.32542}},
+				&pb3_latest.Repetitive{DoubleField: []float64{1.0, 1.5, 0.0001, 1000.9999999, 2.0, -23.1234, 2.32542}},
+			},
+			equivalentJsonString: "{\"double_field\": [1.0, 1.5, 0.0001, 1000.9999999, 2.0, -23.1234, 2.32542]}",
+			equivalentObject:     map[string][]float64{"double_field": []float64{1.0, 1.5, 0.0001, 1000.9999999, 2.0, -23.1234, 2.32542}},
+			expectedHashString:   "09a46866ca2c6d406513cd6e25feb6eda7aef4d25259f5ec16bf72f1f8bbcdac",
+		},
+
+		{
+			protos: []proto.Message{
 				&pb2_latest.Repetitive{DoubleField: []float64{123456789012345, 678901234567890}},
 				&pb3_latest.Repetitive{DoubleField: []float64{123456789012345, 678901234567890}},
 			},
