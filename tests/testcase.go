@@ -22,10 +22,19 @@ import (
 )
 
 type testCase struct {
-	protos               []proto.Message
-	equivalentObject     interface{}
+	// A list of protobuf messages that should have the same objecthash.
+	protos []proto.Message
+
+	// A plain Go object that should have the same objecthash as the messages
+	// under the `protos` field.
+	equivalentObject interface{}
+
+	// A JSON object that should have the same objecthash as the messages under
+	// the `protos` field.
 	equivalentJsonString string
-	expectedHashString   string
+
+	// The expected objecthash for all the objects in the test case.
+	expectedHashString string
 }
 
 func (tc testCase) check(hasher ProtoHasher) error {
