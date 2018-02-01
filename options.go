@@ -18,7 +18,7 @@ import (
 	"fmt"
 )
 
-// An `Option` modifies how ObjectHashes for protobufs is calculated.
+// Option modifies how ObjectHashes for protobufs is calculated.
 type Option interface {
 	set(*objectHasher)
 	fmt.Stringer
