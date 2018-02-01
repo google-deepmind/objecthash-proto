@@ -23,9 +23,9 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
-// `isAny` checks if a value is a `google.protobuf.Any` message.
+// isAny checks if a value is a google.protobuf.Any message.
 //
-// This is done by calling `XXX_WellKnownType` on the value and checking if it
+// This is done by calling XXX_WellKnownType on the value and checking if it
 // returns the string "Any".
 func isAny(sv reflect.Value) bool {
 	type wktProto interface {
@@ -33,14 +33,14 @@ func isAny(sv reflect.Value) bool {
 		XXX_WellKnownType() string
 	}
 
-	// The method `XXX_WellKnownType` requires a pointer receiver.
+	// The method XXX_WellKnownType requires a pointer receiver.
 	wellKnownValue, ok := sv.Addr().Interface().(wktProto)
 	return ok && wellKnownValue.XXX_WellKnownType() == "Any"
 }
 
-// `isExtendable` checks if the proto message is extendable.
+// isExtendable checks if the proto message is extendable.
 //
-// This is done by checking if it has the `ExtensionRangeArray` method.
+// This is done by checking if it has the ExtensionRangeArray method.
 func isExtendable(sv reflect.Value) bool {
 	type extendableProto interface {
 		proto.Message
@@ -51,9 +51,9 @@ func isExtendable(sv reflect.Value) bool {
 	return ok
 }
 
-// `isRawMessageField` checks if the proto field is a RawMessage.
+// isRawMessageField checks if the proto field is a RawMessage.
 //
-// This is done by checking if it has the `Bytes` method.
+// This is done by checking if it has the Bytes method.
 func isRawMessageField(v reflect.Value) bool {
 	type rawMessageField interface {
 		Bytes() []byte
@@ -63,7 +63,7 @@ func isRawMessageField(v reflect.Value) bool {
 	return ok
 }
 
-// `isAOneOfField` checks if the proto field is a `oneof` wrapper field.
+// isAOneOfField checks if the proto field is a oneof wrapper field.
 //
 // This is done by checking if it is an interface whose tag has a
 // "protobuf_oneof" entry.
@@ -71,7 +71,7 @@ func isAOneOfField(v reflect.Value, sf reflect.StructField) bool {
 	return v.Kind() == reflect.Interface && sf.Tag.Get("protobuf_oneof") != ""
 }
 
-// `isUnset` checks if the proto field has not been set.
+// isUnset checks if the proto field has not been set.
 //
 // This also includes empty proto3 scalar values.
 func isUnset(v reflect.Value) (bool, error) {
@@ -131,23 +131,23 @@ func isUnset(v reflect.Value) (bool, error) {
 		// This should never happen because protobuf generated code never uses structs
 		// as fields, and uses pointers to structs instead.
 		// This means that emptiness checks for nested messages would happen in the
-		// `reflect.Ptr` case rather than here.
+		// reflect.Ptr case rather than here.
 		return false, fmt.Errorf("Got an unexpected struct type: %T", v)
 	default:
 		return false, fmt.Errorf("Unsupported type: %T", v)
 	}
 }
 
-// `failIfUnsupported` returns an error if the provided field cannot be hashed reliably.
+// failIfUnsupported returns an error if the provided field cannot be hashed reliably.
 //
 // Note that unsupported fields are safe to ignore if they've not been set, so
-// an `isUnset` check should be used before this check.
+// an isUnset check should be used before this check.
 func failIfUnsupported(v reflect.Value, sf reflect.StructField) error {
 	// Check "XXX_" fields.
 	if name := sf.Name; strings.HasPrefix(name, "XXX_") {
 		switch name {
 		case "XXX_unrecognized":
-			// A non-empty `XXX_unrecognized` field means that the proto message
+			// A non-empty XXX_unrecognized field means that the proto message
 			// contains some unrecognized fields.
 			return errors.New("Unrecognized fields cannot be hashed reliably.")
 		case "XXX_extensions", "XXX_InternalExtensions":

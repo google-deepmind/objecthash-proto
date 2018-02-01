@@ -24,8 +24,8 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
-// `objectHasher` is a configurable object for hashing protocol buffer objects.
-// It implements the `ProtoHasher` interface.
+// objectHasher is a configurable object for hashing protocol buffer objects.
+// It implements the ProtoHasher interface.
 type objectHasher struct {
 	// Whether to hash enum values as strings, as opposed to as integer values.
 	enumsAsStrings bool
@@ -39,7 +39,7 @@ type objectHasher struct {
 	messageIdentifier string
 }
 
-// `HashProto` returns the object hash of a given protocol buffer message.
+// HashProto returns the object hash of a given protocol buffer message.
 func (hasher *objectHasher) HashProto(pb proto.Message) (h []byte, err error) {
 	// Ensure that we can recover if the proto library panics.
 	// See: https://github.com/golang/protobuf/issues/478
@@ -197,12 +197,12 @@ func (hasher *objectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
 	return hash(identifier, h.Bytes())
 }
 
-// `hashValue` returns the hash of an arbitrary proto field value.
+// hashValue returns the hash of an arbitrary proto field value.
 //
 // Note that the StructField argument is only used for types that can only
 // exist within structs (ie. repeated fields and maps). Therefore, when the
 // value does not exist within a struct, it is safe to call this function with
-// an empty StructField (ie. `reflect.StructField{}`).
+// an empty StructField (ie. reflect.StructField{}).
 func (hasher *objectHasher) hashValue(v reflect.Value, sf reflect.StructField, props *proto.Properties) ([]byte, error) {
 	switch v.Kind() {
 	case reflect.Struct:
@@ -280,7 +280,7 @@ func (hasher *objectHasher) hashOneOf(v reflect.Value, sf reflect.StructField, p
 	fieldPointer := v.Elem()                      // Get the pointer to the inner struct.
 	innerStruct := reflect.Indirect(fieldPointer) // Get the inner struct.
 
-	// This check protects `innerStruct.Field(0)` from panicing.
+	// This check protects innerStruct.Field(0) from panicing.
 	if innerStruct.Kind() != reflect.Struct || innerStruct.NumField() != 1 {
 		return hashEntry{}, fmt.Errorf("Unsupported interface type: %T. Expected it to be a oneof field.", v)
 	}

@@ -24,7 +24,7 @@ type ProtoHasher interface {
 	HashProto(pb proto.Message) ([]byte, error)
 }
 
-// Creates a new `ProtoHasher` with the options specified in the argument.
+// NewHasher creates a new ProtoHasher with the options specified in the argument.
 func NewHasher(opts ...Option) ProtoHasher {
 	hasher := objectHasher{messageIdentifier: mapIdentifier}
 	for _, opt := range opts {
