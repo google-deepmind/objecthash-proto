@@ -162,6 +162,16 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 
 		{
 			protos: []proto.Message{
+				&pb2_latest.Repetitive{FloatField: []float32{0.0}},
+				&pb3_latest.Repetitive{FloatField: []float32{0.0}},
+			},
+			equivalentJsonString: "{\"float_field\": [0.0]}",
+			equivalentObject:     map[string][]float32{"float_field": []float32{0.0}},
+			expectedHashString:   "63b09f87ed057a88b38e2a69b6dde327d9e2624384542853327d6b90c83046f9",
+		},
+
+		{
+			protos: []proto.Message{
 				&pb2_latest.Repetitive{FloatField: []float32{-2, -1, 0, 1, 2}},
 				&pb3_latest.Repetitive{FloatField: []float32{-2, -1, 0, 1, 2}},
 			},
