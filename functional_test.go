@@ -28,4 +28,10 @@ func TestFunctional(t *testing.T) {
 	}
 
 	t.Run("TestBadness", func(t *testing.T) { tests.TestBadness(t, protoHashers) })
+	t.Run("TestEmptyFields", func(t *testing.T) { tests.TestEmptyFields(t, protoHashers) })
+	t.Run("TestFloatFields", func(t *testing.T) { tests.TestFloatFields(t, protoHashers) })
+	t.Run("TestIntegerFields", func(t *testing.T) { tests.TestIntegerFields(t, protoHashers) })
+	t.Run("TestMaps", func(t *testing.T) { tests.TestMaps(t, protoHashers) })
+	t.Run("TestOtherTypes", func(t *testing.T) { tests.TestOtherTypes(t, protoHashers) })
+	t.Run("TestRepeatedFields", func(t *testing.T) { tests.TestRepeatedFields(t, protoHashers) })
 }
