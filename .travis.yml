@@ -9,4 +9,6 @@ go:
 install: go get -t ./...
 
 matrix:
+  allow_failures:
+    - go: master
   fast_finish: true
