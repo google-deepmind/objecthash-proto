@@ -1,3 +1,8 @@
+env:
+  global:
+    # CodeClimate
+    - CC_TEST_REPORTER_ID=f23f4d159f580cb3c3b44cda538d176938257143cd88c7b39f26a3029d562246
+
 language: go
 
 go:
@@ -7,6 +12,17 @@ go:
   - master
 
 install: go get -t ./...
+
+before_script:
+  # CodeClimate
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_script:
+  # CodeClimate
+  - cp coverage.out c.out  # The coverage file is assumed to be called `c.out`.
+  - ./cc-test-reporter after-build -t gocov --exit-code $TRAVIS_TEST_RESULT
 
 matrix:
   allow_failures:
