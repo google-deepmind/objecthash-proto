@@ -35,7 +35,7 @@ func TestOtherTypes(t *testing.T, hashers ProtoHashers) {
 			protos: []proto.Message{
 				nil,
 			},
-			equivalentJsonString: "null",
+			equivalentJSONString: "null",
 			equivalentObject:     nil,
 			expectedHashString:   "1b16b1df538ba12dc3f97edbb85caa7050d46c148134290feba80f8236c83db9",
 		},
@@ -48,7 +48,7 @@ func TestOtherTypes(t *testing.T, hashers ProtoHashers) {
 				&pb2_latest.Simple{BoolField: proto.Bool(true)},
 				&pb3_latest.Simple{BoolField: true},
 			},
-			equivalentJsonString: "{\"bool_field\": true}",
+			equivalentJSONString: "{\"bool_field\": true}",
 			equivalentObject:     map[string]bool{"bool_field": true},
 			expectedHashString:   "7b2ac6048e6c8797205505ea486539a5589583be43154da88785a5121e2d6899",
 		},
@@ -58,7 +58,7 @@ func TestOtherTypes(t *testing.T, hashers ProtoHashers) {
 				&pb2_latest.Simple{BoolField: proto.Bool(false)},
 				// proto3 scalar fields set to their default value are considered empty.
 			},
-			equivalentJsonString: "{\"bool_field\": false}",
+			equivalentJSONString: "{\"bool_field\": false}",
 			equivalentObject:     map[string]bool{"bool_field": false},
 			expectedHashString:   "1ab5ecdbe4176473024f7efd080593b740d22d076d06ea6edd8762992b484a12",
 		},

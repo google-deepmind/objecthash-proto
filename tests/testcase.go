@@ -31,7 +31,7 @@ type testCase struct {
 
 	// A JSON object that should have the same objecthash as the messages under
 	// the `protos` field.
-	equivalentJsonString string
+	equivalentJSONString string
 
 	// The expected objecthash for all the objects in the test case.
 	expectedHashString string
@@ -54,16 +54,16 @@ func (tc testCase) check(hasher ProtoHasher) error {
 		}
 
 		// If the test case has an equivalent JSON String, check it.
-		if tc.equivalentJsonString != "" {
-			commonJsonHash, err := objecthash.CommonJSONHash(tc.equivalentJsonString)
+		if tc.equivalentJSONString != "" {
+			commonJSONHash, err := objecthash.CommonJSONHash(tc.equivalentJSONString)
 			if err != nil {
-				return fmt.Errorf("Attempting to hash %+v returned an error: %v", tc.equivalentJsonString, err)
+				return fmt.Errorf("Attempting to hash %+v returned an error: %v", tc.equivalentJSONString, err)
 			}
-			commonJsonHashStr := fmt.Sprintf("%x", commonJsonHash)
+			commonJSONHashStr := fmt.Sprintf("%x", commonJSONHash)
 
-			if messageHashStr != commonJsonHashStr {
+			if messageHashStr != commonJSONHashStr {
 				return fmt.Errorf("The objecthash for %T{ %[1]v } was expected to be the same as that of %+v.\n"+
-					"Actual:   %v\nExpected: %v\n", message, tc.equivalentJsonString, messageHashStr, commonJsonHashStr)
+					"Actual:   %v\nExpected: %v\n", message, tc.equivalentJSONString, messageHashStr, commonJSONHashStr)
 			}
 		}
 
