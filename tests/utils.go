@@ -20,15 +20,32 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
+// ProtoHasher is an interface for hashers that are capable of returning an
+// ObjectHash for protobufs.
 type ProtoHasher interface {
 	HashProto(pb proto.Message) ([]byte, error)
 }
 
+// ProtoHashers is a struct containing a set of ProtoHashers with different
+// configuration options.
 type ProtoHashers struct {
-	DefaultHasher                 ProtoHasher
-	FieldNamesAsKeysHasher        ProtoHasher
-	EnumsAsStringsHasher          ProtoHasher
-	StringPreferringHasher        ProtoHasher
+	// The default ProtoHasher returned by NewHasher()
+	DefaultHasher ProtoHasher
+
+	// A ProtoHasher that uses field names as keys, returned by
+	// NewHasher(FieldNamesAsKeys())
+	FieldNamesAsKeysHasher ProtoHasher
+
+	// A ProtoHasher that uses strings for enum values, returned by
+	// NewHasher(EnumsAsStrings())
+	EnumsAsStringsHasher ProtoHasher
+
+	// A ProtoHasher that uses strings for field names and enum values, returned
+	// by NewHasher(FieldNamesAsKeys(), EnumsAsStrings())
+	StringPreferringHasher ProtoHasher
+
+	// A ProtoHasher that uses a custom identifier for proto messages, returned
+	// by NewHasher(MessageIdentifier(`m`))
 	CustomMessageIdentifierHasher ProtoHasher
 }
 

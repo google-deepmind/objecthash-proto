@@ -23,6 +23,7 @@ import (
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
 )
 
+// TestMaps performs tests on how maps are handled.
 func TestMaps(t *testing.T, hashers ProtoHashers) {
 	hasher := hashers.StringPreferringHasher
 

@@ -23,6 +23,7 @@ import (
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
 )
 
+// TestEmptyFields checks that empty proto fields are handled properly.
 func TestEmptyFields(t *testing.T, hashers ProtoHashers) {
 	hasher := hashers.DefaultHasher
 

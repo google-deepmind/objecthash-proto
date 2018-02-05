@@ -23,6 +23,7 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
+// TestRepeatedFields performs tests on how repeated fields are handled.
 func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 	hasher := hashers.StringPreferringHasher
 

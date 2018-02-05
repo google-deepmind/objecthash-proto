@@ -23,6 +23,7 @@ import (
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
 )
 
+// TestIntegerFields performs tests on how integers are handled.
 func TestIntegerFields(t *testing.T, hashers ProtoHashers) {
 	hasher := hashers.StringPreferringHasher
 

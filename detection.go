@@ -149,16 +149,16 @@ func failIfUnsupported(v reflect.Value, sf reflect.StructField) error {
 		case "XXX_unrecognized":
 			// A non-empty XXX_unrecognized field means that the proto message
 			// contains some unrecognized fields.
-			return errors.New("Unrecognized fields cannot be hashed reliably.")
+			return errors.New("unrecognized fields cannot be hashed reliably")
 		case "XXX_extensions", "XXX_InternalExtensions":
-			return errors.New("Extensions cannot be hashed reliably.")
+			return errors.New("extensions cannot be hashed reliably")
 		default:
-			return fmt.Errorf("Found an unknown XXX_ field: '%s'.", name)
+			return fmt.Errorf("found an unknown XXX_ field: '%s'", name)
 		}
 	}
 
 	if isRawMessageField(v) {
-		return errors.New("Raw message fields not supported.")
+		return errors.New("raw message fields not supported")
 	}
 
 	return nil

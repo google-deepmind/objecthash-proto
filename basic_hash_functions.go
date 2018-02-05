@@ -36,8 +36,15 @@ const (
 
 func hash(t string, b []byte) ([]byte, error) {
 	h := sha256.New()
-	h.Write([]byte(t))
-	h.Write(b)
+
+	if _, err := h.Write([]byte(t)); err != nil {
+		return nil, err
+	}
+
+	if _, err := h.Write(b); err != nil {
+		return nil, err
+	}
+
 	return h.Sum(nil), nil
 }
 
