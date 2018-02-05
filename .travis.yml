@@ -8,6 +8,17 @@ go:
 
 install: go get -t ./...
 
+before_script:
+  # CodeClimate
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_script:
+  # CodeClimate
+  - cp coverage.out c.out  # The coverage file is assumed to be called `c.out`.
+  - ./cc-test-reporter after-build -t gocov --exit-code $TRAVIS_TEST_RESULT
+
 matrix:
   allow_failures:
     - go: master
