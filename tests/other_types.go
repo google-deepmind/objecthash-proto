@@ -23,6 +23,7 @@ import (
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
 )
 
+// TestOtherTypes performs tests on types that do not have their own test file.
 func TestOtherTypes(t *testing.T, hashers ProtoHashers) {
 	hasher := hashers.StringPreferringHasher
 

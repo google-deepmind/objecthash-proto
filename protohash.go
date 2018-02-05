@@ -18,8 +18,8 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
-// The interface for hashers that are capable of returning an ObjectHash for
-// protobufs.
+// ProtoHasher is an interface for hashers that are capable of returning an
+// ObjectHash for protobufs.
 type ProtoHasher interface {
 	HashProto(pb proto.Message) ([]byte, error)
 }

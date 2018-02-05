@@ -24,6 +24,7 @@ import (
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
 )
 
+// TestFloatFields performs tests on how floating point numbers are handled.
 func TestFloatFields(t *testing.T, hashers ProtoHashers) {
 	hasher := hashers.StringPreferringHasher
 

@@ -80,7 +80,7 @@ func (hasher *objectHasher) hashRepeatedField(v reflect.Value, sf reflect.Struct
 
 		elem := v.Index(j)
 		if elem.Kind() == reflect.Ptr && elem.IsNil() {
-			return nil, errors.New("Got a nil message in a repeated field, which is invalid.")
+			return nil, errors.New("got a nil message in a repeated field, which is invalid")
 		}
 
 		h, err := hasher.hashValue(elem, reflect.StructField{}, props)
@@ -109,7 +109,7 @@ func (hasher *objectHasher) hashMap(v reflect.Value, sf reflect.StructField, pro
 		val := v.MapIndex(key)
 
 		if val.Kind() == reflect.Ptr && val.IsNil() {
-			return nil, errors.New("Got a nil message in a map field, which is invalid.")
+			return nil, errors.New("got a nil message in a map field, which is invalid")
 		}
 
 		// Hash the key.
@@ -140,11 +140,11 @@ func (hasher *objectHasher) hashMap(v reflect.Value, sf reflect.StructField, pro
 
 func (hasher *objectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
 	if isAny(sv) {
-		return nil, errors.New("google.protobuf.Any messages cannot be hashed reliably.")
+		return nil, errors.New("google.protobuf.Any messages cannot be hashed reliably")
 	}
 
 	if isExtendable(sv) {
-		return nil, errors.New("Extendable messages cannot be hashed reliably.")
+		return nil, errors.New("extendable messages cannot be hashed reliably")
 	}
 
 	st := sv.Type()
@@ -212,10 +212,10 @@ func (hasher *objectHasher) hashValue(v reflect.Value, sf reflect.StructField, p
 	case reflect.Slice:
 		if props.Repeated {
 			return hasher.hashRepeatedField(v, sf, props)
-		} else {
-			// If it's not a repeated field, then it must be []byte.
-			return hashBytes(v.Bytes())
 		}
+
+		// If it's not a repeated field, then it must be []byte.
+		return hashBytes(v.Bytes())
 	case reflect.String:
 		return hashUnicode(v.String())
 	case reflect.Float32, reflect.Float64:
@@ -249,11 +249,11 @@ func (hasher *objectHasher) hashStructField(v reflect.Value, sf reflect.StructFi
 	var vhash []byte
 
 	if props.Required {
-		return hashEntry{}, errors.New("Required fields are not allowed because they're bad for backwards compatibility.")
+		return hashEntry{}, errors.New("required fields are not allowed because they're bad for backwards compatibility")
 	}
 
 	if props.HasDefault {
-		return hashEntry{}, errors.New("Fields with explicit defaults are not allowed because they're bad for backwards compatibility.")
+		return hashEntry{}, errors.New("fields with explicit defaults are not allowed because they're bad for backwards compatibility")
 	}
 
 	// Hash the tag.
@@ -282,13 +282,13 @@ func (hasher *objectHasher) hashOneOf(v reflect.Value, sf reflect.StructField, p
 
 	// This check protects innerStruct.Field(0) from panicing.
 	if innerStruct.Kind() != reflect.Struct || innerStruct.NumField() != 1 {
-		return hashEntry{}, fmt.Errorf("Unsupported interface type: %T. Expected it to be a oneof field.", v)
+		return hashEntry{}, fmt.Errorf("unsupported interface type: %T. Expected it to be a oneof field", v)
 	}
 	innerValue := innerStruct.Field(0) // Get the inner value.
 
 	// Check if the message is malformed.
 	if innerValue.Kind() == reflect.Ptr && innerValue.IsNil() {
-		return hashEntry{}, errors.New("Got a nil message as a value of a oneof field, which is invalid.")
+		return hashEntry{}, errors.New("got a nil message as a value of a oneof field, which is invalid")
 	}
 
 	// Parse the field's properties.

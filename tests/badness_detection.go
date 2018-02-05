@@ -23,6 +23,7 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
+// TestBadness checks that bad protobuf values are rejected properly.
 func TestBadness(t *testing.T, hashers ProtoHashers) {
 	hasher := hashers.DefaultHasher
 
@@ -61,7 +62,7 @@ func TestBadness(t *testing.T, hashers ProtoHashers) {
 		// Write some data to the extension field.
 		func() proto.Message {
 			// Use an unregistered extension to keep each test simple and self-contained.
-			var E_SpecialNumber = &proto.ExtensionDesc{
+			var ESpecialNumber = &proto.ExtensionDesc{
 				ExtendedType:  (*pb2_latest.BadWithExtensions)(nil),
 				ExtensionType: (*int32)(nil),
 				Field:         123,
@@ -71,7 +72,11 @@ func TestBadness(t *testing.T, hashers ProtoHashers) {
 			}
 
 			v := &pb2_latest.BadWithExtensions{Text: proto.String("Test")}
-			proto.SetExtension(v, E_SpecialNumber, 42)
+			err := proto.SetExtension(v, ESpecialNumber, proto.Int32(42))
+			if err != nil {
+				t.Error(err)
+			}
+
 			return v
 		}(),
 
