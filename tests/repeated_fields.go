@@ -90,7 +90,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{StringField: []string{""}},
 			},
 			equivalentJsonString: "{\"string_field\": [\"\"]}",
-			equivalentObject:     map[string][]string{"string_field": []string{""}},
+			equivalentObject:     map[string][]string{"string_field": {""}},
 			expectedHashString:   "63e64f0ed286e0d8f30735e6646ea9ef48174c23ba09a05288b4233c6e6a9419",
 		},
 
@@ -100,7 +100,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{StringField: []string{"foo"}},
 			},
 			equivalentJsonString: "{\"string_field\": [\"foo\"]}",
-			equivalentObject:     map[string][]string{"string_field": []string{"foo"}},
+			equivalentObject:     map[string][]string{"string_field": {"foo"}},
 			expectedHashString:   "54c0b7c6e7c9ff0bb6076a2caeccbc96fad77f49b17b7ec9bc17dfe98a7b343e",
 		},
 
@@ -110,7 +110,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{StringField: []string{"foo", "bar"}},
 			},
 			equivalentJsonString: "{\"string_field\": [\"foo\", \"bar\"]}",
-			equivalentObject:     map[string][]string{"string_field": []string{"foo", "bar"}},
+			equivalentObject:     map[string][]string{"string_field": {"foo", "bar"}},
 			expectedHashString:   "a971a061d199ddf37a365d617f9cd4530efb15e933e0dbaf6602b2908b792056",
 		},
 
@@ -125,7 +125,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb2_latest.Repetitive{Int64Field: []int64{0}},
 				&pb3_latest.Repetitive{Int64Field: []int64{0}},
 			},
-			equivalentObject:   map[string][]int64{"int64_field": []int64{0}},
+			equivalentObject:   map[string][]int64{"int64_field": {0}},
 			expectedHashString: "b7e7afd1c1c7beeec4dcc0ced0ec4af2c850add686a12987e8f0b6fcb603733a",
 		},
 
@@ -134,7 +134,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb2_latest.Repetitive{Int64Field: []int64{-2, -1, 0, 1, 2}},
 				&pb3_latest.Repetitive{Int64Field: []int64{-2, -1, 0, 1, 2}},
 			},
-			equivalentObject:   map[string][]int64{"int64_field": []int64{-2, -1, 0, 1, 2}},
+			equivalentObject:   map[string][]int64{"int64_field": {-2, -1, 0, 1, 2}},
 			expectedHashString: "44e78ff73bdf5d0da5141e110b22bab240483ba17c40f83553a0e6bbfa671e22",
 		},
 
@@ -143,7 +143,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb2_latest.Repetitive{Int64Field: []int64{123456789012345, 678901234567890}},
 				&pb3_latest.Repetitive{Int64Field: []int64{123456789012345, 678901234567890}},
 			},
-			equivalentObject:   map[string][]int64{"int64_field": []int64{123456789012345, 678901234567890}},
+			equivalentObject:   map[string][]int64{"int64_field": {123456789012345, 678901234567890}},
 			expectedHashString: "b0ce1b7dfa71b33a16571fea7f3f27341bf5980b040e9d949a8019f3143ecbc7",
 		},
 
@@ -156,7 +156,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{FloatField: []float32{0}},
 			},
 			equivalentJsonString: "{\"float_field\": [0]}",
-			equivalentObject:     map[string][]float32{"float_field": []float32{0}},
+			equivalentObject:     map[string][]float32{"float_field": {0}},
 			expectedHashString:   "63b09f87ed057a88b38e2a69b6dde327d9e2624384542853327d6b90c83046f9",
 		},
 
@@ -166,7 +166,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{FloatField: []float32{0.0}},
 			},
 			equivalentJsonString: "{\"float_field\": [0.0]}",
-			equivalentObject:     map[string][]float32{"float_field": []float32{0.0}},
+			equivalentObject:     map[string][]float32{"float_field": {0.0}},
 			expectedHashString:   "63b09f87ed057a88b38e2a69b6dde327d9e2624384542853327d6b90c83046f9",
 		},
 
@@ -176,7 +176,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{FloatField: []float32{-2, -1, 0, 1, 2}},
 			},
 			equivalentJsonString: "{\"float_field\": [-2, -1, 0, 1, 2]}",
-			equivalentObject:     map[string][]float32{"float_field": []float32{-2, -1, 0, 1, 2}},
+			equivalentObject:     map[string][]float32{"float_field": {-2, -1, 0, 1, 2}},
 			expectedHashString:   "68b2552f2f33b5dd38c9be0aeee127170c86d8d2b3ab7daebdc2ea124226593f",
 		},
 
@@ -186,7 +186,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{FloatField: []float32{1, 2, 3}},
 			},
 			equivalentJsonString: "{\"float_field\": [1, 2, 3]}",
-			equivalentObject:     map[string][]float32{"float_field": []float32{1, 2, 3}},
+			equivalentObject:     map[string][]float32{"float_field": {1, 2, 3}},
 			expectedHashString:   "f26c1502d1f9f7bf672cf669290348f9bfdea0af48261f2822aad01927fe1749",
 		},
 
@@ -196,7 +196,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{DoubleField: []float64{1.2345, -10.1234}},
 			},
 			equivalentJsonString: "{\"double_field\": [1.2345, -10.1234]}",
-			equivalentObject:     map[string][]float64{"double_field": []float64{1.2345, -10.1234}},
+			equivalentObject:     map[string][]float64{"double_field": {1.2345, -10.1234}},
 			expectedHashString:   "2e60f6cdebfeb5e705666e9b0ff0ec652320ae27d77ad89bd4c7ddc632d0b93c",
 		},
 
@@ -206,7 +206,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{DoubleField: []float64{1.0, 1.5, 0.0001, 1000.9999999, 2.0, -23.1234, 2.32542}},
 			},
 			equivalentJsonString: "{\"double_field\": [1.0, 1.5, 0.0001, 1000.9999999, 2.0, -23.1234, 2.32542]}",
-			equivalentObject:     map[string][]float64{"double_field": []float64{1.0, 1.5, 0.0001, 1000.9999999, 2.0, -23.1234, 2.32542}},
+			equivalentObject:     map[string][]float64{"double_field": {1.0, 1.5, 0.0001, 1000.9999999, 2.0, -23.1234, 2.32542}},
 			expectedHashString:   "09a46866ca2c6d406513cd6e25feb6eda7aef4d25259f5ec16bf72f1f8bbcdac",
 		},
 
@@ -216,7 +216,7 @@ func TestRepeatedFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Repetitive{DoubleField: []float64{123456789012345, 678901234567890}},
 			},
 			equivalentJsonString: "{\"double_field\": [123456789012345, 678901234567890]}",
-			equivalentObject:     map[string][]float64{"double_field": []float64{123456789012345, 678901234567890}},
+			equivalentObject:     map[string][]float64{"double_field": {123456789012345, 678901234567890}},
 			expectedHashString:   "067d25d39b8514b6b905e0eba2d19242bcf4441e2367527dbceac7a9dd0108a0",
 		},
 	}
