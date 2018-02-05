@@ -1,5 +1,8 @@
 # ObjectHash-Proto
 
+[![Build
+Status](https://travis-ci.org/deepmind/objecthash-proto.svg?branch=master)](https://travis-ci.org/deepmind/objecthash-proto)
+
 The library is an implementation of [Ben Laurie's
 ObjectHash](https://github.com/benlaurie/objecthash) for protocol buffers.
 
