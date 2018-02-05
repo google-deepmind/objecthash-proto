@@ -60,7 +60,7 @@ func TestEmptyFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Simple{Uint32Field: 0},
 				&pb3_latest.Simple{Uint64Field: 0},
 			},
-			equivalentJsonString: "{}",
+			equivalentJSONString: "{}",
 			equivalentObject:     map[string]interface{}{},
 			expectedHashString:   "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4",
 		},

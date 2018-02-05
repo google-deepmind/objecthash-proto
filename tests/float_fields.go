@@ -41,7 +41,7 @@ func TestFloatFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.FloatMessage{Values: []float32{-2, -1, 0, 1, 2}},
 			},
 			equivalentObject:     map[string][]float64{"values": {-2, -1, 0, 1, 2}},
-			equivalentJsonString: "{\"values\": [-2, -1, 0, 1, 2]}",
+			equivalentJSONString: "{\"values\": [-2, -1, 0, 1, 2]}",
 			expectedHashString:   "586202dddb0e98bb8ce0b7289e29a9f7397b9b1996f3f8fe788f4cfb230b7ee8",
 		},
 
@@ -57,7 +57,7 @@ func TestFloatFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.FloatMessage{Values: []float32{0.0078125, 7.888609052210118e-31}},
 			},
 			equivalentObject:     map[string][]float64{"values": {0.0078125, 7.888609052210118e-31}},
-			equivalentJsonString: "{\"values\": [0.0078125, 7.888609052210118e-31]}",
+			equivalentJSONString: "{\"values\": [0.0078125, 7.888609052210118e-31]}",
 			expectedHashString:   "7b7cba0ed312bc6611f0523e7c46ce9a2ed9ecb798eb80e1cdf93c95faf503c7",
 		},
 
@@ -70,7 +70,7 @@ func TestFloatFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.FloatMessage{Values: []float32{-1.0, 1.5, 1000.000244140625, 1267650600228229401496703205376, 32.0, 13.0009765625}},
 			},
 			equivalentObject:     map[string][]float64{"values": {-1.0, 1.5, 1000.000244140625, 1267650600228229401496703205376, 32.0, 13.0009765625}},
-			equivalentJsonString: "{\"values\": [-1.0, 1.5, 1000.000244140625, 1267650600228229401496703205376, 32.0, 13.0009765625]}",
+			equivalentJSONString: "{\"values\": [-1.0, 1.5, 1000.000244140625, 1267650600228229401496703205376, 32.0, 13.0009765625]}",
 			expectedHashString:   "ac261ff3d8b933998e3fea278539eb40b15811dd835d224e0150dce4794168b7",
 		},
 
@@ -88,7 +88,7 @@ func TestFloatFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.DoubleMessage{Value: 1.0000000149011612e-1},
 			},
 			equivalentObject:     map[string]float32{"value": 0.1},
-			equivalentJsonString: "{\"value\": 1.0000000149011612e-1}", // Json objecthash only uses 64-bit floats.
+			equivalentJSONString: "{\"value\": 1.0000000149011612e-1}", // JSON objecthash only uses 64-bit floats.
 			expectedHashString:   "7081ed6a1e7ad8e7f981a2894a3bd6d3b0b0033b69c03cce84b61dd063f4efaa",
 		},
 
@@ -99,7 +99,7 @@ func TestFloatFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.DoubleMessage{Value: 0.1},
 			},
 			equivalentObject:     map[string]float64{"value": 0.1},
-			equivalentJsonString: "{\"value\": 0.1}",
+			equivalentJSONString: "{\"value\": 0.1}",
 			expectedHashString:   "e175fbe785bae88b598d3ecaad8a64d2a998e9f673173a226868f2ef312a5225",
 		},
 
@@ -113,7 +113,7 @@ func TestFloatFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.DoubleMessage{Value: 1.2163543234531120e+25},
 			},
 			equivalentObject:     map[string]float32{"value": 1.2163543e+25},
-			equivalentJsonString: "{\"value\": 1.2163543234531120e+25}", // Json objecthash only uses 64-bit floats.
+			equivalentJSONString: "{\"value\": 1.2163543234531120e+25}", // JSON objecthash only uses 64-bit floats.
 			expectedHashString:   "bbb17cf7312f2ba5b0002d781f16d1ab50c3d25dc044ed3428750826a1c68653",
 		},
 
@@ -124,7 +124,7 @@ func TestFloatFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.DoubleMessage{Value: 1e+25},
 			},
 			equivalentObject:     map[string]float64{"value": 1e+25},
-			equivalentJsonString: "{\"value\": 1e+25}",
+			equivalentJSONString: "{\"value\": 1e+25}",
 			expectedHashString:   "874beabbede24974a9f3f74e3448670e0c42c0aaba082f18b963b72253649362",
 		},
 
@@ -138,7 +138,7 @@ func TestFloatFields(t *testing.T, hashers ProtoHashers) {
 				// Proto3 zero values are indistinguishable from unset values.
 			},
 			equivalentObject:     map[string]float64{"value": 0},
-			equivalentJsonString: "{\"value\":0}",
+			equivalentJSONString: "{\"value\":0}",
 			expectedHashString:   "94136b0850db069dfd7bee090fc7ede48aa7da53ae3cc8514140a493818c3b91",
 		},
 
