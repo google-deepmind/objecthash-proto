@@ -1,3 +1,8 @@
+env:
+  global:
+    # CodeClimate
+    - CC_TEST_REPORTER_ID=f23f4d159f580cb3c3b44cda538d176938257143cd88c7b39f26a3029d562246
+
 language: go
 
 go:
