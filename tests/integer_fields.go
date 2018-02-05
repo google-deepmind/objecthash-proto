@@ -54,7 +54,7 @@ func TestIntegerFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Uint32Message{Values: []uint32{0, 1, 2}},
 				&pb3_latest.Uint64Message{Values: []uint64{0, 1, 2}},
 			},
-			equivalentObject: map[string][]int32{"values": []int32{0, 1, 2}},
+			equivalentObject: map[string][]int32{"values": {0, 1, 2}},
 			// No equivalent JSON: JSON does not have an "integer" type. All numbers are floats.
 			expectedHashString: "42794fb0e73c2b5f427aa76486555d07589359054848396ddf173e9e0b4ab931",
 		},
@@ -75,7 +75,7 @@ func TestIntegerFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Sint32Message{Values: []int32{-2, -1, 0, 1, 2}},
 				&pb3_latest.Sint64Message{Values: []int64{-2, -1, 0, 1, 2}},
 			},
-			equivalentObject: map[string][]int32{"values": []int32{-2, -1, 0, 1, 2}},
+			equivalentObject: map[string][]int32{"values": {-2, -1, 0, 1, 2}},
 			// No equivalent JSON: JSON does not have an "integer" type. All numbers are floats.
 			expectedHashString: "6cb613a53b6086b88dbda40b30e902adb41288b0b1f7a627905beaa764ee49cb",
 		},

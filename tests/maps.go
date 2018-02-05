@@ -36,7 +36,7 @@ func TestMaps(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.BoolMaps{BoolToString: map[bool]string{true: "NOT FALSE", false: "NOT TRUE"}},
 			},
 			// No equivalent JSON object because JSON map keys must be strings.
-			equivalentObject:   map[string]map[bool]string{"bool_to_string": map[bool]string{true: "NOT FALSE", false: "NOT TRUE"}},
+			equivalentObject:   map[string]map[bool]string{"bool_to_string": {true: "NOT FALSE", false: "NOT TRUE"}},
 			expectedHashString: "d89d053bf7b37b4784832c72445661db99538fe1d490988575409a9040084f18",
 		},
 
@@ -49,7 +49,7 @@ func TestMaps(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.IntMaps{IntToString: map[int64]string{0: "ZERO"}},
 			},
 			// No equivalent JSON object because JSON map keys must be strings.
-			equivalentObject:   map[string]map[int64]string{"int_to_string": map[int64]string{0: "ZERO"}},
+			equivalentObject:   map[string]map[int64]string{"int_to_string": {0: "ZERO"}},
 			expectedHashString: "53892192fb69cbd93ceb0552ca571b8505887f25d6f12822025341f16983a6af",
 		},
 
@@ -62,7 +62,7 @@ func TestMaps(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.StringMaps{StringToString: map[string]string{"foo": "bar"}},
 			},
 			equivalentJsonString: "{\"string_to_string\": {\"foo\": \"bar\"}}",
-			equivalentObject:     map[string]map[string]string{"string_to_string": map[string]string{"foo": "bar"}},
+			equivalentObject:     map[string]map[string]string{"string_to_string": {"foo": "bar"}},
 			expectedHashString:   "cadfe560995647c63c20234a6409d2b1b8cf8dcf7d8e420ca33f23ff9ca9abfa",
 		},
 
@@ -74,7 +74,7 @@ func TestMaps(t *testing.T, hashers ProtoHashers) {
 					"": "你好", "你好": "\u03d3", "\u03d3": "\u03d2\u0301"}},
 			},
 			equivalentJsonString: "{\"string_to_string\": {\"\": \"你好\", \"你好\": \"\u03d3\", \"\u03d3\": \"\u03d2\u0301\"}}",
-			equivalentObject:     map[string]map[string]string{"string_to_string": map[string]string{"": "你好", "你好": "\u03d3", "\u03d3": "\u03d2\u0301"}},
+			equivalentObject:     map[string]map[string]string{"string_to_string": {"": "你好", "你好": "\u03d3", "\u03d3": "\u03d2\u0301"}},
 			expectedHashString:   "be8b5ae6d5986cde37ab8b395c66045fbb69a8b3b534fa34df7c19a640f4cd66",
 		},
 
@@ -83,11 +83,11 @@ func TestMaps(t *testing.T, hashers ProtoHashers) {
 		//////////////////////////////
 		{
 			protos: []proto.Message{
-				&pb2_latest.StringMaps{StringToSimple: map[string]*pb2_latest.Simple{"foo": &pb2_latest.Simple{}}},
-				&pb3_latest.StringMaps{StringToSimple: map[string]*pb3_latest.Simple{"foo": &pb3_latest.Simple{}}},
+				&pb2_latest.StringMaps{StringToSimple: map[string]*pb2_latest.Simple{"foo": {}}},
+				&pb3_latest.StringMaps{StringToSimple: map[string]*pb3_latest.Simple{"foo": {}}},
 			},
 			equivalentJsonString: "{\"string_to_simple\": {\"foo\": {}}}",
-			equivalentObject:     map[string]map[string]map[string]string{"string_to_simple": map[string]map[string]string{"foo": map[string]string{}}},
+			equivalentObject:     map[string]map[string]map[string]string{"string_to_simple": {"foo": {}}},
 			expectedHashString:   "58057927bb1a123452a2d75071b55b08e426490ca42c3dd14e3be59183ac4751",
 		},
 	}
