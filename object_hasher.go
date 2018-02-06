@@ -159,7 +159,7 @@ func (hasher *objectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
 		sf := st.Field(i)
 
 		// Ignore unset fields (and empty proto3 scalar fields).
-		unset, err := isUnset(v)
+		unset, err := isUnset(v, sf)
 		if err != nil {
 			return nil, err
 		}
