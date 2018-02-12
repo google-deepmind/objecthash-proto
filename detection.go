@@ -23,19 +23,31 @@ import (
 	"github.com/golang/protobuf/proto"
 )
 
-// isAny checks if a value is a google.protobuf.Any message.
+// wktProto is the interface satisfied by the proto library's well-known types.
 //
-// This is done by calling XXX_WellKnownType on the value and checking if it
-// returns the string "Any".
-func isAny(sv reflect.Value) bool {
-	type wktProto interface {
-		proto.Message
-		XXX_WellKnownType() string
-	}
+// Notice that the method XXX_WellKnownType requires a pointer receiver, so you
+// should take the Addr() of a reflect.value before checking if it satisfies
+// this interface.
+type wktProto interface {
+	proto.Message
+	XXX_WellKnownType() string
+}
 
+// CheckWellKnownType checks if a value is one of the proto library's well-known
+// types. The ok return value reports whether the value is a well-known type or
+// not, while the name return value reports the name provided by the proto
+// library for this type.
+//
+// This is done by checking if the proto message has a XXX_WellKnownType method
+// defined on it.
+func CheckWellKnownType(sv reflect.Value) (name string, ok bool) {
 	// The method XXX_WellKnownType requires a pointer receiver.
 	wellKnownValue, ok := sv.Addr().Interface().(wktProto)
-	return ok && wellKnownValue.XXX_WellKnownType() == "Any"
+	if ok {
+		return wellKnownValue.XXX_WellKnownType(), true
+	}
+
+	return "", false
 }
 
 // isExtendable checks if the proto message is extendable.

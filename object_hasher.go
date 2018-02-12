@@ -139,8 +139,9 @@ func (hasher *objectHasher) hashMap(v reflect.Value, sf reflect.StructField, pro
 }
 
 func (hasher *objectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
-	if isAny(sv) {
-		return nil, errors.New("google.protobuf.Any messages cannot be hashed reliably")
+	_, ok := CheckWellKnownType(sv)
+	if ok {
+		return nil, errors.New("protobuf well-known types are currently unsupported")
 	}
 
 	if isExtendable(sv) {
