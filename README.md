@@ -43,3 +43,7 @@ function. Example:
 ```golang
 hasher := protohash.NewHasher(EnumsAsStrings(), MessageIdentifier(`m`), FieldNamesAsKeys())
 ```
+
+## Help and Discussion
+
+* [Google Group](https://groups.google.com/forum/#!forum/objecthash)
