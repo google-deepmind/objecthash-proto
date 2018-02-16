@@ -98,6 +98,22 @@ func TestOneOfFields(t *testing.T, hashers ProtoHashers) {
 		////////////////////////////////////////////////
 		//  One of the options selected with content. //
 		////////////////////////////////////////////////
+		//
+		// For protobufs, it is legal (and backwards-compatible) to update a message by wrapping
+		// an existing field within a oneof rule. Therefore, both objects (using old schem and
+		// the new schema) should result in the same objecthash.
+		//
+		// Example:
+		//
+		// # Old schema:               | # New schema:
+		// message Simple {            | message Singleton {
+		//   string string_field = 25; |   oneof singleton {
+		// }                           |     string the_string = 25;
+		//                             |   }
+		//                             | }
+		//
+		// The following examples demonstrate this equivalence.
+
 		{
 			protos: []proto.Message{
 				&pb2_latest.Simple{StringField: proto.String("TEST!")},
