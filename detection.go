@@ -77,6 +77,11 @@ func isAOneOfField(v reflect.Value, sf reflect.StructField) bool {
 // tag (for repeated fields).  Additionally, proto3 byte fields have a 'proto3'
 // tag, which proto2 byte fields do not have.
 func isAProto2BytesField(v reflect.Value, sf reflect.StructField) bool {
+	k := v.Kind()
+	if k != reflect.Map && k != reflect.Slice {
+		return false
+	}
+
 	tag := sf.Tag.Get("protobuf")
 
 	// This can potentially break "def" values which come last and can contain
