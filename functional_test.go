@@ -34,6 +34,7 @@ func TestFunctional(t *testing.T) {
 	t.Run("TestMaps", func(t *testing.T) { tests.TestMaps(t, protoHashers) })
 	t.Run("TestOneOfFields", func(t *testing.T) { tests.TestOneOfFields(t, protoHashers) })
 	t.Run("TestOtherTypes", func(t *testing.T) { tests.TestOtherTypes(t, protoHashers) })
+	t.Run("TestProto2DefaultFieldValues", func(t *testing.T) { tests.TestProto2DefaultFieldValues(t, protoHashers) })
 	t.Run("TestRepeatedFields", func(t *testing.T) { tests.TestRepeatedFields(t, protoHashers) })
 	t.Run("TestStringFields", func(t *testing.T) { tests.TestStringFields(t, protoHashers) })
 	t.Run("TestWellKnownTypes", func(t *testing.T) { tests.TestWellKnownTypes(t, protoHashers) })

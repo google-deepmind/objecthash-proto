@@ -83,10 +83,46 @@ func isAOneOfField(v reflect.Value, sf reflect.StructField) bool {
 	return v.Kind() == reflect.Interface && sf.Tag.Get("protobuf_oneof") != ""
 }
 
+// isAProto2BytesField checks if the field is a proto2 bytes field.
+//
+// This is done by checking the field's tag. Byte fields do not have a 'rep'
+// tag (for repeated fields).  Additionally, proto3 byte fields have a 'proto3'
+// tag, which proto2 byte fields do not have.
+func isAProto2BytesField(v reflect.Value, sf reflect.StructField) bool {
+	k := v.Kind()
+	if k != reflect.Map && k != reflect.Slice {
+		return false
+	}
+
+	tag := sf.Tag.Get("protobuf")
+
+	// This can potentially break "def" values which come last and can contain
+	// commas. This is fine because we don't care about "def" or its value here.
+	//
+	// Example: "bytes,10,opt,name=F_String,json=FString,def=hello, \"world!\"\n"
+	fields := strings.Split(tag, ",")
+
+	// Normal proto tags (incl. bytes) will have at least 2 fields.
+	if len(fields) < 2 {
+		// We do not return an error because this case can happen for certain kinds
+		// of fields, such as 'XXX_unrecognized' for example.
+		return false
+	}
+
+	for i := 2; i < len(fields); i++ {
+		f := fields[i]
+		if f == "rep" || f == "proto3" {
+			return false
+		}
+	}
+
+	return true
+}
+
 // isUnset checks if the proto field has not been set.
 //
 // This also includes empty proto3 scalar values.
-func isUnset(v reflect.Value) (bool, error) {
+func isUnset(v reflect.Value, sf reflect.StructField) (bool, error) {
 	// Default values are considered empty. Otherwise, adding those kinds of
 	// fields to a proto's definition would break all older hashes.
 	switch v.Kind() {
@@ -101,6 +137,19 @@ func isUnset(v reflect.Value) (bool, error) {
 	case reflect.String:
 		return v.String() == "", nil
 	case reflect.Map, reflect.Slice:
+		// Proto2 bytes fields are considered scalar fields, which means that there
+		// is a distinction between unset fields and fields set to zero values.
+		//
+		// Therefore, if we encounter a proto2 bytes field, we should only check if
+		// it's nil or not, rather than checking its value.
+		if isAProto2BytesField(v, sf) {
+			return v.IsNil(), nil
+		}
+
+		// If this is not a proto2 bytes field, then empty values are always unset.
+		//
+		// This applies for: repeated fields, proto3 bytes fields, and special
+		// fields (ex. XXX_unrecognized).
 		return v.Len() == 0, nil
 	case reflect.Interface:
 		// This only happens when we have a oneof field.
@@ -144,9 +193,9 @@ func isUnset(v reflect.Value) (bool, error) {
 		// as fields, and uses pointers to structs instead.
 		// This means that emptiness checks for nested messages would happen in the
 		// reflect.Ptr case rather than here.
-		return false, fmt.Errorf("Got an unexpected struct type: %T", v)
+		return false, fmt.Errorf("got an unexpected struct type: %T", v)
 	default:
-		return false, fmt.Errorf("Unsupported type: %T", v)
+		return false, fmt.Errorf("unsupported type: %T", v)
 	}
 }
 
