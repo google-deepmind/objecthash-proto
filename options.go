@@ -26,6 +26,10 @@ type Option interface {
 
 // EnumsAsStrings returns an Option to specify that enum values should be hashed
 // as strings instead of being hashed as integers.
+//
+// This can be useful for compatibility with non-protobuf formats that
+// represent enums as strings, but will have backward-compatiblity consequences
+// for the proto message itself.
 func EnumsAsStrings() Option { return enumsAsStrings{} }
 
 type enumsAsStrings struct{}
@@ -40,6 +44,10 @@ func (x enumsAsStrings) String() string {
 
 // FieldNamesAsKeys returns an Option to specify that field names should be used
 // as their keys instead of using their tag number.
+//
+// This can be useful for compatibility with non-protobuf formats that
+// primarily use strings (rather than integers) as keys, but will have
+// backward-compatiblity consequences for the proto message itself.
 func FieldNamesAsKeys() Option { return fieldNamesAsKeys{} }
 
 type fieldNamesAsKeys struct{}
@@ -52,9 +60,14 @@ func (x fieldNamesAsKeys) String() string {
 	return "FieldNamesAsKeys"
 }
 
-// MessageIdentifier returns an Option to specify that proto messages
-// should use `i` as their type identifier. This is useful to make sure that
-// messages have a different hash from maps.
+// MessageIdentifier returns an Option to specify that proto messages should
+// use the supplied argument as their type identifier. This will make messages
+// have a different hash from maps with equivalent contents.
+//
+// This can be useful for stricter type checking when comparing hashes, but
+// will have consequences for the compatiblity with non-protobuf formats, in
+// particular those that do not provide a container type for messages/structs
+// distinct from that for maps/dictionaries.
 func MessageIdentifier(i string) Option { return messageIdentifier(i) }
 
 type messageIdentifier string
