@@ -19,6 +19,7 @@ import (
 
 	oi "github.com/deepmind/objecthash-proto/internal"
 	"github.com/deepmind/objecthash-proto/tests"
+	wkt "github.com/deepmind/objecthash-proto/tests/well_known_types"
 )
 
 func TestFunctional(t *testing.T) {
@@ -40,5 +41,8 @@ func TestFunctional(t *testing.T) {
 	t.Run("TestProto2DefaultFieldValues", func(t *testing.T) { tests.TestProto2DefaultFieldValues(t, protoHashers) })
 	t.Run("TestRepeatedFields", func(t *testing.T) { tests.TestRepeatedFields(t, protoHashers) })
 	t.Run("TestStringFields", func(t *testing.T) { tests.TestStringFields(t, protoHashers) })
-	t.Run("TestWellKnownTypes", func(t *testing.T) { tests.TestWellKnownTypes(t, protoHashers) })
+
+	// Well-known types.
+	t.Run("TestTimestamps", func(t *testing.T) { wkt.TestTimestamps(t, protoHashers) })
+	t.Run("TestUnsupportedWellKnownTypes", func(t *testing.T) { wkt.TestUnsupportedWellKnownTypes(t, protoHashers) })
 }
