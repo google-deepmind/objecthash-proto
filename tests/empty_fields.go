@@ -19,17 +19,19 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
+	oi "github.com/deepmind/objecthash-proto/internal"
 	pb2_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto2"
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
+	ti "github.com/deepmind/objecthash-proto/tests/internal"
 )
 
 // TestEmptyFields checks that empty proto fields are handled properly.
-func TestEmptyFields(t *testing.T, hashers ProtoHashers) {
+func TestEmptyFields(t *testing.T, hashers oi.ProtoHashers) {
 	hasher := hashers.DefaultHasher
 
-	testCases := []testCase{
+	testCases := []ti.TestCase{
 		{
-			protos: []proto.Message{
+			Protos: []proto.Message{
 				&pb2_latest.Empty{},
 				&pb3_latest.Empty{},
 
@@ -60,15 +62,13 @@ func TestEmptyFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Simple{Uint32Field: 0},
 				&pb3_latest.Simple{Uint64Field: 0},
 			},
-			equivalentJSONString: "{}",
-			equivalentObject:     map[string]interface{}{},
-			expectedHashString:   "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4",
+			EquivalentJSONString: "{}",
+			EquivalentObject:     map[string]interface{}{},
+			ExpectedHashString:   "18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4",
 		},
 	}
 
 	for _, tc := range testCases {
-		if err := tc.check(hasher); err != nil {
-			t.Errorf("%s", err)
-		}
+		tc.Check(t, hasher)
 	}
 }

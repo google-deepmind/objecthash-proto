@@ -17,24 +17,23 @@ package tests
 import (
 	"testing"
 
-	pb2_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto2"
-	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
-
-	custom "github.com/deepmind/objecthash-proto/test_protos/custom"
-
+	"github.com/golang/protobuf/proto"
 	any_pb "github.com/golang/protobuf/ptypes/any"
 	duration_pb "github.com/golang/protobuf/ptypes/duration"
 	struct_pb "github.com/golang/protobuf/ptypes/struct"
 	timestamp_pb "github.com/golang/protobuf/ptypes/timestamp"
 	wrappers_pb "github.com/golang/protobuf/ptypes/wrappers"
 
-	"github.com/golang/protobuf/proto"
+	oi "github.com/deepmind/objecthash-proto/internal"
+	custom "github.com/deepmind/objecthash-proto/test_protos/custom"
+	pb2_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto2"
+	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
 )
 
 // TestWellKnownTypes currently just confirms that all well-known types are
 // unsupported.  However, once those fields start to be supported, the tests
 // should be modified to reflect that.
-func TestWellKnownTypes(t *testing.T, hashers ProtoHashers) {
+func TestWellKnownTypes(t *testing.T, hashers oi.ProtoHashers) {
 	hasher := hashers.DefaultHasher
 
 	unsupportedProtos := []proto.Message{

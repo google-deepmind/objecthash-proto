@@ -14,12 +14,15 @@
 
 package protohash
 
-import "testing"
+import (
+	"testing"
 
-import "github.com/deepmind/objecthash-proto/tests"
+	oi "github.com/deepmind/objecthash-proto/internal"
+	"github.com/deepmind/objecthash-proto/tests"
+)
 
 func TestFunctional(t *testing.T) {
-	protoHashers := tests.ProtoHashers{
+	protoHashers := oi.ProtoHashers{
 		DefaultHasher:                 NewHasher(),
 		FieldNamesAsKeysHasher:        NewHasher(FieldNamesAsKeys()),
 		EnumsAsStringsHasher:          NewHasher(EnumsAsStrings()),

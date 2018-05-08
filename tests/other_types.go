@@ -19,67 +19,67 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
+	oi "github.com/deepmind/objecthash-proto/internal"
 	pb2_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto2"
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
+	ti "github.com/deepmind/objecthash-proto/tests/internal"
 )
 
 // TestOtherTypes performs tests on types that do not have their own test file.
-func TestOtherTypes(t *testing.T, hashers ProtoHashers) {
+func TestOtherTypes(t *testing.T, hashers oi.ProtoHashers) {
 	hasher := hashers.StringPreferringHasher
 
-	testCases := []testCase{
+	testCases := []ti.TestCase{
 		///////////
 		//  Nil. //
 		///////////
 		{
-			protos: []proto.Message{
+			Protos: []proto.Message{
 				nil,
 			},
-			equivalentJSONString: "null",
-			equivalentObject:     nil,
-			expectedHashString:   "1b16b1df538ba12dc3f97edbb85caa7050d46c148134290feba80f8236c83db9",
+			EquivalentJSONString: "null",
+			EquivalentObject:     nil,
+			ExpectedHashString:   "1b16b1df538ba12dc3f97edbb85caa7050d46c148134290feba80f8236c83db9",
 		},
 
 		/////////////////////
 		// Boolean fields. //
 		/////////////////////
 		{
-			protos: []proto.Message{
+			Protos: []proto.Message{
 				&pb2_latest.Simple{BoolField: proto.Bool(true)},
 				&pb3_latest.Simple{BoolField: true},
 			},
-			equivalentJSONString: "{\"bool_field\": true}",
-			equivalentObject:     map[string]bool{"bool_field": true},
-			expectedHashString:   "7b2ac6048e6c8797205505ea486539a5589583be43154da88785a5121e2d6899",
+			EquivalentJSONString: "{\"bool_field\": true}",
+			EquivalentObject:     map[string]bool{"bool_field": true},
+			ExpectedHashString:   "7b2ac6048e6c8797205505ea486539a5589583be43154da88785a5121e2d6899",
 		},
 
 		{
-			protos: []proto.Message{
+			Protos: []proto.Message{
 				&pb2_latest.Simple{BoolField: proto.Bool(false)},
 				// proto3 scalar fields set to their default value are considered empty.
 			},
-			equivalentJSONString: "{\"bool_field\": false}",
-			equivalentObject:     map[string]bool{"bool_field": false},
-			expectedHashString:   "1ab5ecdbe4176473024f7efd080593b740d22d076d06ea6edd8762992b484a12",
+			EquivalentJSONString: "{\"bool_field\": false}",
+			EquivalentObject:     map[string]bool{"bool_field": false},
+			ExpectedHashString:   "1ab5ecdbe4176473024f7efd080593b740d22d076d06ea6edd8762992b484a12",
 		},
 
 		///////////////////
 		// Bytes fields. //
 		///////////////////
 		{
-			protos: []proto.Message{
+			Protos: []proto.Message{
 				&pb2_latest.Simple{BytesField: []byte{0, 0, 0}},
 				&pb3_latest.Simple{BytesField: []byte{0, 0, 0}},
 			},
 			// No equivalent JSON: JSON does not have a "bytes" type.
-			equivalentObject:   map[string][]byte{"bytes_field": []byte("\000\000\000")},
-			expectedHashString: "fdd59e1f3120117943124cb9c39da79ac47ea631343ff9154dffb0e64550789c",
+			EquivalentObject:   map[string][]byte{"bytes_field": []byte("\000\000\000")},
+			ExpectedHashString: "fdd59e1f3120117943124cb9c39da79ac47ea631343ff9154dffb0e64550789c",
 		},
 	}
 
 	for _, tc := range testCases {
-		if err := tc.check(hasher); err != nil {
-			t.Errorf("%s", err)
-		}
+		tc.Check(t, hasher)
 	}
 }

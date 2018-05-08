@@ -12,11 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package tests
+package internal
 
 import (
-	pb2_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto2"
-
 	"github.com/golang/protobuf/proto"
 )
 
@@ -47,19 +45,4 @@ type ProtoHashers struct {
 	// A ProtoHasher that uses a custom identifier for proto messages, returned
 	// by NewHasher(MessageIdentifier(`m`))
 	CustomMessageIdentifierHasher ProtoHasher
-}
-
-func forgetAllFields(originalMessage proto.Message) proto.Message {
-	emptyMessage := &pb2_latest.Empty{}
-
-	binaryMessage, err := proto.Marshal(originalMessage)
-	if err != nil {
-		panic(err)
-	}
-
-	err = proto.Unmarshal(binaryMessage, emptyMessage)
-	if err != nil {
-		panic(err)
-	}
-	return emptyMessage
 }
