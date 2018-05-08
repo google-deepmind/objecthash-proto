@@ -17,14 +17,16 @@ package tests
 import (
 	"testing"
 
+	"github.com/golang/protobuf/proto"
+
+	oi "github.com/deepmind/objecthash-proto/internal"
 	pb2_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto2"
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
-
-	"github.com/golang/protobuf/proto"
+	ti "github.com/deepmind/objecthash-proto/tests/internal"
 )
 
 // TestBadness checks that bad protobuf values are rejected properly.
-func TestBadness(t *testing.T, hashers ProtoHashers) {
+func TestBadness(t *testing.T, hashers oi.ProtoHashers) {
 	hasher := hashers.DefaultHasher
 
 	badProtos := []proto.Message{
@@ -81,7 +83,7 @@ func TestBadness(t *testing.T, hashers ProtoHashers) {
 		}(),
 
 		// Create proto messages with unknown fields. That's bad.
-		forgetAllFields(&pb2_latest.PersonV1{Name: proto.String("Unbekannt")}),
+		ti.ForgetAllFields(t, &pb2_latest.PersonV1{Name: proto.String("Unbekannt")}),
 	}
 	for _, message := range badProtos {
 		_, err := hasher.HashProto(message)

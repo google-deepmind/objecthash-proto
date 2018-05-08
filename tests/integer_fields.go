@@ -19,20 +19,22 @@ import (
 
 	"github.com/golang/protobuf/proto"
 
+	oi "github.com/deepmind/objecthash-proto/internal"
 	pb2_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto2"
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
+	ti "github.com/deepmind/objecthash-proto/tests/internal"
 )
 
 // TestIntegerFields performs tests on how integers are handled.
-func TestIntegerFields(t *testing.T, hashers ProtoHashers) {
+func TestIntegerFields(t *testing.T, hashers oi.ProtoHashers) {
 	hasher := hashers.StringPreferringHasher
 
-	testCases := []testCase{
+	testCases := []ti.TestCase{
 		///////////////////////////////
 		//  Equivalence of Integers. //
 		///////////////////////////////
 		{
-			protos: []proto.Message{
+			Protos: []proto.Message{
 				&pb2_latest.Fixed32Message{Values: []uint32{0, 1, 2}},
 				&pb2_latest.Fixed64Message{Values: []uint64{0, 1, 2}},
 				&pb2_latest.Int32Message{Values: []int32{0, 1, 2}},
@@ -55,13 +57,13 @@ func TestIntegerFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Uint32Message{Values: []uint32{0, 1, 2}},
 				&pb3_latest.Uint64Message{Values: []uint64{0, 1, 2}},
 			},
-			equivalentObject: map[string][]int32{"values": {0, 1, 2}},
+			EquivalentObject: map[string][]int32{"values": {0, 1, 2}},
 			// No equivalent JSON: JSON does not have an "integer" type. All numbers are floats.
-			expectedHashString: "42794fb0e73c2b5f427aa76486555d07589359054848396ddf173e9e0b4ab931",
+			ExpectedHashString: "42794fb0e73c2b5f427aa76486555d07589359054848396ddf173e9e0b4ab931",
 		},
 
 		{
-			protos: []proto.Message{
+			Protos: []proto.Message{
 				&pb2_latest.Int32Message{Values: []int32{-2, -1, 0, 1, 2}},
 				&pb2_latest.Int64Message{Values: []int64{-2, -1, 0, 1, 2}},
 				&pb2_latest.Sfixed32Message{Values: []int32{-2, -1, 0, 1, 2}},
@@ -76,15 +78,13 @@ func TestIntegerFields(t *testing.T, hashers ProtoHashers) {
 				&pb3_latest.Sint32Message{Values: []int32{-2, -1, 0, 1, 2}},
 				&pb3_latest.Sint64Message{Values: []int64{-2, -1, 0, 1, 2}},
 			},
-			equivalentObject: map[string][]int32{"values": {-2, -1, 0, 1, 2}},
+			EquivalentObject: map[string][]int32{"values": {-2, -1, 0, 1, 2}},
 			// No equivalent JSON: JSON does not have an "integer" type. All numbers are floats.
-			expectedHashString: "6cb613a53b6086b88dbda40b30e902adb41288b0b1f7a627905beaa764ee49cb",
+			ExpectedHashString: "6cb613a53b6086b88dbda40b30e902adb41288b0b1f7a627905beaa764ee49cb",
 		},
 	}
 
 	for _, tc := range testCases {
-		if err := tc.check(hasher); err != nil {
-			t.Errorf("%s", err)
-		}
+		tc.Check(t, hasher)
 	}
 }

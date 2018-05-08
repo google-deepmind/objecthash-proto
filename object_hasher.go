@@ -77,7 +77,6 @@ func (hasher *objectHasher) HashProto(pb proto.Message) (h []byte, err error) {
 func (hasher *objectHasher) hashRepeatedField(v reflect.Value, sf reflect.StructField, props *proto.Properties) ([]byte, error) {
 	b := new(bytes.Buffer)
 	for j := 0; j < v.Len(); j++ {
-
 		elem := v.Index(j)
 		if elem.Kind() == reflect.Ptr && elem.IsNil() {
 			return nil, errors.New("got a nil message in a repeated field, which is invalid")
