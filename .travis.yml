@@ -11,6 +11,16 @@ go:
   - 1.x
   - master
 
+before_install:
+  # Make CI work for forks.
+  - export OBJECTHASH_PATH="${GOPATH}/src/github.com/deepmind/objecthash-proto"
+  - if [ "${TRAVIS_BUILD_DIR}" != "${OBJECTHASH_PATH}" ]; then
+      mkdir -p "$(dirname "${OBJECTHASH_PATH}")";
+      mv "${TRAVIS_BUILD_DIR}" "${OBJECTHASH_PATH}";
+      export TRAVIS_BUILD_DIR="${OBJECTHASH_PATH}";
+      cd "${TRAVIS_BUILD_DIR}";
+    fi
+
 install: go get -t ./...
 
 before_script:
