@@ -12,6 +12,12 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type PlanetV1 int32
 
 const (
@@ -46,7 +52,9 @@ var PlanetV1_value = map[string]int32{
 func (x PlanetV1) String() string {
 	return proto.EnumName(PlanetV1_name, int32(x))
 }
-func (PlanetV1) EnumDescriptor() ([]byte, []int) { return fileDescriptor5, []int{0} }
+func (PlanetV1) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_planets_68963855689545fd, []int{0}
+}
 
 type PlanetV2 int32
 
@@ -91,7 +99,9 @@ var PlanetV2_value = map[string]int32{
 func (x PlanetV2) String() string {
 	return proto.EnumName(PlanetV2_name, int32(x))
 }
-func (PlanetV2) EnumDescriptor() ([]byte, []int) { return fileDescriptor5, []int{1} }
+func (PlanetV2) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_planets_68963855689545fd, []int{1}
+}
 
 type PlanetV3 int32
 
@@ -136,16 +146,40 @@ var PlanetV3_value = map[string]int32{
 func (x PlanetV3) String() string {
 	return proto.EnumName(PlanetV3_name, int32(x))
 }
-func (PlanetV3) EnumDescriptor() ([]byte, []int) { return fileDescriptor5, []int{2} }
-
-type MyFavoritePlanetsV1 struct {
-	Planets []PlanetV1 `protobuf:"varint,1,rep,packed,name=planets,enum=schema.proto3.PlanetV1" json:"planets,omitempty"`
+func (PlanetV3) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_planets_68963855689545fd, []int{2}
 }
 
-func (m *MyFavoritePlanetsV1) Reset()                    { *m = MyFavoritePlanetsV1{} }
-func (m *MyFavoritePlanetsV1) String() string            { return proto.CompactTextString(m) }
-func (*MyFavoritePlanetsV1) ProtoMessage()               {}
-func (*MyFavoritePlanetsV1) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{0} }
+type MyFavoritePlanetsV1 struct {
+	Planets              []PlanetV1 `protobuf:"varint,1,rep,packed,name=planets,enum=schema.proto3.PlanetV1" json:"planets,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
+}
+
+func (m *MyFavoritePlanetsV1) Reset()         { *m = MyFavoritePlanetsV1{} }
+func (m *MyFavoritePlanetsV1) String() string { return proto.CompactTextString(m) }
+func (*MyFavoritePlanetsV1) ProtoMessage()    {}
+func (*MyFavoritePlanetsV1) Descriptor() ([]byte, []int) {
+	return fileDescriptor_planets_68963855689545fd, []int{0}
+}
+func (m *MyFavoritePlanetsV1) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MyFavoritePlanetsV1.Unmarshal(m, b)
+}
+func (m *MyFavoritePlanetsV1) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MyFavoritePlanetsV1.Marshal(b, m, deterministic)
+}
+func (dst *MyFavoritePlanetsV1) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MyFavoritePlanetsV1.Merge(dst, src)
+}
+func (m *MyFavoritePlanetsV1) XXX_Size() int {
+	return xxx_messageInfo_MyFavoritePlanetsV1.Size(m)
+}
+func (m *MyFavoritePlanetsV1) XXX_DiscardUnknown() {
+	xxx_messageInfo_MyFavoritePlanetsV1.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MyFavoritePlanetsV1 proto.InternalMessageInfo
 
 func (m *MyFavoritePlanetsV1) GetPlanets() []PlanetV1 {
 	if m != nil {
@@ -155,13 +189,35 @@ func (m *MyFavoritePlanetsV1) GetPlanets() []PlanetV1 {
 }
 
 type MyFavoritePlanetsV2 struct {
-	Planets []PlanetV2 `protobuf:"varint,1,rep,packed,name=planets,enum=schema.proto3.PlanetV2" json:"planets,omitempty"`
+	Planets              []PlanetV2 `protobuf:"varint,1,rep,packed,name=planets,enum=schema.proto3.PlanetV2" json:"planets,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
-func (m *MyFavoritePlanetsV2) Reset()                    { *m = MyFavoritePlanetsV2{} }
-func (m *MyFavoritePlanetsV2) String() string            { return proto.CompactTextString(m) }
-func (*MyFavoritePlanetsV2) ProtoMessage()               {}
-func (*MyFavoritePlanetsV2) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{1} }
+func (m *MyFavoritePlanetsV2) Reset()         { *m = MyFavoritePlanetsV2{} }
+func (m *MyFavoritePlanetsV2) String() string { return proto.CompactTextString(m) }
+func (*MyFavoritePlanetsV2) ProtoMessage()    {}
+func (*MyFavoritePlanetsV2) Descriptor() ([]byte, []int) {
+	return fileDescriptor_planets_68963855689545fd, []int{1}
+}
+func (m *MyFavoritePlanetsV2) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MyFavoritePlanetsV2.Unmarshal(m, b)
+}
+func (m *MyFavoritePlanetsV2) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MyFavoritePlanetsV2.Marshal(b, m, deterministic)
+}
+func (dst *MyFavoritePlanetsV2) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MyFavoritePlanetsV2.Merge(dst, src)
+}
+func (m *MyFavoritePlanetsV2) XXX_Size() int {
+	return xxx_messageInfo_MyFavoritePlanetsV2.Size(m)
+}
+func (m *MyFavoritePlanetsV2) XXX_DiscardUnknown() {
+	xxx_messageInfo_MyFavoritePlanetsV2.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MyFavoritePlanetsV2 proto.InternalMessageInfo
 
 func (m *MyFavoritePlanetsV2) GetPlanets() []PlanetV2 {
 	if m != nil {
@@ -171,13 +227,35 @@ func (m *MyFavoritePlanetsV2) GetPlanets() []PlanetV2 {
 }
 
 type MyFavoritePlanetsV3 struct {
-	Planets []PlanetV3 `protobuf:"varint,1,rep,packed,name=planets,enum=schema.proto3.PlanetV3" json:"planets,omitempty"`
+	Planets              []PlanetV3 `protobuf:"varint,1,rep,packed,name=planets,enum=schema.proto3.PlanetV3" json:"planets,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
-func (m *MyFavoritePlanetsV3) Reset()                    { *m = MyFavoritePlanetsV3{} }
-func (m *MyFavoritePlanetsV3) String() string            { return proto.CompactTextString(m) }
-func (*MyFavoritePlanetsV3) ProtoMessage()               {}
-func (*MyFavoritePlanetsV3) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{2} }
+func (m *MyFavoritePlanetsV3) Reset()         { *m = MyFavoritePlanetsV3{} }
+func (m *MyFavoritePlanetsV3) String() string { return proto.CompactTextString(m) }
+func (*MyFavoritePlanetsV3) ProtoMessage()    {}
+func (*MyFavoritePlanetsV3) Descriptor() ([]byte, []int) {
+	return fileDescriptor_planets_68963855689545fd, []int{2}
+}
+func (m *MyFavoritePlanetsV3) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MyFavoritePlanetsV3.Unmarshal(m, b)
+}
+func (m *MyFavoritePlanetsV3) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MyFavoritePlanetsV3.Marshal(b, m, deterministic)
+}
+func (dst *MyFavoritePlanetsV3) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MyFavoritePlanetsV3.Merge(dst, src)
+}
+func (m *MyFavoritePlanetsV3) XXX_Size() int {
+	return xxx_messageInfo_MyFavoritePlanetsV3.Size(m)
+}
+func (m *MyFavoritePlanetsV3) XXX_DiscardUnknown() {
+	xxx_messageInfo_MyFavoritePlanetsV3.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MyFavoritePlanetsV3 proto.InternalMessageInfo
 
 func (m *MyFavoritePlanetsV3) GetPlanets() []PlanetV3 {
 	if m != nil {
@@ -195,9 +273,9 @@ func init() {
 	proto.RegisterEnum("schema.proto3.PlanetV3", PlanetV3_name, PlanetV3_value)
 }
 
-func init() { proto.RegisterFile("planets.proto", fileDescriptor5) }
+func init() { proto.RegisterFile("planets.proto", fileDescriptor_planets_68963855689545fd) }
 
-var fileDescriptor5 = []byte{
+var fileDescriptor_planets_68963855689545fd = []byte{
 	// 308 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x91, 0xcd, 0x4a, 0xc3, 0x40,
 	0x14, 0x85, 0xad, 0xd5, 0xfc, 0x8c, 0xa6, 0x84, 0xe9, 0xa2, 0x2e, 0xc5, 0x95, 0x64, 0x11, 0xc8,

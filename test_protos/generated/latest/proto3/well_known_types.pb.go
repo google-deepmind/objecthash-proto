@@ -6,139 +6,167 @@ package schema_proto3
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import google_protobuf "github.com/golang/protobuf/ptypes/any"
-import google_protobuf1 "github.com/golang/protobuf/ptypes/duration"
-import google_protobuf2 "github.com/golang/protobuf/ptypes/struct"
-import google_protobuf3 "github.com/golang/protobuf/ptypes/timestamp"
-import google_protobuf4 "github.com/golang/protobuf/ptypes/wrappers"
+import any "github.com/golang/protobuf/ptypes/any"
+import duration "github.com/golang/protobuf/ptypes/duration"
+import _struct "github.com/golang/protobuf/ptypes/struct"
+import timestamp "github.com/golang/protobuf/ptypes/timestamp"
+import wrappers "github.com/golang/protobuf/ptypes/wrappers"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type KnownTypes struct {
-	AnyField         *google_protobuf.Any          `protobuf:"bytes,1,opt,name=any_field,json=anyField" json:"any_field,omitempty"`
-	BoolValueField   *google_protobuf4.BoolValue   `protobuf:"bytes,2,opt,name=bool_value_field,json=boolValueField" json:"bool_value_field,omitempty"`
-	BytesValueField  *google_protobuf4.BytesValue  `protobuf:"bytes,3,opt,name=bytes_value_field,json=bytesValueField" json:"bytes_value_field,omitempty"`
-	DoubleValueField *google_protobuf4.DoubleValue `protobuf:"bytes,4,opt,name=double_value_field,json=doubleValueField" json:"double_value_field,omitempty"`
-	DurationField    *google_protobuf1.Duration    `protobuf:"bytes,5,opt,name=duration_field,json=durationField" json:"duration_field,omitempty"`
-	FloatValueField  *google_protobuf4.FloatValue  `protobuf:"bytes,6,opt,name=float_value_field,json=floatValueField" json:"float_value_field,omitempty"`
-	Int32ValueField  *google_protobuf4.Int32Value  `protobuf:"bytes,7,opt,name=int32_value_field,json=int32ValueField" json:"int32_value_field,omitempty"`
-	Int64ValueField  *google_protobuf4.Int64Value  `protobuf:"bytes,8,opt,name=int64_value_field,json=int64ValueField" json:"int64_value_field,omitempty"`
-	ListValueField   *google_protobuf2.ListValue   `protobuf:"bytes,9,opt,name=list_value_field,json=listValueField" json:"list_value_field,omitempty"`
-	StringValueField *google_protobuf4.StringValue `protobuf:"bytes,10,opt,name=string_value_field,json=stringValueField" json:"string_value_field,omitempty"`
-	StructField      *google_protobuf2.Struct      `protobuf:"bytes,11,opt,name=struct_field,json=structField" json:"struct_field,omitempty"`
-	TimestampField   *google_protobuf3.Timestamp   `protobuf:"bytes,12,opt,name=timestamp_field,json=timestampField" json:"timestamp_field,omitempty"`
-	Uint32ValueField *google_protobuf4.UInt32Value `protobuf:"bytes,13,opt,name=uint32_value_field,json=uint32ValueField" json:"uint32_value_field,omitempty"`
-	Uint64ValueField *google_protobuf4.UInt64Value `protobuf:"bytes,14,opt,name=uint64_value_field,json=uint64ValueField" json:"uint64_value_field,omitempty"`
-	ValueField       *google_protobuf2.Value       `protobuf:"bytes,15,opt,name=value_field,json=valueField" json:"value_field,omitempty"`
+	AnyField             *any.Any              `protobuf:"bytes,1,opt,name=any_field,json=anyField" json:"any_field,omitempty"`
+	BoolValueField       *wrappers.BoolValue   `protobuf:"bytes,2,opt,name=bool_value_field,json=boolValueField" json:"bool_value_field,omitempty"`
+	BytesValueField      *wrappers.BytesValue  `protobuf:"bytes,3,opt,name=bytes_value_field,json=bytesValueField" json:"bytes_value_field,omitempty"`
+	DoubleValueField     *wrappers.DoubleValue `protobuf:"bytes,4,opt,name=double_value_field,json=doubleValueField" json:"double_value_field,omitempty"`
+	DurationField        *duration.Duration    `protobuf:"bytes,5,opt,name=duration_field,json=durationField" json:"duration_field,omitempty"`
+	FloatValueField      *wrappers.FloatValue  `protobuf:"bytes,6,opt,name=float_value_field,json=floatValueField" json:"float_value_field,omitempty"`
+	Int32ValueField      *wrappers.Int32Value  `protobuf:"bytes,7,opt,name=int32_value_field,json=int32ValueField" json:"int32_value_field,omitempty"`
+	Int64ValueField      *wrappers.Int64Value  `protobuf:"bytes,8,opt,name=int64_value_field,json=int64ValueField" json:"int64_value_field,omitempty"`
+	ListValueField       *_struct.ListValue    `protobuf:"bytes,9,opt,name=list_value_field,json=listValueField" json:"list_value_field,omitempty"`
+	StringValueField     *wrappers.StringValue `protobuf:"bytes,10,opt,name=string_value_field,json=stringValueField" json:"string_value_field,omitempty"`
+	StructField          *_struct.Struct       `protobuf:"bytes,11,opt,name=struct_field,json=structField" json:"struct_field,omitempty"`
+	TimestampField       *timestamp.Timestamp  `protobuf:"bytes,12,opt,name=timestamp_field,json=timestampField" json:"timestamp_field,omitempty"`
+	Uint32ValueField     *wrappers.UInt32Value `protobuf:"bytes,13,opt,name=uint32_value_field,json=uint32ValueField" json:"uint32_value_field,omitempty"`
+	Uint64ValueField     *wrappers.UInt64Value `protobuf:"bytes,14,opt,name=uint64_value_field,json=uint64ValueField" json:"uint64_value_field,omitempty"`
+	ValueField           *_struct.Value        `protobuf:"bytes,15,opt,name=value_field,json=valueField" json:"value_field,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
-func (m *KnownTypes) Reset()                    { *m = KnownTypes{} }
-func (m *KnownTypes) String() string            { return proto.CompactTextString(m) }
-func (*KnownTypes) ProtoMessage()               {}
-func (*KnownTypes) Descriptor() ([]byte, []int) { return fileDescriptor7, []int{0} }
+func (m *KnownTypes) Reset()         { *m = KnownTypes{} }
+func (m *KnownTypes) String() string { return proto.CompactTextString(m) }
+func (*KnownTypes) ProtoMessage()    {}
+func (*KnownTypes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_well_known_types_e5d01384f2f7226a, []int{0}
+}
+func (m *KnownTypes) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_KnownTypes.Unmarshal(m, b)
+}
+func (m *KnownTypes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_KnownTypes.Marshal(b, m, deterministic)
+}
+func (dst *KnownTypes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_KnownTypes.Merge(dst, src)
+}
+func (m *KnownTypes) XXX_Size() int {
+	return xxx_messageInfo_KnownTypes.Size(m)
+}
+func (m *KnownTypes) XXX_DiscardUnknown() {
+	xxx_messageInfo_KnownTypes.DiscardUnknown(m)
+}
 
-func (m *KnownTypes) GetAnyField() *google_protobuf.Any {
+var xxx_messageInfo_KnownTypes proto.InternalMessageInfo
+
+func (m *KnownTypes) GetAnyField() *any.Any {
 	if m != nil {
 		return m.AnyField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetBoolValueField() *google_protobuf4.BoolValue {
+func (m *KnownTypes) GetBoolValueField() *wrappers.BoolValue {
 	if m != nil {
 		return m.BoolValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetBytesValueField() *google_protobuf4.BytesValue {
+func (m *KnownTypes) GetBytesValueField() *wrappers.BytesValue {
 	if m != nil {
 		return m.BytesValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetDoubleValueField() *google_protobuf4.DoubleValue {
+func (m *KnownTypes) GetDoubleValueField() *wrappers.DoubleValue {
 	if m != nil {
 		return m.DoubleValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetDurationField() *google_protobuf1.Duration {
+func (m *KnownTypes) GetDurationField() *duration.Duration {
 	if m != nil {
 		return m.DurationField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetFloatValueField() *google_protobuf4.FloatValue {
+func (m *KnownTypes) GetFloatValueField() *wrappers.FloatValue {
 	if m != nil {
 		return m.FloatValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetInt32ValueField() *google_protobuf4.Int32Value {
+func (m *KnownTypes) GetInt32ValueField() *wrappers.Int32Value {
 	if m != nil {
 		return m.Int32ValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetInt64ValueField() *google_protobuf4.Int64Value {
+func (m *KnownTypes) GetInt64ValueField() *wrappers.Int64Value {
 	if m != nil {
 		return m.Int64ValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetListValueField() *google_protobuf2.ListValue {
+func (m *KnownTypes) GetListValueField() *_struct.ListValue {
 	if m != nil {
 		return m.ListValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetStringValueField() *google_protobuf4.StringValue {
+func (m *KnownTypes) GetStringValueField() *wrappers.StringValue {
 	if m != nil {
 		return m.StringValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetStructField() *google_protobuf2.Struct {
+func (m *KnownTypes) GetStructField() *_struct.Struct {
 	if m != nil {
 		return m.StructField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetTimestampField() *google_protobuf3.Timestamp {
+func (m *KnownTypes) GetTimestampField() *timestamp.Timestamp {
 	if m != nil {
 		return m.TimestampField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetUint32ValueField() *google_protobuf4.UInt32Value {
+func (m *KnownTypes) GetUint32ValueField() *wrappers.UInt32Value {
 	if m != nil {
 		return m.Uint32ValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetUint64ValueField() *google_protobuf4.UInt64Value {
+func (m *KnownTypes) GetUint64ValueField() *wrappers.UInt64Value {
 	if m != nil {
 		return m.Uint64ValueField
 	}
 	return nil
 }
 
-func (m *KnownTypes) GetValueField() *google_protobuf2.Value {
+func (m *KnownTypes) GetValueField() *_struct.Value {
 	if m != nil {
 		return m.ValueField
 	}
@@ -149,9 +177,11 @@ func init() {
 	proto.RegisterType((*KnownTypes)(nil), "schema.proto3.KnownTypes")
 }
 
-func init() { proto.RegisterFile("well_known_types.proto", fileDescriptor7) }
+func init() {
+	proto.RegisterFile("well_known_types.proto", fileDescriptor_well_known_types_e5d01384f2f7226a)
+}
 
-var fileDescriptor7 = []byte{
+var fileDescriptor_well_known_types_e5d01384f2f7226a = []byte{
 	// 452 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x7c, 0x94, 0x4b, 0x8f, 0xd3, 0x30,
 	0x14, 0x85, 0x35, 0x3c, 0x86, 0x8e, 0x33, 0x4d, 0x43, 0x84, 0x06, 0xa6, 0x54, 0x80, 0x58, 0xb1,

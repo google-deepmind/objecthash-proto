@@ -12,15 +12,43 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type DoubleMessage struct {
-	Value  float64   `protobuf:"fixed64,1,opt,name=value" json:"value,omitempty"`
-	Values []float64 `protobuf:"fixed64,2,rep,packed,name=values" json:"values,omitempty"`
+	Value                float64   `protobuf:"fixed64,1,opt,name=value" json:"value,omitempty"`
+	Values               []float64 `protobuf:"fixed64,2,rep,packed,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
 }
 
-func (m *DoubleMessage) Reset()                    { *m = DoubleMessage{} }
-func (m *DoubleMessage) String() string            { return proto.CompactTextString(m) }
-func (*DoubleMessage) ProtoMessage()               {}
-func (*DoubleMessage) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (m *DoubleMessage) Reset()         { *m = DoubleMessage{} }
+func (m *DoubleMessage) String() string { return proto.CompactTextString(m) }
+func (*DoubleMessage) ProtoMessage()    {}
+func (*DoubleMessage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_floats_f5de057cb502e988, []int{0}
+}
+func (m *DoubleMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DoubleMessage.Unmarshal(m, b)
+}
+func (m *DoubleMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DoubleMessage.Marshal(b, m, deterministic)
+}
+func (dst *DoubleMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DoubleMessage.Merge(dst, src)
+}
+func (m *DoubleMessage) XXX_Size() int {
+	return xxx_messageInfo_DoubleMessage.Size(m)
+}
+func (m *DoubleMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_DoubleMessage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DoubleMessage proto.InternalMessageInfo
 
 func (m *DoubleMessage) GetValue() float64 {
 	if m != nil {
@@ -37,14 +65,36 @@ func (m *DoubleMessage) GetValues() []float64 {
 }
 
 type FloatMessage struct {
-	Value  float32   `protobuf:"fixed32,1,opt,name=value" json:"value,omitempty"`
-	Values []float32 `protobuf:"fixed32,2,rep,packed,name=values" json:"values,omitempty"`
+	Value                float32   `protobuf:"fixed32,1,opt,name=value" json:"value,omitempty"`
+	Values               []float32 `protobuf:"fixed32,2,rep,packed,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
 }
 
-func (m *FloatMessage) Reset()                    { *m = FloatMessage{} }
-func (m *FloatMessage) String() string            { return proto.CompactTextString(m) }
-func (*FloatMessage) ProtoMessage()               {}
-func (*FloatMessage) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (m *FloatMessage) Reset()         { *m = FloatMessage{} }
+func (m *FloatMessage) String() string { return proto.CompactTextString(m) }
+func (*FloatMessage) ProtoMessage()    {}
+func (*FloatMessage) Descriptor() ([]byte, []int) {
+	return fileDescriptor_floats_f5de057cb502e988, []int{1}
+}
+func (m *FloatMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_FloatMessage.Unmarshal(m, b)
+}
+func (m *FloatMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_FloatMessage.Marshal(b, m, deterministic)
+}
+func (dst *FloatMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_FloatMessage.Merge(dst, src)
+}
+func (m *FloatMessage) XXX_Size() int {
+	return xxx_messageInfo_FloatMessage.Size(m)
+}
+func (m *FloatMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_FloatMessage.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_FloatMessage proto.InternalMessageInfo
 
 func (m *FloatMessage) GetValue() float32 {
 	if m != nil {
@@ -65,9 +115,9 @@ func init() {
 	proto.RegisterType((*FloatMessage)(nil), "schema.proto3.FloatMessage")
 }
 
-func init() { proto.RegisterFile("floats.proto", fileDescriptor1) }
+func init() { proto.RegisterFile("floats.proto", fileDescriptor_floats_f5de057cb502e988) }
 
-var fileDescriptor1 = []byte{
+var fileDescriptor_floats_f5de057cb502e988 = []byte{
 	// 119 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x49, 0xcb, 0xc9, 0x4f,
 	0x2c, 0x29, 0xd6, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x2d, 0x4e, 0xce, 0x48, 0xcd, 0x4d,

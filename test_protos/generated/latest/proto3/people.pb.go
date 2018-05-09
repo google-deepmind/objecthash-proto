@@ -12,15 +12,43 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type PersonV1 struct {
-	Id   int32  `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	Name string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Id                   int32    `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	Name                 string   `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *PersonV1) Reset()                    { *m = PersonV1{} }
-func (m *PersonV1) String() string            { return proto.CompactTextString(m) }
-func (*PersonV1) ProtoMessage()               {}
-func (*PersonV1) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
+func (m *PersonV1) Reset()         { *m = PersonV1{} }
+func (m *PersonV1) String() string { return proto.CompactTextString(m) }
+func (*PersonV1) ProtoMessage()    {}
+func (*PersonV1) Descriptor() ([]byte, []int) {
+	return fileDescriptor_people_298117c450f471ad, []int{0}
+}
+func (m *PersonV1) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PersonV1.Unmarshal(m, b)
+}
+func (m *PersonV1) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PersonV1.Marshal(b, m, deterministic)
+}
+func (dst *PersonV1) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PersonV1.Merge(dst, src)
+}
+func (m *PersonV1) XXX_Size() int {
+	return xxx_messageInfo_PersonV1.Size(m)
+}
+func (m *PersonV1) XXX_DiscardUnknown() {
+	xxx_messageInfo_PersonV1.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PersonV1 proto.InternalMessageInfo
 
 func (m *PersonV1) GetId() int32 {
 	if m != nil {
@@ -37,17 +65,39 @@ func (m *PersonV1) GetName() string {
 }
 
 type PersonV2 struct {
-	Id         int32       `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	Name       string      `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	Age        uint32      `protobuf:"varint,3,opt,name=age" json:"age,omitempty"`
-	Profession string      `protobuf:"bytes,4,opt,name=profession" json:"profession,omitempty"`
-	Children   []*PersonV2 `protobuf:"bytes,5,rep,name=children" json:"children,omitempty"`
+	Id                   int32       `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	Name                 string      `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Age                  uint32      `protobuf:"varint,3,opt,name=age" json:"age,omitempty"`
+	Profession           string      `protobuf:"bytes,4,opt,name=profession" json:"profession,omitempty"`
+	Children             []*PersonV2 `protobuf:"bytes,5,rep,name=children" json:"children,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
 }
 
-func (m *PersonV2) Reset()                    { *m = PersonV2{} }
-func (m *PersonV2) String() string            { return proto.CompactTextString(m) }
-func (*PersonV2) ProtoMessage()               {}
-func (*PersonV2) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{1} }
+func (m *PersonV2) Reset()         { *m = PersonV2{} }
+func (m *PersonV2) String() string { return proto.CompactTextString(m) }
+func (*PersonV2) ProtoMessage()    {}
+func (*PersonV2) Descriptor() ([]byte, []int) {
+	return fileDescriptor_people_298117c450f471ad, []int{1}
+}
+func (m *PersonV2) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PersonV2.Unmarshal(m, b)
+}
+func (m *PersonV2) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PersonV2.Marshal(b, m, deterministic)
+}
+func (dst *PersonV2) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PersonV2.Merge(dst, src)
+}
+func (m *PersonV2) XXX_Size() int {
+	return xxx_messageInfo_PersonV2.Size(m)
+}
+func (m *PersonV2) XXX_DiscardUnknown() {
+	xxx_messageInfo_PersonV2.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PersonV2 proto.InternalMessageInfo
 
 func (m *PersonV2) GetId() int32 {
 	if m != nil {
@@ -92,13 +142,35 @@ type PersonV3 struct {
 	// Types that are valid to be assigned to Name:
 	//	*PersonV3_FullName
 	//	*PersonV3_StructuredName
-	Name isPersonV3_Name `protobuf_oneof:"name"`
+	Name                 isPersonV3_Name `protobuf_oneof:"name"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
-func (m *PersonV3) Reset()                    { *m = PersonV3{} }
-func (m *PersonV3) String() string            { return proto.CompactTextString(m) }
-func (*PersonV3) ProtoMessage()               {}
-func (*PersonV3) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{2} }
+func (m *PersonV3) Reset()         { *m = PersonV3{} }
+func (m *PersonV3) String() string { return proto.CompactTextString(m) }
+func (*PersonV3) ProtoMessage()    {}
+func (*PersonV3) Descriptor() ([]byte, []int) {
+	return fileDescriptor_people_298117c450f471ad, []int{2}
+}
+func (m *PersonV3) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PersonV3.Unmarshal(m, b)
+}
+func (m *PersonV3) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PersonV3.Marshal(b, m, deterministic)
+}
+func (dst *PersonV3) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PersonV3.Merge(dst, src)
+}
+func (m *PersonV3) XXX_Size() int {
+	return xxx_messageInfo_PersonV3.Size(m)
+}
+func (m *PersonV3) XXX_DiscardUnknown() {
+	xxx_messageInfo_PersonV3.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PersonV3 proto.InternalMessageInfo
 
 type isPersonV3_Name interface {
 	isPersonV3_Name()
@@ -218,12 +290,12 @@ func _PersonV3_OneofSizer(msg proto.Message) (n int) {
 	// name
 	switch x := m.Name.(type) {
 	case *PersonV3_FullName:
-		n += proto.SizeVarint(2<<3 | proto.WireBytes)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(len(x.FullName)))
 		n += len(x.FullName)
 	case *PersonV3_StructuredName:
 		s := proto.Size(x.StructuredName)
-		n += proto.SizeVarint(6<<3 | proto.WireBytes)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case nil:
@@ -234,14 +306,36 @@ func _PersonV3_OneofSizer(msg proto.Message) (n int) {
 }
 
 type PersonV3_NameV3 struct {
-	First string `protobuf:"bytes,1,opt,name=first" json:"first,omitempty"`
-	Last  string `protobuf:"bytes,2,opt,name=last" json:"last,omitempty"`
+	First                string   `protobuf:"bytes,1,opt,name=first" json:"first,omitempty"`
+	Last                 string   `protobuf:"bytes,2,opt,name=last" json:"last,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *PersonV3_NameV3) Reset()                    { *m = PersonV3_NameV3{} }
-func (m *PersonV3_NameV3) String() string            { return proto.CompactTextString(m) }
-func (*PersonV3_NameV3) ProtoMessage()               {}
-func (*PersonV3_NameV3) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{2, 0} }
+func (m *PersonV3_NameV3) Reset()         { *m = PersonV3_NameV3{} }
+func (m *PersonV3_NameV3) String() string { return proto.CompactTextString(m) }
+func (*PersonV3_NameV3) ProtoMessage()    {}
+func (*PersonV3_NameV3) Descriptor() ([]byte, []int) {
+	return fileDescriptor_people_298117c450f471ad, []int{2, 0}
+}
+func (m *PersonV3_NameV3) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PersonV3_NameV3.Unmarshal(m, b)
+}
+func (m *PersonV3_NameV3) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PersonV3_NameV3.Marshal(b, m, deterministic)
+}
+func (dst *PersonV3_NameV3) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PersonV3_NameV3.Merge(dst, src)
+}
+func (m *PersonV3_NameV3) XXX_Size() int {
+	return xxx_messageInfo_PersonV3_NameV3.Size(m)
+}
+func (m *PersonV3_NameV3) XXX_DiscardUnknown() {
+	xxx_messageInfo_PersonV3_NameV3.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PersonV3_NameV3 proto.InternalMessageInfo
 
 func (m *PersonV3_NameV3) GetFirst() string {
 	if m != nil {
@@ -258,18 +352,40 @@ func (m *PersonV3_NameV3) GetLast() string {
 }
 
 type PersonV4 struct {
-	Id                 int32            `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
-	DeprecatedFullName string           `protobuf:"bytes,2,opt,name=deprecated_full_name,json=deprecatedFullName" json:"deprecated_full_name,omitempty"`
-	Age                uint32           `protobuf:"varint,3,opt,name=age" json:"age,omitempty"`
-	Profession         string           `protobuf:"bytes,4,opt,name=profession" json:"profession,omitempty"`
-	Children           []*PersonV3      `protobuf:"bytes,5,rep,name=children" json:"children,omitempty"`
-	StructuredName     *PersonV4_NameV4 `protobuf:"bytes,6,opt,name=structured_name,json=structuredName" json:"structured_name,omitempty"`
+	Id                   int32            `protobuf:"varint,1,opt,name=id" json:"id,omitempty"`
+	DeprecatedFullName   string           `protobuf:"bytes,2,opt,name=deprecated_full_name,json=deprecatedFullName" json:"deprecated_full_name,omitempty"`
+	Age                  uint32           `protobuf:"varint,3,opt,name=age" json:"age,omitempty"`
+	Profession           string           `protobuf:"bytes,4,opt,name=profession" json:"profession,omitempty"`
+	Children             []*PersonV3      `protobuf:"bytes,5,rep,name=children" json:"children,omitempty"`
+	StructuredName       *PersonV4_NameV4 `protobuf:"bytes,6,opt,name=structured_name,json=structuredName" json:"structured_name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
 }
 
-func (m *PersonV4) Reset()                    { *m = PersonV4{} }
-func (m *PersonV4) String() string            { return proto.CompactTextString(m) }
-func (*PersonV4) ProtoMessage()               {}
-func (*PersonV4) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{3} }
+func (m *PersonV4) Reset()         { *m = PersonV4{} }
+func (m *PersonV4) String() string { return proto.CompactTextString(m) }
+func (*PersonV4) ProtoMessage()    {}
+func (*PersonV4) Descriptor() ([]byte, []int) {
+	return fileDescriptor_people_298117c450f471ad, []int{3}
+}
+func (m *PersonV4) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PersonV4.Unmarshal(m, b)
+}
+func (m *PersonV4) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PersonV4.Marshal(b, m, deterministic)
+}
+func (dst *PersonV4) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PersonV4.Merge(dst, src)
+}
+func (m *PersonV4) XXX_Size() int {
+	return xxx_messageInfo_PersonV4.Size(m)
+}
+func (m *PersonV4) XXX_DiscardUnknown() {
+	xxx_messageInfo_PersonV4.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PersonV4 proto.InternalMessageInfo
 
 func (m *PersonV4) GetId() int32 {
 	if m != nil {
@@ -314,14 +430,36 @@ func (m *PersonV4) GetStructuredName() *PersonV4_NameV4 {
 }
 
 type PersonV4_NameV4 struct {
-	First string `protobuf:"bytes,1,opt,name=first" json:"first,omitempty"`
-	Last  string `protobuf:"bytes,2,opt,name=last" json:"last,omitempty"`
+	First                string   `protobuf:"bytes,1,opt,name=first" json:"first,omitempty"`
+	Last                 string   `protobuf:"bytes,2,opt,name=last" json:"last,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *PersonV4_NameV4) Reset()                    { *m = PersonV4_NameV4{} }
-func (m *PersonV4_NameV4) String() string            { return proto.CompactTextString(m) }
-func (*PersonV4_NameV4) ProtoMessage()               {}
-func (*PersonV4_NameV4) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{3, 0} }
+func (m *PersonV4_NameV4) Reset()         { *m = PersonV4_NameV4{} }
+func (m *PersonV4_NameV4) String() string { return proto.CompactTextString(m) }
+func (*PersonV4_NameV4) ProtoMessage()    {}
+func (*PersonV4_NameV4) Descriptor() ([]byte, []int) {
+	return fileDescriptor_people_298117c450f471ad, []int{3, 0}
+}
+func (m *PersonV4_NameV4) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_PersonV4_NameV4.Unmarshal(m, b)
+}
+func (m *PersonV4_NameV4) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_PersonV4_NameV4.Marshal(b, m, deterministic)
+}
+func (dst *PersonV4_NameV4) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_PersonV4_NameV4.Merge(dst, src)
+}
+func (m *PersonV4_NameV4) XXX_Size() int {
+	return xxx_messageInfo_PersonV4_NameV4.Size(m)
+}
+func (m *PersonV4_NameV4) XXX_DiscardUnknown() {
+	xxx_messageInfo_PersonV4_NameV4.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_PersonV4_NameV4 proto.InternalMessageInfo
 
 func (m *PersonV4_NameV4) GetFirst() string {
 	if m != nil {
@@ -346,9 +484,9 @@ func init() {
 	proto.RegisterType((*PersonV4_NameV4)(nil), "schema.proto3.PersonV4.NameV4")
 }
 
-func init() { proto.RegisterFile("people.proto", fileDescriptor4) }
+func init() { proto.RegisterFile("people.proto", fileDescriptor_people_298117c450f471ad) }
 
-var fileDescriptor4 = []byte{
+var fileDescriptor_people_298117c450f471ad = []byte{
 	// 320 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x91, 0xcf, 0x4e, 0xc2, 0x40,
 	0x10, 0xc6, 0xd9, 0x02, 0x0d, 0x0c, 0x82, 0x66, 0x43, 0x62, 0x63, 0x22, 0x69, 0x7a, 0xea, 0xa9,
