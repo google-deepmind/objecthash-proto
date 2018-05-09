@@ -1,0 +1,11 @@
+[[constraint]]
+  branch = "master"
+  name = "github.com/benlaurie/objecthash"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/golang/protobuf"
+
+[prune]
+  go-tests = true
+  unused-packages = true

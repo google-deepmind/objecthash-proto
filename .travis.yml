@@ -20,7 +20,8 @@ before_install:
       cd "${TRAVIS_BUILD_DIR}";
     fi
 
-install: go get -t ./...
+install:
+  - dep ensure
 
 before_script:
   # CodeClimate
