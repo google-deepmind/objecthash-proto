@@ -163,6 +163,11 @@ func (hasher *objectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
 		v := sv.Field(i)
 		sf := st.Field(i)
 
+		// Ignore content-independent "XXX_" fields.
+		if isContentIndependentField(v, sf) {
+			continue
+		}
+
 		// Ignore unset fields (and empty proto3 scalar fields).
 		unset, err := isUnset(v, sf)
 		if err != nil {
