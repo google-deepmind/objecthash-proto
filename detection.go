@@ -193,9 +193,9 @@ func isUnset(v reflect.Value, sf reflect.StructField) (bool, error) {
 		// as fields, and uses pointers to structs instead.
 		// This means that emptiness checks for nested messages would happen in the
 		// reflect.Ptr case rather than here.
-		return false, fmt.Errorf("got an unexpected struct type: %T", v)
+		return false, fmt.Errorf("got an unexpected struct of type '%+v' for field %+v", v.Type(), sf)
 	default:
-		return false, fmt.Errorf("unsupported type: %T", v)
+		return false, fmt.Errorf("got an unexpected type '%+v' for field %+v", v.Type(), sf)
 	}
 }
 
