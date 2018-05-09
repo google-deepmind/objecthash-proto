@@ -2,6 +2,8 @@ env:
   global:
     # CodeClimate
     - CC_TEST_REPORTER_ID=f23f4d159f580cb3c3b44cda538d176938257143cd88c7b39f26a3029d562246
+    # Go dep
+    - DEP_VERSION="0.4.1"
 
 language: go
 
@@ -19,6 +21,9 @@ before_install:
       export TRAVIS_BUILD_DIR="${OBJECTHASH_PATH}";
       cd "${TRAVIS_BUILD_DIR}";
     fi
+  # Get Go dep.
+  - curl -L -s "https://github.com/golang/dep/releases/download/v${DEP_VERSION}/dep-linux-amd64" -o "${GOPATH}/bin/dep"
+  - chmod +x "${GOPATH}/bin/dep"
 
 install:
   - dep ensure
