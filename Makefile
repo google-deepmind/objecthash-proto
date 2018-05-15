@@ -14,5 +14,6 @@
 
 .PHONY: test
 test:
+	dep ensure
 	go test -cover -covermode=count -coverprofile=coverage.out .
 	go tool cover -html=coverage.out -o coverage.html
