@@ -30,7 +30,7 @@ const (
 // This method uses the reflect.Value of a well-known type's underlying struct
 // object to calculate its hash.
 //
-// Well-known tyeps are proto messages that have special semanics which are
+// Well-known types are proto messages that have special semantics which are
 // defined within the proto library. As a result, special treatment while
 // calculating their hash is often (but not always) needed.
 func (hasher *objectHasher) hashWellKnownType(name string, sv reflect.Value) ([]byte, error) {
