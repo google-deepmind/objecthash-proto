@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package tests
+package wellknowntypes
 
 import (
 	"testing"
@@ -21,7 +21,6 @@ import (
 	any_pb "github.com/golang/protobuf/ptypes/any"
 	duration_pb "github.com/golang/protobuf/ptypes/duration"
 	struct_pb "github.com/golang/protobuf/ptypes/struct"
-	timestamp_pb "github.com/golang/protobuf/ptypes/timestamp"
 	wrappers_pb "github.com/golang/protobuf/ptypes/wrappers"
 
 	oi "github.com/deepmind/objecthash-proto/internal"
@@ -30,10 +29,12 @@ import (
 	pb3_latest "github.com/deepmind/objecthash-proto/test_protos/generated/latest/proto3"
 )
 
-// TestWellKnownTypes currently just confirms that all well-known types are
-// unsupported.  However, once those fields start to be supported, the tests
-// should be modified to reflect that.
-func TestWellKnownTypes(t *testing.T, hashers oi.ProtoHashers) {
+// TestUnsupportedWellKnownTypes confirms that hashing any of the unsupported
+// well-known types returns an error.
+//
+// Once support is added for any of those fields, a separate test method will
+// be added for it.
+func TestUnsupportedWellKnownTypes(t *testing.T, hashers oi.ProtoHashers) {
 	hasher := hashers.DefaultHasher
 
 	unsupportedProtos := []proto.Message{
@@ -80,10 +81,6 @@ func TestWellKnownTypes(t *testing.T, hashers oi.ProtoHashers) {
 		&struct_pb.Struct{},
 		&pb2_latest.KnownTypes{StructField: &struct_pb.Struct{}},
 		&pb3_latest.KnownTypes{StructField: &struct_pb.Struct{}},
-
-		&timestamp_pb.Timestamp{},
-		&pb2_latest.KnownTypes{TimestampField: &timestamp_pb.Timestamp{}},
-		&pb3_latest.KnownTypes{TimestampField: &timestamp_pb.Timestamp{}},
 
 		&wrappers_pb.UInt32Value{},
 		&pb2_latest.KnownTypes{Uint32ValueField: &wrappers_pb.UInt32Value{}},

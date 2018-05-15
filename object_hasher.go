@@ -137,10 +137,15 @@ func (hasher *objectHasher) hashMap(v reflect.Value, sf reflect.StructField, pro
 	return hash(mapIdentifier, h.Bytes())
 }
 
+// hashStruct hashes the struct objects of dereferenced proto messages.
+//
+// All proto messages are represented as pointers to structs. This method is
+// used to calculate a proto message's hash by passing it the reflect.Value of
+// the dererferenced message object.
 func (hasher *objectHasher) hashStruct(sv reflect.Value) ([]byte, error) {
-	_, ok := CheckWellKnownType(sv)
+	name, ok := CheckWellKnownType(sv)
 	if ok {
-		return nil, errors.New("protobuf well-known types are currently unsupported")
+		return hasher.hashWellKnownType(name, sv)
 	}
 
 	if isExtendable(sv) {
