@@ -21,9 +21,18 @@ readonly LATEST_COMMIT="${TEST_PROTOS_DIR}/latest_commit.txt"
 readonly LATEST_DIR="${GENERATED_DIR}/latest"
 
 readonly TMP_GOPATH="$(mktemp -d)"
+trap "rm -rf ${TMP_GOPATH}" EXIT
+
 readonly GOPATH="${TMP_GOPATH}"
 readonly GOBIN="${TMP_GOPATH}/bin"
 readonly PATH="${TMP_GOPATH}/bin:${PATH}"
+
+readonly TMP_PROTOC_PATH="$(mktemp -d)"
+trap "rm -rf ${TMP_PROTOC_PATH}" EXIT
+
+readonly PROTOC_VERSION="3.5.1"
+readonly PROTOC_URL="https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip"
+readonly PROTOC_BIN="${TMP_PROTOC_PATH}/protoc/bin/protoc"
 
 generate_protos() {
   local schema_dir="$1"
@@ -35,11 +44,18 @@ generate_protos() {
 
   for version in proto2 proto3; do
     mkdir -p "${output_dir}/${version}"
-    protoc \
+    "${PROTOC_BIN}" \
       --proto_path="${schema_dir}/${version}" \
       --go_out="${output_dir}/${version}" \
       "${schema_dir}/${version}"/*.proto
   done
+}
+
+install_protoc() {
+  curl --location "${PROTOC_URL}" \
+    --output "${TMP_PROTOC_PATH}/protoc.zip"
+  unzip "${TMP_PROTOC_PATH}/protoc.zip" \
+    -d "${TMP_PROTOC_PATH}/protoc"
 }
 
 clone_protoc_gen_go() {
@@ -69,6 +85,7 @@ run() {
   rm -rf "${GENERATED_DIR}"
   mkdir -p "${GENERATED_DIR}"
 
+  install_protoc
   clone_protoc_gen_go
   build_protoc_gen_go
   generate_protos "${SCHEMA_DIR}" "${LATEST_DIR}"
