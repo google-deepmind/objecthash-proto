@@ -55,11 +55,8 @@ matrix:
       env: RECOMPILE_PROTOS=true
     - go: 1.9
       env: UPDATE_DEPS=true
-    - go: 1.9
-      env: UPDATE_DEPS=true RECOMPILE_PROTOS=true
   allow_failures:
     - go: master
     - env: RECOMPILE_PROTOS=true
     - env: UPDATE_DEPS=true
-    - env: UPDATE_DEPS=true RECOMPILE_PROTOS=true
   fast_finish: true
