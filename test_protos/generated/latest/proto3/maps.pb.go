@@ -12,32 +12,60 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type BoolMaps struct {
-	BoolToBool       map[bool]bool        `protobuf:"bytes,1,rep,name=bool_to_bool,json=boolToBool" json:"bool_to_bool,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	BoolToBytes      map[bool][]byte      `protobuf:"bytes,2,rep,name=bool_to_bytes,json=boolToBytes" json:"bool_to_bytes,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	BoolToDouble     map[bool]float64     `protobuf:"bytes,3,rep,name=bool_to_double,json=boolToDouble" json:"bool_to_double,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	BoolToFixed32    map[bool]uint32      `protobuf:"bytes,4,rep,name=bool_to_fixed32,json=boolToFixed32" json:"bool_to_fixed32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
-	BoolToFixed64    map[bool]uint64      `protobuf:"bytes,5,rep,name=bool_to_fixed64,json=boolToFixed64" json:"bool_to_fixed64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	BoolToFloat      map[bool]float32     `protobuf:"bytes,6,rep,name=bool_to_float,json=boolToFloat" json:"bool_to_float,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
-	BoolToInt32      map[bool]int32       `protobuf:"bytes,7,rep,name=bool_to_int32,json=boolToInt32" json:"bool_to_int32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	BoolToInt64      map[bool]int64       `protobuf:"bytes,8,rep,name=bool_to_int64,json=boolToInt64" json:"bool_to_int64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	BoolToSfixed32   map[bool]int32       `protobuf:"bytes,9,rep,name=bool_to_sfixed32,json=boolToSfixed32" json:"bool_to_sfixed32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
-	BoolToSfixed64   map[bool]int64       `protobuf:"bytes,10,rep,name=bool_to_sfixed64,json=boolToSfixed64" json:"bool_to_sfixed64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	BoolToSint32     map[bool]int32       `protobuf:"bytes,11,rep,name=bool_to_sint32,json=boolToSint32" json:"bool_to_sint32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"zigzag32,2,opt,name=value"`
-	BoolToSint64     map[bool]int64       `protobuf:"bytes,12,rep,name=bool_to_sint64,json=boolToSint64" json:"bool_to_sint64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"zigzag64,2,opt,name=value"`
-	BoolToString     map[bool]string      `protobuf:"bytes,13,rep,name=bool_to_string,json=boolToString" json:"bool_to_string,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	BoolToUint32     map[bool]uint32      `protobuf:"bytes,14,rep,name=bool_to_uint32,json=boolToUint32" json:"bool_to_uint32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	BoolToUint64     map[bool]uint64      `protobuf:"bytes,15,rep,name=bool_to_uint64,json=boolToUint64" json:"bool_to_uint64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	BoolToPlanetV1   map[bool]PlanetV1    `protobuf:"bytes,16,rep,name=bool_to_planet_v1,json=boolToPlanetV1" json:"bool_to_planet_v1,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=schema.proto3.PlanetV1"`
-	BoolToSimple     map[bool]*Simple     `protobuf:"bytes,17,rep,name=bool_to_simple,json=boolToSimple" json:"bool_to_simple,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	BoolToRepetitive map[bool]*Repetitive `protobuf:"bytes,18,rep,name=bool_to_repetitive,json=boolToRepetitive" json:"bool_to_repetitive,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	BoolToSingleton  map[bool]*Singleton  `protobuf:"bytes,19,rep,name=bool_to_singleton,json=boolToSingleton" json:"bool_to_singleton,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	BoolToBool           map[bool]bool        `protobuf:"bytes,1,rep,name=bool_to_bool,json=boolToBool" json:"bool_to_bool,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	BoolToBytes          map[bool][]byte      `protobuf:"bytes,2,rep,name=bool_to_bytes,json=boolToBytes" json:"bool_to_bytes,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	BoolToDouble         map[bool]float64     `protobuf:"bytes,3,rep,name=bool_to_double,json=boolToDouble" json:"bool_to_double,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	BoolToFixed32        map[bool]uint32      `protobuf:"bytes,4,rep,name=bool_to_fixed32,json=boolToFixed32" json:"bool_to_fixed32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	BoolToFixed64        map[bool]uint64      `protobuf:"bytes,5,rep,name=bool_to_fixed64,json=boolToFixed64" json:"bool_to_fixed64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	BoolToFloat          map[bool]float32     `protobuf:"bytes,6,rep,name=bool_to_float,json=boolToFloat" json:"bool_to_float,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	BoolToInt32          map[bool]int32       `protobuf:"bytes,7,rep,name=bool_to_int32,json=boolToInt32" json:"bool_to_int32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	BoolToInt64          map[bool]int64       `protobuf:"bytes,8,rep,name=bool_to_int64,json=boolToInt64" json:"bool_to_int64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	BoolToSfixed32       map[bool]int32       `protobuf:"bytes,9,rep,name=bool_to_sfixed32,json=boolToSfixed32" json:"bool_to_sfixed32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	BoolToSfixed64       map[bool]int64       `protobuf:"bytes,10,rep,name=bool_to_sfixed64,json=boolToSfixed64" json:"bool_to_sfixed64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	BoolToSint32         map[bool]int32       `protobuf:"bytes,11,rep,name=bool_to_sint32,json=boolToSint32" json:"bool_to_sint32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"zigzag32,2,opt,name=value"`
+	BoolToSint64         map[bool]int64       `protobuf:"bytes,12,rep,name=bool_to_sint64,json=boolToSint64" json:"bool_to_sint64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"zigzag64,2,opt,name=value"`
+	BoolToString         map[bool]string      `protobuf:"bytes,13,rep,name=bool_to_string,json=boolToString" json:"bool_to_string,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	BoolToUint32         map[bool]uint32      `protobuf:"bytes,14,rep,name=bool_to_uint32,json=boolToUint32" json:"bool_to_uint32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	BoolToUint64         map[bool]uint64      `protobuf:"bytes,15,rep,name=bool_to_uint64,json=boolToUint64" json:"bool_to_uint64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	BoolToPlanetV1       map[bool]PlanetV1    `protobuf:"bytes,16,rep,name=bool_to_planet_v1,json=boolToPlanetV1" json:"bool_to_planet_v1,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=schema.proto3.PlanetV1"`
+	BoolToSimple         map[bool]*Simple     `protobuf:"bytes,17,rep,name=bool_to_simple,json=boolToSimple" json:"bool_to_simple,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	BoolToRepetitive     map[bool]*Repetitive `protobuf:"bytes,18,rep,name=bool_to_repetitive,json=boolToRepetitive" json:"bool_to_repetitive,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	BoolToSingleton      map[bool]*Singleton  `protobuf:"bytes,19,rep,name=bool_to_singleton,json=boolToSingleton" json:"bool_to_singleton,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *BoolMaps) Reset()                    { *m = BoolMaps{} }
-func (m *BoolMaps) String() string            { return proto.CompactTextString(m) }
-func (*BoolMaps) ProtoMessage()               {}
-func (*BoolMaps) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
+func (m *BoolMaps) Reset()         { *m = BoolMaps{} }
+func (m *BoolMaps) String() string { return proto.CompactTextString(m) }
+func (*BoolMaps) ProtoMessage()    {}
+func (*BoolMaps) Descriptor() ([]byte, []int) {
+	return fileDescriptor_maps_c4e2c00c34fdcade, []int{0}
+}
+func (m *BoolMaps) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BoolMaps.Unmarshal(m, b)
+}
+func (m *BoolMaps) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BoolMaps.Marshal(b, m, deterministic)
+}
+func (dst *BoolMaps) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BoolMaps.Merge(dst, src)
+}
+func (m *BoolMaps) XXX_Size() int {
+	return xxx_messageInfo_BoolMaps.Size(m)
+}
+func (m *BoolMaps) XXX_DiscardUnknown() {
+	xxx_messageInfo_BoolMaps.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BoolMaps proto.InternalMessageInfo
 
 func (m *BoolMaps) GetBoolToBool() map[bool]bool {
 	if m != nil {
@@ -176,31 +204,53 @@ func (m *BoolMaps) GetBoolToSingleton() map[bool]*Singleton {
 // ex: fixed32, fixed64, int32, sfixed32, sfixed64, sint32, sint64, uint32,
 //     uint64
 type IntMaps struct {
-	IntToBool       map[int64]bool        `protobuf:"bytes,1,rep,name=int_to_bool,json=intToBool" json:"int_to_bool,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	IntToBytes      map[int64][]byte      `protobuf:"bytes,2,rep,name=int_to_bytes,json=intToBytes" json:"int_to_bytes,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	IntToDouble     map[int64]float64     `protobuf:"bytes,3,rep,name=int_to_double,json=intToDouble" json:"int_to_double,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	IntToFixed32    map[int64]uint32      `protobuf:"bytes,4,rep,name=int_to_fixed32,json=intToFixed32" json:"int_to_fixed32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
-	IntToFixed64    map[int64]uint64      `protobuf:"bytes,5,rep,name=int_to_fixed64,json=intToFixed64" json:"int_to_fixed64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	IntToFloat      map[int64]float32     `protobuf:"bytes,6,rep,name=int_to_float,json=intToFloat" json:"int_to_float,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
-	IntToInt32      map[int64]int32       `protobuf:"bytes,7,rep,name=int_to_int32,json=intToInt32" json:"int_to_int32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	IntToInt64      map[int64]int64       `protobuf:"bytes,8,rep,name=int_to_int64,json=intToInt64" json:"int_to_int64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	IntToSfixed32   map[int64]int32       `protobuf:"bytes,9,rep,name=int_to_sfixed32,json=intToSfixed32" json:"int_to_sfixed32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
-	IntToSfixed64   map[int64]int64       `protobuf:"bytes,10,rep,name=int_to_sfixed64,json=intToSfixed64" json:"int_to_sfixed64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	IntToSint32     map[int64]int32       `protobuf:"bytes,11,rep,name=int_to_sint32,json=intToSint32" json:"int_to_sint32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"zigzag32,2,opt,name=value"`
-	IntToSint64     map[int64]int64       `protobuf:"bytes,12,rep,name=int_to_sint64,json=intToSint64" json:"int_to_sint64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"zigzag64,2,opt,name=value"`
-	IntToString     map[int64]string      `protobuf:"bytes,13,rep,name=int_to_string,json=intToString" json:"int_to_string,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	IntToUint32     map[int64]uint32      `protobuf:"bytes,14,rep,name=int_to_uint32,json=intToUint32" json:"int_to_uint32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	IntToUint64     map[int64]uint64      `protobuf:"bytes,15,rep,name=int_to_uint64,json=intToUint64" json:"int_to_uint64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	IntToPlanetV1   map[int64]PlanetV1    `protobuf:"bytes,16,rep,name=int_to_planet_v1,json=intToPlanetV1" json:"int_to_planet_v1,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=schema.proto3.PlanetV1"`
-	IntToSimple     map[int64]*Simple     `protobuf:"bytes,17,rep,name=int_to_simple,json=intToSimple" json:"int_to_simple,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	IntToRepetitive map[int64]*Repetitive `protobuf:"bytes,18,rep,name=int_to_repetitive,json=intToRepetitive" json:"int_to_repetitive,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	IntToSingleton  map[int64]*Singleton  `protobuf:"bytes,19,rep,name=int_to_singleton,json=intToSingleton" json:"int_to_singleton,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	IntToBool            map[int64]bool        `protobuf:"bytes,1,rep,name=int_to_bool,json=intToBool" json:"int_to_bool,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	IntToBytes           map[int64][]byte      `protobuf:"bytes,2,rep,name=int_to_bytes,json=intToBytes" json:"int_to_bytes,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	IntToDouble          map[int64]float64     `protobuf:"bytes,3,rep,name=int_to_double,json=intToDouble" json:"int_to_double,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	IntToFixed32         map[int64]uint32      `protobuf:"bytes,4,rep,name=int_to_fixed32,json=intToFixed32" json:"int_to_fixed32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	IntToFixed64         map[int64]uint64      `protobuf:"bytes,5,rep,name=int_to_fixed64,json=intToFixed64" json:"int_to_fixed64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	IntToFloat           map[int64]float32     `protobuf:"bytes,6,rep,name=int_to_float,json=intToFloat" json:"int_to_float,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	IntToInt32           map[int64]int32       `protobuf:"bytes,7,rep,name=int_to_int32,json=intToInt32" json:"int_to_int32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	IntToInt64           map[int64]int64       `protobuf:"bytes,8,rep,name=int_to_int64,json=intToInt64" json:"int_to_int64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	IntToSfixed32        map[int64]int32       `protobuf:"bytes,9,rep,name=int_to_sfixed32,json=intToSfixed32" json:"int_to_sfixed32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	IntToSfixed64        map[int64]int64       `protobuf:"bytes,10,rep,name=int_to_sfixed64,json=intToSfixed64" json:"int_to_sfixed64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	IntToSint32          map[int64]int32       `protobuf:"bytes,11,rep,name=int_to_sint32,json=intToSint32" json:"int_to_sint32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"zigzag32,2,opt,name=value"`
+	IntToSint64          map[int64]int64       `protobuf:"bytes,12,rep,name=int_to_sint64,json=intToSint64" json:"int_to_sint64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"zigzag64,2,opt,name=value"`
+	IntToString          map[int64]string      `protobuf:"bytes,13,rep,name=int_to_string,json=intToString" json:"int_to_string,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	IntToUint32          map[int64]uint32      `protobuf:"bytes,14,rep,name=int_to_uint32,json=intToUint32" json:"int_to_uint32,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	IntToUint64          map[int64]uint64      `protobuf:"bytes,15,rep,name=int_to_uint64,json=intToUint64" json:"int_to_uint64,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	IntToPlanetV1        map[int64]PlanetV1    `protobuf:"bytes,16,rep,name=int_to_planet_v1,json=intToPlanetV1" json:"int_to_planet_v1,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=schema.proto3.PlanetV1"`
+	IntToSimple          map[int64]*Simple     `protobuf:"bytes,17,rep,name=int_to_simple,json=intToSimple" json:"int_to_simple,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	IntToRepetitive      map[int64]*Repetitive `protobuf:"bytes,18,rep,name=int_to_repetitive,json=intToRepetitive" json:"int_to_repetitive,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	IntToSingleton       map[int64]*Singleton  `protobuf:"bytes,19,rep,name=int_to_singleton,json=intToSingleton" json:"int_to_singleton,omitempty" protobuf_key:"varint,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
-func (m *IntMaps) Reset()                    { *m = IntMaps{} }
-func (m *IntMaps) String() string            { return proto.CompactTextString(m) }
-func (*IntMaps) ProtoMessage()               {}
-func (*IntMaps) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
+func (m *IntMaps) Reset()         { *m = IntMaps{} }
+func (m *IntMaps) String() string { return proto.CompactTextString(m) }
+func (*IntMaps) ProtoMessage()    {}
+func (*IntMaps) Descriptor() ([]byte, []int) {
+	return fileDescriptor_maps_c4e2c00c34fdcade, []int{1}
+}
+func (m *IntMaps) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_IntMaps.Unmarshal(m, b)
+}
+func (m *IntMaps) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_IntMaps.Marshal(b, m, deterministic)
+}
+func (dst *IntMaps) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IntMaps.Merge(dst, src)
+}
+func (m *IntMaps) XXX_Size() int {
+	return xxx_messageInfo_IntMaps.Size(m)
+}
+func (m *IntMaps) XXX_DiscardUnknown() {
+	xxx_messageInfo_IntMaps.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_IntMaps proto.InternalMessageInfo
 
 func (m *IntMaps) GetIntToBool() map[int64]bool {
 	if m != nil {
@@ -336,31 +386,53 @@ func (m *IntMaps) GetIntToSingleton() map[int64]*Singleton {
 }
 
 type StringMaps struct {
-	StringToBool       map[string]bool        `protobuf:"bytes,1,rep,name=string_to_bool,json=stringToBool" json:"string_to_bool,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	StringToBytes      map[string][]byte      `protobuf:"bytes,2,rep,name=string_to_bytes,json=stringToBytes" json:"string_to_bytes,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	StringToDouble     map[string]float64     `protobuf:"bytes,3,rep,name=string_to_double,json=stringToDouble" json:"string_to_double,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	StringToFixed32    map[string]uint32      `protobuf:"bytes,4,rep,name=string_to_fixed32,json=stringToFixed32" json:"string_to_fixed32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
-	StringToFixed64    map[string]uint64      `protobuf:"bytes,5,rep,name=string_to_fixed64,json=stringToFixed64" json:"string_to_fixed64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	StringToFloat      map[string]float32     `protobuf:"bytes,6,rep,name=string_to_float,json=stringToFloat" json:"string_to_float,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
-	StringToInt32      map[string]int32       `protobuf:"bytes,7,rep,name=string_to_int32,json=stringToInt32" json:"string_to_int32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	StringToInt64      map[string]int64       `protobuf:"bytes,8,rep,name=string_to_int64,json=stringToInt64" json:"string_to_int64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	StringToSfixed32   map[string]int32       `protobuf:"bytes,9,rep,name=string_to_sfixed32,json=stringToSfixed32" json:"string_to_sfixed32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
-	StringToSfixed64   map[string]int64       `protobuf:"bytes,10,rep,name=string_to_sfixed64,json=stringToSfixed64" json:"string_to_sfixed64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
-	StringToSint32     map[string]int32       `protobuf:"bytes,11,rep,name=string_to_sint32,json=stringToSint32" json:"string_to_sint32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"zigzag32,2,opt,name=value"`
-	StringToSint64     map[string]int64       `protobuf:"bytes,12,rep,name=string_to_sint64,json=stringToSint64" json:"string_to_sint64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"zigzag64,2,opt,name=value"`
-	StringToString     map[string]string      `protobuf:"bytes,13,rep,name=string_to_string,json=stringToString" json:"string_to_string,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	StringToUint32     map[string]uint32      `protobuf:"bytes,14,rep,name=string_to_uint32,json=stringToUint32" json:"string_to_uint32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	StringToUint64     map[string]uint64      `protobuf:"bytes,15,rep,name=string_to_uint64,json=stringToUint64" json:"string_to_uint64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
-	StringToPlanetV1   map[string]PlanetV1    `protobuf:"bytes,16,rep,name=string_to_planet_v1,json=stringToPlanetV1" json:"string_to_planet_v1,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=schema.proto3.PlanetV1"`
-	StringToSimple     map[string]*Simple     `protobuf:"bytes,17,rep,name=string_to_simple,json=stringToSimple" json:"string_to_simple,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	StringToRepetitive map[string]*Repetitive `protobuf:"bytes,18,rep,name=string_to_repetitive,json=stringToRepetitive" json:"string_to_repetitive,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	StringToSingleton  map[string]*Singleton  `protobuf:"bytes,19,rep,name=string_to_singleton,json=stringToSingleton" json:"string_to_singleton,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StringToBool         map[string]bool        `protobuf:"bytes,1,rep,name=string_to_bool,json=stringToBool" json:"string_to_bool,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	StringToBytes        map[string][]byte      `protobuf:"bytes,2,rep,name=string_to_bytes,json=stringToBytes" json:"string_to_bytes,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	StringToDouble       map[string]float64     `protobuf:"bytes,3,rep,name=string_to_double,json=stringToDouble" json:"string_to_double,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	StringToFixed32      map[string]uint32      `protobuf:"bytes,4,rep,name=string_to_fixed32,json=stringToFixed32" json:"string_to_fixed32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	StringToFixed64      map[string]uint64      `protobuf:"bytes,5,rep,name=string_to_fixed64,json=stringToFixed64" json:"string_to_fixed64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	StringToFloat        map[string]float32     `protobuf:"bytes,6,rep,name=string_to_float,json=stringToFloat" json:"string_to_float,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	StringToInt32        map[string]int32       `protobuf:"bytes,7,rep,name=string_to_int32,json=stringToInt32" json:"string_to_int32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	StringToInt64        map[string]int64       `protobuf:"bytes,8,rep,name=string_to_int64,json=stringToInt64" json:"string_to_int64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	StringToSfixed32     map[string]int32       `protobuf:"bytes,9,rep,name=string_to_sfixed32,json=stringToSfixed32" json:"string_to_sfixed32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed32,2,opt,name=value"`
+	StringToSfixed64     map[string]int64       `protobuf:"bytes,10,rep,name=string_to_sfixed64,json=stringToSfixed64" json:"string_to_sfixed64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"fixed64,2,opt,name=value"`
+	StringToSint32       map[string]int32       `protobuf:"bytes,11,rep,name=string_to_sint32,json=stringToSint32" json:"string_to_sint32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"zigzag32,2,opt,name=value"`
+	StringToSint64       map[string]int64       `protobuf:"bytes,12,rep,name=string_to_sint64,json=stringToSint64" json:"string_to_sint64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"zigzag64,2,opt,name=value"`
+	StringToString       map[string]string      `protobuf:"bytes,13,rep,name=string_to_string,json=stringToString" json:"string_to_string,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StringToUint32       map[string]uint32      `protobuf:"bytes,14,rep,name=string_to_uint32,json=stringToUint32" json:"string_to_uint32,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	StringToUint64       map[string]uint64      `protobuf:"bytes,15,rep,name=string_to_uint64,json=stringToUint64" json:"string_to_uint64,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value"`
+	StringToPlanetV1     map[string]PlanetV1    `protobuf:"bytes,16,rep,name=string_to_planet_v1,json=stringToPlanetV1" json:"string_to_planet_v1,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=schema.proto3.PlanetV1"`
+	StringToSimple       map[string]*Simple     `protobuf:"bytes,17,rep,name=string_to_simple,json=stringToSimple" json:"string_to_simple,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StringToRepetitive   map[string]*Repetitive `protobuf:"bytes,18,rep,name=string_to_repetitive,json=stringToRepetitive" json:"string_to_repetitive,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	StringToSingleton    map[string]*Singleton  `protobuf:"bytes,19,rep,name=string_to_singleton,json=stringToSingleton" json:"string_to_singleton,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
-func (m *StringMaps) Reset()                    { *m = StringMaps{} }
-func (m *StringMaps) String() string            { return proto.CompactTextString(m) }
-func (*StringMaps) ProtoMessage()               {}
-func (*StringMaps) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{2} }
+func (m *StringMaps) Reset()         { *m = StringMaps{} }
+func (m *StringMaps) String() string { return proto.CompactTextString(m) }
+func (*StringMaps) ProtoMessage()    {}
+func (*StringMaps) Descriptor() ([]byte, []int) {
+	return fileDescriptor_maps_c4e2c00c34fdcade, []int{2}
+}
+func (m *StringMaps) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StringMaps.Unmarshal(m, b)
+}
+func (m *StringMaps) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StringMaps.Marshal(b, m, deterministic)
+}
+func (dst *StringMaps) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StringMaps.Merge(dst, src)
+}
+func (m *StringMaps) XXX_Size() int {
+	return xxx_messageInfo_StringMaps.Size(m)
+}
+func (m *StringMaps) XXX_DiscardUnknown() {
+	xxx_messageInfo_StringMaps.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StringMaps proto.InternalMessageInfo
 
 func (m *StringMaps) GetStringToBool() map[string]bool {
 	if m != nil {
@@ -497,13 +569,70 @@ func (m *StringMaps) GetStringToSingleton() map[string]*Singleton {
 
 func init() {
 	proto.RegisterType((*BoolMaps)(nil), "schema.proto3.BoolMaps")
+	proto.RegisterMapType((map[bool]bool)(nil), "schema.proto3.BoolMaps.BoolToBoolEntry")
+	proto.RegisterMapType((map[bool][]byte)(nil), "schema.proto3.BoolMaps.BoolToBytesEntry")
+	proto.RegisterMapType((map[bool]float64)(nil), "schema.proto3.BoolMaps.BoolToDoubleEntry")
+	proto.RegisterMapType((map[bool]uint32)(nil), "schema.proto3.BoolMaps.BoolToFixed32Entry")
+	proto.RegisterMapType((map[bool]uint64)(nil), "schema.proto3.BoolMaps.BoolToFixed64Entry")
+	proto.RegisterMapType((map[bool]float32)(nil), "schema.proto3.BoolMaps.BoolToFloatEntry")
+	proto.RegisterMapType((map[bool]int32)(nil), "schema.proto3.BoolMaps.BoolToInt32Entry")
+	proto.RegisterMapType((map[bool]int64)(nil), "schema.proto3.BoolMaps.BoolToInt64Entry")
+	proto.RegisterMapType((map[bool]PlanetV1)(nil), "schema.proto3.BoolMaps.BoolToPlanetV1Entry")
+	proto.RegisterMapType((map[bool]*Repetitive)(nil), "schema.proto3.BoolMaps.BoolToRepetitiveEntry")
+	proto.RegisterMapType((map[bool]int32)(nil), "schema.proto3.BoolMaps.BoolToSfixed32Entry")
+	proto.RegisterMapType((map[bool]int64)(nil), "schema.proto3.BoolMaps.BoolToSfixed64Entry")
+	proto.RegisterMapType((map[bool]*Simple)(nil), "schema.proto3.BoolMaps.BoolToSimpleEntry")
+	proto.RegisterMapType((map[bool]*Singleton)(nil), "schema.proto3.BoolMaps.BoolToSingletonEntry")
+	proto.RegisterMapType((map[bool]int32)(nil), "schema.proto3.BoolMaps.BoolToSint32Entry")
+	proto.RegisterMapType((map[bool]int64)(nil), "schema.proto3.BoolMaps.BoolToSint64Entry")
+	proto.RegisterMapType((map[bool]string)(nil), "schema.proto3.BoolMaps.BoolToStringEntry")
+	proto.RegisterMapType((map[bool]uint32)(nil), "schema.proto3.BoolMaps.BoolToUint32Entry")
+	proto.RegisterMapType((map[bool]uint64)(nil), "schema.proto3.BoolMaps.BoolToUint64Entry")
 	proto.RegisterType((*IntMaps)(nil), "schema.proto3.IntMaps")
+	proto.RegisterMapType((map[int64]bool)(nil), "schema.proto3.IntMaps.IntToBoolEntry")
+	proto.RegisterMapType((map[int64][]byte)(nil), "schema.proto3.IntMaps.IntToBytesEntry")
+	proto.RegisterMapType((map[int64]float64)(nil), "schema.proto3.IntMaps.IntToDoubleEntry")
+	proto.RegisterMapType((map[int64]uint32)(nil), "schema.proto3.IntMaps.IntToFixed32Entry")
+	proto.RegisterMapType((map[int64]uint64)(nil), "schema.proto3.IntMaps.IntToFixed64Entry")
+	proto.RegisterMapType((map[int64]float32)(nil), "schema.proto3.IntMaps.IntToFloatEntry")
+	proto.RegisterMapType((map[int64]int32)(nil), "schema.proto3.IntMaps.IntToInt32Entry")
+	proto.RegisterMapType((map[int64]int64)(nil), "schema.proto3.IntMaps.IntToInt64Entry")
+	proto.RegisterMapType((map[int64]PlanetV1)(nil), "schema.proto3.IntMaps.IntToPlanetV1Entry")
+	proto.RegisterMapType((map[int64]*Repetitive)(nil), "schema.proto3.IntMaps.IntToRepetitiveEntry")
+	proto.RegisterMapType((map[int64]int32)(nil), "schema.proto3.IntMaps.IntToSfixed32Entry")
+	proto.RegisterMapType((map[int64]int64)(nil), "schema.proto3.IntMaps.IntToSfixed64Entry")
+	proto.RegisterMapType((map[int64]*Simple)(nil), "schema.proto3.IntMaps.IntToSimpleEntry")
+	proto.RegisterMapType((map[int64]*Singleton)(nil), "schema.proto3.IntMaps.IntToSingletonEntry")
+	proto.RegisterMapType((map[int64]int32)(nil), "schema.proto3.IntMaps.IntToSint32Entry")
+	proto.RegisterMapType((map[int64]int64)(nil), "schema.proto3.IntMaps.IntToSint64Entry")
+	proto.RegisterMapType((map[int64]string)(nil), "schema.proto3.IntMaps.IntToStringEntry")
+	proto.RegisterMapType((map[int64]uint32)(nil), "schema.proto3.IntMaps.IntToUint32Entry")
+	proto.RegisterMapType((map[int64]uint64)(nil), "schema.proto3.IntMaps.IntToUint64Entry")
 	proto.RegisterType((*StringMaps)(nil), "schema.proto3.StringMaps")
+	proto.RegisterMapType((map[string]bool)(nil), "schema.proto3.StringMaps.StringToBoolEntry")
+	proto.RegisterMapType((map[string][]byte)(nil), "schema.proto3.StringMaps.StringToBytesEntry")
+	proto.RegisterMapType((map[string]float64)(nil), "schema.proto3.StringMaps.StringToDoubleEntry")
+	proto.RegisterMapType((map[string]uint32)(nil), "schema.proto3.StringMaps.StringToFixed32Entry")
+	proto.RegisterMapType((map[string]uint64)(nil), "schema.proto3.StringMaps.StringToFixed64Entry")
+	proto.RegisterMapType((map[string]float32)(nil), "schema.proto3.StringMaps.StringToFloatEntry")
+	proto.RegisterMapType((map[string]int32)(nil), "schema.proto3.StringMaps.StringToInt32Entry")
+	proto.RegisterMapType((map[string]int64)(nil), "schema.proto3.StringMaps.StringToInt64Entry")
+	proto.RegisterMapType((map[string]PlanetV1)(nil), "schema.proto3.StringMaps.StringToPlanetV1Entry")
+	proto.RegisterMapType((map[string]*Repetitive)(nil), "schema.proto3.StringMaps.StringToRepetitiveEntry")
+	proto.RegisterMapType((map[string]int32)(nil), "schema.proto3.StringMaps.StringToSfixed32Entry")
+	proto.RegisterMapType((map[string]int64)(nil), "schema.proto3.StringMaps.StringToSfixed64Entry")
+	proto.RegisterMapType((map[string]*Simple)(nil), "schema.proto3.StringMaps.StringToSimpleEntry")
+	proto.RegisterMapType((map[string]*Singleton)(nil), "schema.proto3.StringMaps.StringToSingletonEntry")
+	proto.RegisterMapType((map[string]int32)(nil), "schema.proto3.StringMaps.StringToSint32Entry")
+	proto.RegisterMapType((map[string]int64)(nil), "schema.proto3.StringMaps.StringToSint64Entry")
+	proto.RegisterMapType((map[string]string)(nil), "schema.proto3.StringMaps.StringToStringEntry")
+	proto.RegisterMapType((map[string]uint32)(nil), "schema.proto3.StringMaps.StringToUint32Entry")
+	proto.RegisterMapType((map[string]uint64)(nil), "schema.proto3.StringMaps.StringToUint64Entry")
 }
 
-func init() { proto.RegisterFile("maps.proto", fileDescriptor3) }
+func init() { proto.RegisterFile("maps.proto", fileDescriptor_maps_c4e2c00c34fdcade) }
 
-var fileDescriptor3 = []byte{
+var fileDescriptor_maps_c4e2c00c34fdcade = []byte{
 	// 1521 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x98, 0xfd, 0x6e, 0xdb, 0x36,
 	0x10, 0xc0, 0xe1, 0xa8, 0x4d, 0xe2, 0xf3, 0x87, 0x6c, 0xe6, 0xa3, 0x5a, 0xfe, 0x2a, 0x0a, 0x6c,

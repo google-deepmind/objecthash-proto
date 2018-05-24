@@ -12,41 +12,89 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type Empty struct {
-	XXX_unrecognized []byte `json:"-"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Empty) Reset()                    { *m = Empty{} }
-func (m *Empty) String() string            { return proto.CompactTextString(m) }
-func (*Empty) ProtoMessage()               {}
-func (*Empty) Descriptor() ([]byte, []int) { return fileDescriptor6, []int{0} }
+func (m *Empty) Reset()         { *m = Empty{} }
+func (m *Empty) String() string { return proto.CompactTextString(m) }
+func (*Empty) ProtoMessage()    {}
+func (*Empty) Descriptor() ([]byte, []int) {
+	return fileDescriptor_simple_f9873694ed696628, []int{0}
+}
+func (m *Empty) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Empty.Unmarshal(m, b)
+}
+func (m *Empty) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Empty.Marshal(b, m, deterministic)
+}
+func (dst *Empty) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Empty.Merge(dst, src)
+}
+func (m *Empty) XXX_Size() int {
+	return xxx_messageInfo_Empty.Size(m)
+}
+func (m *Empty) XXX_DiscardUnknown() {
+	xxx_messageInfo_Empty.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Empty proto.InternalMessageInfo
 
 type Simple struct {
-	BoolField        *bool       `protobuf:"varint,1,opt,name=bool_field,json=boolField" json:"bool_field,omitempty"`
-	BytesField       []byte      `protobuf:"bytes,3,opt,name=bytes_field,json=bytesField" json:"bytes_field,omitempty"`
-	DoubleField      *float64    `protobuf:"fixed64,5,opt,name=double_field,json=doubleField" json:"double_field,omitempty"`
-	Fixed32Field     *uint32     `protobuf:"fixed32,7,opt,name=fixed32_field,json=fixed32Field" json:"fixed32_field,omitempty"`
-	Fixed64Field     *uint64     `protobuf:"fixed64,9,opt,name=fixed64_field,json=fixed64Field" json:"fixed64_field,omitempty"`
-	FloatField       *float32    `protobuf:"fixed32,11,opt,name=float_field,json=floatField" json:"float_field,omitempty"`
-	Int32Field       *int32      `protobuf:"varint,13,opt,name=int32_field,json=int32Field" json:"int32_field,omitempty"`
-	Int64Field       *int64      `protobuf:"varint,15,opt,name=int64_field,json=int64Field" json:"int64_field,omitempty"`
-	Sfixed32Field    *int32      `protobuf:"fixed32,17,opt,name=sfixed32_field,json=sfixed32Field" json:"sfixed32_field,omitempty"`
-	Sfixed64Field    *int64      `protobuf:"fixed64,19,opt,name=sfixed64_field,json=sfixed64Field" json:"sfixed64_field,omitempty"`
-	Sint32Field      *int32      `protobuf:"zigzag32,21,opt,name=sint32_field,json=sint32Field" json:"sint32_field,omitempty"`
-	Sint64Field      *int64      `protobuf:"zigzag64,23,opt,name=sint64_field,json=sint64Field" json:"sint64_field,omitempty"`
-	StringField      *string     `protobuf:"bytes,25,opt,name=string_field,json=stringField" json:"string_field,omitempty"`
-	Uint32Field      *uint32     `protobuf:"varint,27,opt,name=uint32_field,json=uint32Field" json:"uint32_field,omitempty"`
-	Uint64Field      *uint64     `protobuf:"varint,29,opt,name=uint64_field,json=uint64Field" json:"uint64_field,omitempty"`
-	SimpleField      *Simple     `protobuf:"bytes,31,opt,name=simple_field,json=simpleField" json:"simple_field,omitempty"`
-	RepetitiveField  *Repetitive `protobuf:"bytes,33,opt,name=repetitive_field,json=repetitiveField" json:"repetitive_field,omitempty"`
-	SingletonField   *Singleton  `protobuf:"bytes,35,opt,name=singleton_field,json=singletonField" json:"singleton_field,omitempty"`
-	XXX_unrecognized []byte      `json:"-"`
+	BoolField            *bool       `protobuf:"varint,1,opt,name=bool_field,json=boolField" json:"bool_field,omitempty"`
+	BytesField           []byte      `protobuf:"bytes,3,opt,name=bytes_field,json=bytesField" json:"bytes_field,omitempty"`
+	DoubleField          *float64    `protobuf:"fixed64,5,opt,name=double_field,json=doubleField" json:"double_field,omitempty"`
+	Fixed32Field         *uint32     `protobuf:"fixed32,7,opt,name=fixed32_field,json=fixed32Field" json:"fixed32_field,omitempty"`
+	Fixed64Field         *uint64     `protobuf:"fixed64,9,opt,name=fixed64_field,json=fixed64Field" json:"fixed64_field,omitempty"`
+	FloatField           *float32    `protobuf:"fixed32,11,opt,name=float_field,json=floatField" json:"float_field,omitempty"`
+	Int32Field           *int32      `protobuf:"varint,13,opt,name=int32_field,json=int32Field" json:"int32_field,omitempty"`
+	Int64Field           *int64      `protobuf:"varint,15,opt,name=int64_field,json=int64Field" json:"int64_field,omitempty"`
+	Sfixed32Field        *int32      `protobuf:"fixed32,17,opt,name=sfixed32_field,json=sfixed32Field" json:"sfixed32_field,omitempty"`
+	Sfixed64Field        *int64      `protobuf:"fixed64,19,opt,name=sfixed64_field,json=sfixed64Field" json:"sfixed64_field,omitempty"`
+	Sint32Field          *int32      `protobuf:"zigzag32,21,opt,name=sint32_field,json=sint32Field" json:"sint32_field,omitempty"`
+	Sint64Field          *int64      `protobuf:"zigzag64,23,opt,name=sint64_field,json=sint64Field" json:"sint64_field,omitempty"`
+	StringField          *string     `protobuf:"bytes,25,opt,name=string_field,json=stringField" json:"string_field,omitempty"`
+	Uint32Field          *uint32     `protobuf:"varint,27,opt,name=uint32_field,json=uint32Field" json:"uint32_field,omitempty"`
+	Uint64Field          *uint64     `protobuf:"varint,29,opt,name=uint64_field,json=uint64Field" json:"uint64_field,omitempty"`
+	SimpleField          *Simple     `protobuf:"bytes,31,opt,name=simple_field,json=simpleField" json:"simple_field,omitempty"`
+	RepetitiveField      *Repetitive `protobuf:"bytes,33,opt,name=repetitive_field,json=repetitiveField" json:"repetitive_field,omitempty"`
+	SingletonField       *Singleton  `protobuf:"bytes,35,opt,name=singleton_field,json=singletonField" json:"singleton_field,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}    `json:"-"`
+	XXX_unrecognized     []byte      `json:"-"`
+	XXX_sizecache        int32       `json:"-"`
 }
 
-func (m *Simple) Reset()                    { *m = Simple{} }
-func (m *Simple) String() string            { return proto.CompactTextString(m) }
-func (*Simple) ProtoMessage()               {}
-func (*Simple) Descriptor() ([]byte, []int) { return fileDescriptor6, []int{1} }
+func (m *Simple) Reset()         { *m = Simple{} }
+func (m *Simple) String() string { return proto.CompactTextString(m) }
+func (*Simple) ProtoMessage()    {}
+func (*Simple) Descriptor() ([]byte, []int) {
+	return fileDescriptor_simple_f9873694ed696628, []int{1}
+}
+func (m *Simple) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Simple.Unmarshal(m, b)
+}
+func (m *Simple) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Simple.Marshal(b, m, deterministic)
+}
+func (dst *Simple) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Simple.Merge(dst, src)
+}
+func (m *Simple) XXX_Size() int {
+	return xxx_messageInfo_Simple.Size(m)
+}
+func (m *Simple) XXX_DiscardUnknown() {
+	xxx_messageInfo_Simple.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Simple proto.InternalMessageInfo
 
 func (m *Simple) GetBoolField() bool {
 	if m != nil && m.BoolField != nil {
@@ -175,31 +223,52 @@ func (m *Simple) GetSingletonField() *Singleton {
 }
 
 type Repetitive struct {
-	BoolField        []bool        `protobuf:"varint,1,rep,name=bool_field,json=boolField" json:"bool_field,omitempty"`
-	BytesField       [][]byte      `protobuf:"bytes,3,rep,name=bytes_field,json=bytesField" json:"bytes_field,omitempty"`
-	DoubleField      []float64     `protobuf:"fixed64,5,rep,name=double_field,json=doubleField" json:"double_field,omitempty"`
-	Fixed32Field     []uint32      `protobuf:"fixed32,7,rep,name=fixed32_field,json=fixed32Field" json:"fixed32_field,omitempty"`
-	Fixed64Field     []uint64      `protobuf:"fixed64,9,rep,name=fixed64_field,json=fixed64Field" json:"fixed64_field,omitempty"`
-	FloatField       []float32     `protobuf:"fixed32,11,rep,name=float_field,json=floatField" json:"float_field,omitempty"`
-	Int32Field       []int32       `protobuf:"varint,13,rep,name=int32_field,json=int32Field" json:"int32_field,omitempty"`
-	Int64Field       []int64       `protobuf:"varint,15,rep,name=int64_field,json=int64Field" json:"int64_field,omitempty"`
-	Sfixed32Field    []int32       `protobuf:"fixed32,17,rep,name=sfixed32_field,json=sfixed32Field" json:"sfixed32_field,omitempty"`
-	Sfixed64Field    []int64       `protobuf:"fixed64,19,rep,name=sfixed64_field,json=sfixed64Field" json:"sfixed64_field,omitempty"`
-	Sint32Field      []int32       `protobuf:"zigzag32,21,rep,name=sint32_field,json=sint32Field" json:"sint32_field,omitempty"`
-	Sint64Field      []int64       `protobuf:"zigzag64,23,rep,name=sint64_field,json=sint64Field" json:"sint64_field,omitempty"`
-	StringField      []string      `protobuf:"bytes,25,rep,name=string_field,json=stringField" json:"string_field,omitempty"`
-	Uint32Field      []uint32      `protobuf:"varint,27,rep,name=uint32_field,json=uint32Field" json:"uint32_field,omitempty"`
-	Uint64Field      []uint64      `protobuf:"varint,29,rep,name=uint64_field,json=uint64Field" json:"uint64_field,omitempty"`
-	SimpleField      []*Simple     `protobuf:"bytes,31,rep,name=simple_field,json=simpleField" json:"simple_field,omitempty"`
-	RepetitiveField  []*Repetitive `protobuf:"bytes,33,rep,name=repetitive_field,json=repetitiveField" json:"repetitive_field,omitempty"`
-	SingletonField   []*Singleton  `protobuf:"bytes,35,rep,name=singleton_field,json=singletonField" json:"singleton_field,omitempty"`
-	XXX_unrecognized []byte        `json:"-"`
+	BoolField            []bool        `protobuf:"varint,1,rep,name=bool_field,json=boolField" json:"bool_field,omitempty"`
+	BytesField           [][]byte      `protobuf:"bytes,3,rep,name=bytes_field,json=bytesField" json:"bytes_field,omitempty"`
+	DoubleField          []float64     `protobuf:"fixed64,5,rep,name=double_field,json=doubleField" json:"double_field,omitempty"`
+	Fixed32Field         []uint32      `protobuf:"fixed32,7,rep,name=fixed32_field,json=fixed32Field" json:"fixed32_field,omitempty"`
+	Fixed64Field         []uint64      `protobuf:"fixed64,9,rep,name=fixed64_field,json=fixed64Field" json:"fixed64_field,omitempty"`
+	FloatField           []float32     `protobuf:"fixed32,11,rep,name=float_field,json=floatField" json:"float_field,omitempty"`
+	Int32Field           []int32       `protobuf:"varint,13,rep,name=int32_field,json=int32Field" json:"int32_field,omitempty"`
+	Int64Field           []int64       `protobuf:"varint,15,rep,name=int64_field,json=int64Field" json:"int64_field,omitempty"`
+	Sfixed32Field        []int32       `protobuf:"fixed32,17,rep,name=sfixed32_field,json=sfixed32Field" json:"sfixed32_field,omitempty"`
+	Sfixed64Field        []int64       `protobuf:"fixed64,19,rep,name=sfixed64_field,json=sfixed64Field" json:"sfixed64_field,omitempty"`
+	Sint32Field          []int32       `protobuf:"zigzag32,21,rep,name=sint32_field,json=sint32Field" json:"sint32_field,omitempty"`
+	Sint64Field          []int64       `protobuf:"zigzag64,23,rep,name=sint64_field,json=sint64Field" json:"sint64_field,omitempty"`
+	StringField          []string      `protobuf:"bytes,25,rep,name=string_field,json=stringField" json:"string_field,omitempty"`
+	Uint32Field          []uint32      `protobuf:"varint,27,rep,name=uint32_field,json=uint32Field" json:"uint32_field,omitempty"`
+	Uint64Field          []uint64      `protobuf:"varint,29,rep,name=uint64_field,json=uint64Field" json:"uint64_field,omitempty"`
+	SimpleField          []*Simple     `protobuf:"bytes,31,rep,name=simple_field,json=simpleField" json:"simple_field,omitempty"`
+	RepetitiveField      []*Repetitive `protobuf:"bytes,33,rep,name=repetitive_field,json=repetitiveField" json:"repetitive_field,omitempty"`
+	SingletonField       []*Singleton  `protobuf:"bytes,35,rep,name=singleton_field,json=singletonField" json:"singleton_field,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
-func (m *Repetitive) Reset()                    { *m = Repetitive{} }
-func (m *Repetitive) String() string            { return proto.CompactTextString(m) }
-func (*Repetitive) ProtoMessage()               {}
-func (*Repetitive) Descriptor() ([]byte, []int) { return fileDescriptor6, []int{2} }
+func (m *Repetitive) Reset()         { *m = Repetitive{} }
+func (m *Repetitive) String() string { return proto.CompactTextString(m) }
+func (*Repetitive) ProtoMessage()    {}
+func (*Repetitive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_simple_f9873694ed696628, []int{2}
+}
+func (m *Repetitive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Repetitive.Unmarshal(m, b)
+}
+func (m *Repetitive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Repetitive.Marshal(b, m, deterministic)
+}
+func (dst *Repetitive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Repetitive.Merge(dst, src)
+}
+func (m *Repetitive) XXX_Size() int {
+	return xxx_messageInfo_Repetitive.Size(m)
+}
+func (m *Repetitive) XXX_DiscardUnknown() {
+	xxx_messageInfo_Repetitive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Repetitive proto.InternalMessageInfo
 
 func (m *Repetitive) GetBoolField() []bool {
 	if m != nil {
@@ -347,14 +416,35 @@ type Singleton struct {
 	//	*Singleton_TheSimple
 	//	*Singleton_TheRepetitive
 	//	*Singleton_TheSingleton
-	Singleton        isSingleton_Singleton `protobuf_oneof:"singleton"`
-	XXX_unrecognized []byte                `json:"-"`
+	Singleton            isSingleton_Singleton `protobuf_oneof:"singleton"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
-func (m *Singleton) Reset()                    { *m = Singleton{} }
-func (m *Singleton) String() string            { return proto.CompactTextString(m) }
-func (*Singleton) ProtoMessage()               {}
-func (*Singleton) Descriptor() ([]byte, []int) { return fileDescriptor6, []int{3} }
+func (m *Singleton) Reset()         { *m = Singleton{} }
+func (m *Singleton) String() string { return proto.CompactTextString(m) }
+func (*Singleton) ProtoMessage()    {}
+func (*Singleton) Descriptor() ([]byte, []int) {
+	return fileDescriptor_simple_f9873694ed696628, []int{3}
+}
+func (m *Singleton) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Singleton.Unmarshal(m, b)
+}
+func (m *Singleton) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Singleton.Marshal(b, m, deterministic)
+}
+func (dst *Singleton) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Singleton.Merge(dst, src)
+}
+func (m *Singleton) XXX_Size() int {
+	return xxx_messageInfo_Singleton.Size(m)
+}
+func (m *Singleton) XXX_DiscardUnknown() {
+	xxx_messageInfo_Singleton.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Singleton proto.InternalMessageInfo
 
 type isSingleton_Singleton interface {
 	isSingleton_Singleton()
@@ -808,65 +898,65 @@ func _Singleton_OneofSizer(msg proto.Message) (n int) {
 	// singleton
 	switch x := m.Singleton.(type) {
 	case *Singleton_TheBool:
-		n += proto.SizeVarint(1<<3 | proto.WireVarint)
+		n += 1 // tag and wire
 		n += 1
 	case *Singleton_TheBytes:
-		n += proto.SizeVarint(3<<3 | proto.WireBytes)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(len(x.TheBytes)))
 		n += len(x.TheBytes)
 	case *Singleton_TheDouble:
-		n += proto.SizeVarint(5<<3 | proto.WireFixed64)
+		n += 1 // tag and wire
 		n += 8
 	case *Singleton_TheFixed32:
-		n += proto.SizeVarint(7<<3 | proto.WireFixed32)
+		n += 1 // tag and wire
 		n += 4
 	case *Singleton_TheFixed64:
-		n += proto.SizeVarint(9<<3 | proto.WireFixed64)
+		n += 1 // tag and wire
 		n += 8
 	case *Singleton_TheFloat:
-		n += proto.SizeVarint(11<<3 | proto.WireFixed32)
+		n += 1 // tag and wire
 		n += 4
 	case *Singleton_TheInt32:
-		n += proto.SizeVarint(13<<3 | proto.WireVarint)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(x.TheInt32))
 	case *Singleton_TheInt64:
-		n += proto.SizeVarint(15<<3 | proto.WireVarint)
+		n += 1 // tag and wire
 		n += proto.SizeVarint(uint64(x.TheInt64))
 	case *Singleton_TheSfixed32:
-		n += proto.SizeVarint(17<<3 | proto.WireFixed32)
+		n += 2 // tag and wire
 		n += 4
 	case *Singleton_TheSfixed64:
-		n += proto.SizeVarint(19<<3 | proto.WireFixed64)
+		n += 2 // tag and wire
 		n += 8
 	case *Singleton_TheSint32:
-		n += proto.SizeVarint(21<<3 | proto.WireVarint)
+		n += 2 // tag and wire
 		n += proto.SizeVarint(uint64((uint32(x.TheSint32) << 1) ^ uint32((int32(x.TheSint32) >> 31))))
 	case *Singleton_TheSint64:
-		n += proto.SizeVarint(23<<3 | proto.WireVarint)
+		n += 2 // tag and wire
 		n += proto.SizeVarint(uint64(uint64(x.TheSint64<<1) ^ uint64((int64(x.TheSint64) >> 63))))
 	case *Singleton_TheString:
-		n += proto.SizeVarint(25<<3 | proto.WireBytes)
+		n += 2 // tag and wire
 		n += proto.SizeVarint(uint64(len(x.TheString)))
 		n += len(x.TheString)
 	case *Singleton_TheUint32:
-		n += proto.SizeVarint(27<<3 | proto.WireVarint)
+		n += 2 // tag and wire
 		n += proto.SizeVarint(uint64(x.TheUint32))
 	case *Singleton_TheUint64:
-		n += proto.SizeVarint(29<<3 | proto.WireVarint)
+		n += 2 // tag and wire
 		n += proto.SizeVarint(uint64(x.TheUint64))
 	case *Singleton_TheSimple:
 		s := proto.Size(x.TheSimple)
-		n += proto.SizeVarint(31<<3 | proto.WireBytes)
+		n += 2 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Singleton_TheRepetitive:
 		s := proto.Size(x.TheRepetitive)
-		n += proto.SizeVarint(33<<3 | proto.WireBytes)
+		n += 2 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case *Singleton_TheSingleton:
 		s := proto.Size(x.TheSingleton)
-		n += proto.SizeVarint(35<<3 | proto.WireBytes)
+		n += 2 // tag and wire
 		n += proto.SizeVarint(uint64(s))
 		n += s
 	case nil:
@@ -883,9 +973,9 @@ func init() {
 	proto.RegisterType((*Singleton)(nil), "schema.proto2.Singleton")
 }
 
-func init() { proto.RegisterFile("simple.proto", fileDescriptor6) }
+func init() { proto.RegisterFile("simple.proto", fileDescriptor_simple_f9873694ed696628) }
 
-var fileDescriptor6 = []byte{
+var fileDescriptor_simple_f9873694ed696628 = []byte{
 	// 674 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x95, 0x41, 0x4f, 0xdb, 0x30,
 	0x14, 0xc7, 0xe3, 0x79, 0xa5, 0xf4, 0x25, 0xa1, 0x90, 0x09, 0x0d, 0x84, 0x10, 0x2e, 0x68, 0x92,

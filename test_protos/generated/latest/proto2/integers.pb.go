@@ -12,16 +12,43 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type Fixed32Message struct {
-	Value            *uint32  `protobuf:"fixed32,1,opt,name=value" json:"value,omitempty"`
-	Values           []uint32 `protobuf:"fixed32,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte   `json:"-"`
+	Value                *uint32  `protobuf:"fixed32,1,opt,name=value" json:"value,omitempty"`
+	Values               []uint32 `protobuf:"fixed32,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Fixed32Message) Reset()                    { *m = Fixed32Message{} }
-func (m *Fixed32Message) String() string            { return proto.CompactTextString(m) }
-func (*Fixed32Message) ProtoMessage()               {}
-func (*Fixed32Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+func (m *Fixed32Message) Reset()         { *m = Fixed32Message{} }
+func (m *Fixed32Message) String() string { return proto.CompactTextString(m) }
+func (*Fixed32Message) ProtoMessage()    {}
+func (*Fixed32Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{0}
+}
+func (m *Fixed32Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Fixed32Message.Unmarshal(m, b)
+}
+func (m *Fixed32Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Fixed32Message.Marshal(b, m, deterministic)
+}
+func (dst *Fixed32Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Fixed32Message.Merge(dst, src)
+}
+func (m *Fixed32Message) XXX_Size() int {
+	return xxx_messageInfo_Fixed32Message.Size(m)
+}
+func (m *Fixed32Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Fixed32Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Fixed32Message proto.InternalMessageInfo
 
 func (m *Fixed32Message) GetValue() uint32 {
 	if m != nil && m.Value != nil {
@@ -38,15 +65,36 @@ func (m *Fixed32Message) GetValues() []uint32 {
 }
 
 type Fixed64Message struct {
-	Value            *uint64  `protobuf:"fixed64,1,opt,name=value" json:"value,omitempty"`
-	Values           []uint64 `protobuf:"fixed64,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte   `json:"-"`
+	Value                *uint64  `protobuf:"fixed64,1,opt,name=value" json:"value,omitempty"`
+	Values               []uint64 `protobuf:"fixed64,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Fixed64Message) Reset()                    { *m = Fixed64Message{} }
-func (m *Fixed64Message) String() string            { return proto.CompactTextString(m) }
-func (*Fixed64Message) ProtoMessage()               {}
-func (*Fixed64Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (m *Fixed64Message) Reset()         { *m = Fixed64Message{} }
+func (m *Fixed64Message) String() string { return proto.CompactTextString(m) }
+func (*Fixed64Message) ProtoMessage()    {}
+func (*Fixed64Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{1}
+}
+func (m *Fixed64Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Fixed64Message.Unmarshal(m, b)
+}
+func (m *Fixed64Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Fixed64Message.Marshal(b, m, deterministic)
+}
+func (dst *Fixed64Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Fixed64Message.Merge(dst, src)
+}
+func (m *Fixed64Message) XXX_Size() int {
+	return xxx_messageInfo_Fixed64Message.Size(m)
+}
+func (m *Fixed64Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Fixed64Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Fixed64Message proto.InternalMessageInfo
 
 func (m *Fixed64Message) GetValue() uint64 {
 	if m != nil && m.Value != nil {
@@ -63,15 +111,36 @@ func (m *Fixed64Message) GetValues() []uint64 {
 }
 
 type Int32Message struct {
-	Value            *int32  `protobuf:"varint,1,opt,name=value" json:"value,omitempty"`
-	Values           []int32 `protobuf:"varint,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	Value                *int32   `protobuf:"varint,1,opt,name=value" json:"value,omitempty"`
+	Values               []int32  `protobuf:"varint,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Int32Message) Reset()                    { *m = Int32Message{} }
-func (m *Int32Message) String() string            { return proto.CompactTextString(m) }
-func (*Int32Message) ProtoMessage()               {}
-func (*Int32Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{2} }
+func (m *Int32Message) Reset()         { *m = Int32Message{} }
+func (m *Int32Message) String() string { return proto.CompactTextString(m) }
+func (*Int32Message) ProtoMessage()    {}
+func (*Int32Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{2}
+}
+func (m *Int32Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Int32Message.Unmarshal(m, b)
+}
+func (m *Int32Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Int32Message.Marshal(b, m, deterministic)
+}
+func (dst *Int32Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Int32Message.Merge(dst, src)
+}
+func (m *Int32Message) XXX_Size() int {
+	return xxx_messageInfo_Int32Message.Size(m)
+}
+func (m *Int32Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Int32Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Int32Message proto.InternalMessageInfo
 
 func (m *Int32Message) GetValue() int32 {
 	if m != nil && m.Value != nil {
@@ -88,15 +157,36 @@ func (m *Int32Message) GetValues() []int32 {
 }
 
 type Int64Message struct {
-	Value            *int64  `protobuf:"varint,1,opt,name=value" json:"value,omitempty"`
-	Values           []int64 `protobuf:"varint,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	Value                *int64   `protobuf:"varint,1,opt,name=value" json:"value,omitempty"`
+	Values               []int64  `protobuf:"varint,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Int64Message) Reset()                    { *m = Int64Message{} }
-func (m *Int64Message) String() string            { return proto.CompactTextString(m) }
-func (*Int64Message) ProtoMessage()               {}
-func (*Int64Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{3} }
+func (m *Int64Message) Reset()         { *m = Int64Message{} }
+func (m *Int64Message) String() string { return proto.CompactTextString(m) }
+func (*Int64Message) ProtoMessage()    {}
+func (*Int64Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{3}
+}
+func (m *Int64Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Int64Message.Unmarshal(m, b)
+}
+func (m *Int64Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Int64Message.Marshal(b, m, deterministic)
+}
+func (dst *Int64Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Int64Message.Merge(dst, src)
+}
+func (m *Int64Message) XXX_Size() int {
+	return xxx_messageInfo_Int64Message.Size(m)
+}
+func (m *Int64Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Int64Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Int64Message proto.InternalMessageInfo
 
 func (m *Int64Message) GetValue() int64 {
 	if m != nil && m.Value != nil {
@@ -113,15 +203,36 @@ func (m *Int64Message) GetValues() []int64 {
 }
 
 type Sfixed32Message struct {
-	Value            *int32  `protobuf:"fixed32,1,opt,name=value" json:"value,omitempty"`
-	Values           []int32 `protobuf:"fixed32,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	Value                *int32   `protobuf:"fixed32,1,opt,name=value" json:"value,omitempty"`
+	Values               []int32  `protobuf:"fixed32,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Sfixed32Message) Reset()                    { *m = Sfixed32Message{} }
-func (m *Sfixed32Message) String() string            { return proto.CompactTextString(m) }
-func (*Sfixed32Message) ProtoMessage()               {}
-func (*Sfixed32Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{4} }
+func (m *Sfixed32Message) Reset()         { *m = Sfixed32Message{} }
+func (m *Sfixed32Message) String() string { return proto.CompactTextString(m) }
+func (*Sfixed32Message) ProtoMessage()    {}
+func (*Sfixed32Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{4}
+}
+func (m *Sfixed32Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Sfixed32Message.Unmarshal(m, b)
+}
+func (m *Sfixed32Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Sfixed32Message.Marshal(b, m, deterministic)
+}
+func (dst *Sfixed32Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Sfixed32Message.Merge(dst, src)
+}
+func (m *Sfixed32Message) XXX_Size() int {
+	return xxx_messageInfo_Sfixed32Message.Size(m)
+}
+func (m *Sfixed32Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Sfixed32Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Sfixed32Message proto.InternalMessageInfo
 
 func (m *Sfixed32Message) GetValue() int32 {
 	if m != nil && m.Value != nil {
@@ -138,15 +249,36 @@ func (m *Sfixed32Message) GetValues() []int32 {
 }
 
 type Sfixed64Message struct {
-	Value            *int64  `protobuf:"fixed64,1,opt,name=value" json:"value,omitempty"`
-	Values           []int64 `protobuf:"fixed64,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	Value                *int64   `protobuf:"fixed64,1,opt,name=value" json:"value,omitempty"`
+	Values               []int64  `protobuf:"fixed64,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Sfixed64Message) Reset()                    { *m = Sfixed64Message{} }
-func (m *Sfixed64Message) String() string            { return proto.CompactTextString(m) }
-func (*Sfixed64Message) ProtoMessage()               {}
-func (*Sfixed64Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{5} }
+func (m *Sfixed64Message) Reset()         { *m = Sfixed64Message{} }
+func (m *Sfixed64Message) String() string { return proto.CompactTextString(m) }
+func (*Sfixed64Message) ProtoMessage()    {}
+func (*Sfixed64Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{5}
+}
+func (m *Sfixed64Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Sfixed64Message.Unmarshal(m, b)
+}
+func (m *Sfixed64Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Sfixed64Message.Marshal(b, m, deterministic)
+}
+func (dst *Sfixed64Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Sfixed64Message.Merge(dst, src)
+}
+func (m *Sfixed64Message) XXX_Size() int {
+	return xxx_messageInfo_Sfixed64Message.Size(m)
+}
+func (m *Sfixed64Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Sfixed64Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Sfixed64Message proto.InternalMessageInfo
 
 func (m *Sfixed64Message) GetValue() int64 {
 	if m != nil && m.Value != nil {
@@ -163,15 +295,36 @@ func (m *Sfixed64Message) GetValues() []int64 {
 }
 
 type Sint32Message struct {
-	Value            *int32  `protobuf:"zigzag32,1,opt,name=value" json:"value,omitempty"`
-	Values           []int32 `protobuf:"zigzag32,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	Value                *int32   `protobuf:"zigzag32,1,opt,name=value" json:"value,omitempty"`
+	Values               []int32  `protobuf:"zigzag32,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Sint32Message) Reset()                    { *m = Sint32Message{} }
-func (m *Sint32Message) String() string            { return proto.CompactTextString(m) }
-func (*Sint32Message) ProtoMessage()               {}
-func (*Sint32Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{6} }
+func (m *Sint32Message) Reset()         { *m = Sint32Message{} }
+func (m *Sint32Message) String() string { return proto.CompactTextString(m) }
+func (*Sint32Message) ProtoMessage()    {}
+func (*Sint32Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{6}
+}
+func (m *Sint32Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Sint32Message.Unmarshal(m, b)
+}
+func (m *Sint32Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Sint32Message.Marshal(b, m, deterministic)
+}
+func (dst *Sint32Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Sint32Message.Merge(dst, src)
+}
+func (m *Sint32Message) XXX_Size() int {
+	return xxx_messageInfo_Sint32Message.Size(m)
+}
+func (m *Sint32Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Sint32Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Sint32Message proto.InternalMessageInfo
 
 func (m *Sint32Message) GetValue() int32 {
 	if m != nil && m.Value != nil {
@@ -188,15 +341,36 @@ func (m *Sint32Message) GetValues() []int32 {
 }
 
 type Sint64Message struct {
-	Value            *int64  `protobuf:"zigzag64,1,opt,name=value" json:"value,omitempty"`
-	Values           []int64 `protobuf:"zigzag64,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte  `json:"-"`
+	Value                *int64   `protobuf:"zigzag64,1,opt,name=value" json:"value,omitempty"`
+	Values               []int64  `protobuf:"zigzag64,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Sint64Message) Reset()                    { *m = Sint64Message{} }
-func (m *Sint64Message) String() string            { return proto.CompactTextString(m) }
-func (*Sint64Message) ProtoMessage()               {}
-func (*Sint64Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{7} }
+func (m *Sint64Message) Reset()         { *m = Sint64Message{} }
+func (m *Sint64Message) String() string { return proto.CompactTextString(m) }
+func (*Sint64Message) ProtoMessage()    {}
+func (*Sint64Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{7}
+}
+func (m *Sint64Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Sint64Message.Unmarshal(m, b)
+}
+func (m *Sint64Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Sint64Message.Marshal(b, m, deterministic)
+}
+func (dst *Sint64Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Sint64Message.Merge(dst, src)
+}
+func (m *Sint64Message) XXX_Size() int {
+	return xxx_messageInfo_Sint64Message.Size(m)
+}
+func (m *Sint64Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Sint64Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Sint64Message proto.InternalMessageInfo
 
 func (m *Sint64Message) GetValue() int64 {
 	if m != nil && m.Value != nil {
@@ -213,15 +387,36 @@ func (m *Sint64Message) GetValues() []int64 {
 }
 
 type Uint32Message struct {
-	Value            *uint32  `protobuf:"varint,1,opt,name=value" json:"value,omitempty"`
-	Values           []uint32 `protobuf:"varint,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte   `json:"-"`
+	Value                *uint32  `protobuf:"varint,1,opt,name=value" json:"value,omitempty"`
+	Values               []uint32 `protobuf:"varint,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Uint32Message) Reset()                    { *m = Uint32Message{} }
-func (m *Uint32Message) String() string            { return proto.CompactTextString(m) }
-func (*Uint32Message) ProtoMessage()               {}
-func (*Uint32Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{8} }
+func (m *Uint32Message) Reset()         { *m = Uint32Message{} }
+func (m *Uint32Message) String() string { return proto.CompactTextString(m) }
+func (*Uint32Message) ProtoMessage()    {}
+func (*Uint32Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{8}
+}
+func (m *Uint32Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Uint32Message.Unmarshal(m, b)
+}
+func (m *Uint32Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Uint32Message.Marshal(b, m, deterministic)
+}
+func (dst *Uint32Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Uint32Message.Merge(dst, src)
+}
+func (m *Uint32Message) XXX_Size() int {
+	return xxx_messageInfo_Uint32Message.Size(m)
+}
+func (m *Uint32Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Uint32Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Uint32Message proto.InternalMessageInfo
 
 func (m *Uint32Message) GetValue() uint32 {
 	if m != nil && m.Value != nil {
@@ -238,15 +433,36 @@ func (m *Uint32Message) GetValues() []uint32 {
 }
 
 type Uint64Message struct {
-	Value            *uint64  `protobuf:"varint,1,opt,name=value" json:"value,omitempty"`
-	Values           []uint64 `protobuf:"varint,2,rep,name=values" json:"values,omitempty"`
-	XXX_unrecognized []byte   `json:"-"`
+	Value                *uint64  `protobuf:"varint,1,opt,name=value" json:"value,omitempty"`
+	Values               []uint64 `protobuf:"varint,2,rep,name=values" json:"values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Uint64Message) Reset()                    { *m = Uint64Message{} }
-func (m *Uint64Message) String() string            { return proto.CompactTextString(m) }
-func (*Uint64Message) ProtoMessage()               {}
-func (*Uint64Message) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{9} }
+func (m *Uint64Message) Reset()         { *m = Uint64Message{} }
+func (m *Uint64Message) String() string { return proto.CompactTextString(m) }
+func (*Uint64Message) ProtoMessage()    {}
+func (*Uint64Message) Descriptor() ([]byte, []int) {
+	return fileDescriptor_integers_cf7b38a3dd25e4d9, []int{9}
+}
+func (m *Uint64Message) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Uint64Message.Unmarshal(m, b)
+}
+func (m *Uint64Message) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Uint64Message.Marshal(b, m, deterministic)
+}
+func (dst *Uint64Message) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Uint64Message.Merge(dst, src)
+}
+func (m *Uint64Message) XXX_Size() int {
+	return xxx_messageInfo_Uint64Message.Size(m)
+}
+func (m *Uint64Message) XXX_DiscardUnknown() {
+	xxx_messageInfo_Uint64Message.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Uint64Message proto.InternalMessageInfo
 
 func (m *Uint64Message) GetValue() uint64 {
 	if m != nil && m.Value != nil {
@@ -275,9 +491,9 @@ func init() {
 	proto.RegisterType((*Uint64Message)(nil), "schema.proto2.Uint64Message")
 }
 
-func init() { proto.RegisterFile("integers.proto", fileDescriptor2) }
+func init() { proto.RegisterFile("integers.proto", fileDescriptor_integers_cf7b38a3dd25e4d9) }
 
-var fileDescriptor2 = []byte{
+var fileDescriptor_integers_cf7b38a3dd25e4d9 = []byte{
 	// 202 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xcb, 0xcc, 0x2b, 0x49,
 	0x4d, 0x4f, 0x2d, 0x2a, 0xd6, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x2d, 0x4e, 0xce, 0x48,
