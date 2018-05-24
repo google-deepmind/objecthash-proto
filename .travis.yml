@@ -9,6 +9,7 @@ language: go
 
 go:
   - 1.9
+  - 1.10
   - 1.x
   - master
 
@@ -51,9 +52,9 @@ after_script:
 
 matrix:
   include:
-    - go: 1.9
+    - go: 1.10
       env: RECOMPILE_PROTOS=true
-    - go: 1.9
+    - go: 1.10
       env: UPDATE_DEPS=true
   allow_failures:
     - go: master
