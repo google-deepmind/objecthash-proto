@@ -26,7 +26,17 @@ before_install:
   - chmod +x "${GOPATH}/bin/dep"
 
 install:
-  - dep ensure
+  # Install/update dependencies.
+  - if [ "${UPDATE_DEPS}" == "true" ]; then
+      dep ensure -update;
+    else
+      dep ensure;
+    fi;
+  # Recompile protos using the latest protoc-gen-go.
+  - if [ "${RECOMPILE_PROTOS}" == "true" ]; then
+      ./test_protos/update_protos.sh;
+    fi
+
 
 before_script:
   # CodeClimate
@@ -40,6 +50,13 @@ after_script:
   - ./cc-test-reporter after-build -t gocov --exit-code $TRAVIS_TEST_RESULT
 
 matrix:
+  include:
+    - go: 1.9
+      env: RECOMPILE_PROTOS=true
+    - go: 1.9
+      env: UPDATE_DEPS=true
   allow_failures:
     - go: master
+    - env: RECOMPILE_PROTOS=true
+    - env: UPDATE_DEPS=true
   fast_finish: true
