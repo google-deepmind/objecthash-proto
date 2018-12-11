@@ -44,3 +44,42 @@ func TestHashTimestampWithBadInputs(t *testing.T) {
 		})
 	}
 }
+
+func TestHashDuration(t *testing.T) {
+	durationValue := reflect.ValueOf(struct {
+			Seconds int32
+			Nanos   int32
+		}{})
+	hasher := objectHasher{}
+	hashedValue, err := hasher.hashDuration(durationValue)
+	if err != nil {
+		t.Errorf("Hashing duration %v should not error", durationValue)
+	}
+	if fmt.Sprintf("%x", hashedValue) != "3a82b649344529f03f52c1833f5aecc488a53b31461a1f54c305d149b12b8f53" {
+		t.Errorf("Duration %T{ %[1]v } should incorrectly hashed to %v", durationValue, fmt.Sprintf("%x", hashedValue))
+	}
+}
+
+func TestHashDurationsWithBadInputs(t *testing.T) {
+	hasher := objectHasher{}
+
+	badDurationValues := []reflect.Value{
+		// Not a struct.
+		reflect.ValueOf(0.0),
+
+		// Not a valid Timestamp struct (fields have the wrong type).
+		reflect.ValueOf(struct {
+			Seconds float64
+			Nanos   float64
+		}{}),
+	}
+
+	for i, v := range badDurationValues {
+		t.Run(fmt.Sprintf("TestHashDurations-%d", i), func(t *testing.T) {
+			_, err := hasher.hashTimestamp(v)
+			if err == nil {
+				t.Errorf("Attempting to hash %T{ %[1]v } as a duration should have returned an error.", v)
+			}
+		})
+	}
+}

@@ -23,6 +23,7 @@ import (
 // Supported well-known types.
 const (
 	timestamp string = "Timestamp"
+	duration string = "Duration"
 )
 
 // hashWellKnownType hashes proto messages that are Well-known types.
@@ -36,6 +37,8 @@ const (
 func (hasher *objectHasher) hashWellKnownType(name string, sv reflect.Value) ([]byte, error) {
 	if name == timestamp {
 		return hasher.hashTimestamp(sv)
+	} else if name == duration {
+		return hasher.hashDuration(sv)
 	}
 
 	return nil, fmt.Errorf("Got a currently unsupported protobuf well-known type: %s", name)
@@ -72,6 +75,32 @@ func (hasher *objectHasher) hashTimestamp(sv reflect.Value) ([]byte, error) {
 		fk := fieldValue.Kind()
 		if fk != reflect.Int64 && fk != reflect.Int32 {
 			return nil, fmt.Errorf("Got a google.protobuf.Timestamp proto with a bad '%s' field: %v. Expected an integer, instead got a %s", field, sv, fk)
+		}
+		h, err := hashInt64(fieldValue.Int())
+		if err != nil {
+			return nil, err
+		}
+		b.Write(h[:])
+	}
+
+	return hash(listIdentifier, b.Bytes())
+}
+
+// hashDuration calculates the object hash of a google.protobuf.Duration
+func (hasher *objectHasher) hashDuration(sv reflect.Value) ([]byte, error) {
+	sk := sv.Kind()
+	if sk != reflect.Struct {
+		return nil, fmt.Errorf("Got a bad google.protobuf.Duration proto: %v. Expected a Struct, instead got a %s", sv, sk)
+	}
+
+	b := new(bytes.Buffer)
+
+	// Hash seconds and nanoseconds.
+	for _, field := range []string{"Seconds", "Nanos"} {
+		fieldValue := sv.FieldByName(field)
+		fk := fieldValue.Kind()
+		if fk != reflect.Int64 && fk != reflect.Int32 {
+			return nil, fmt.Errorf("Got a google.protobuf.Duration proto with a bad '%s' field: %v. Expected an integer, instead got a %s", field, sv, fk)
 		}
 		h, err := hashInt64(fieldValue.Int())
 		if err != nil {
