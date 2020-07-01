@@ -130,8 +130,7 @@ func isAProto2BytesField(v reflect.Value, sf reflect.StructField) bool {
 //   the actual content of the proto and should not be used in comparisons or
 //   for generating hashes.
 func isContentIndependentField(v reflect.Value, sf reflect.StructField) bool {
-	name := sf.Name
-	return name == "XXX_NoUnkeyedLiteral" || name == "XXX_sizecache"
+	return !v.CanSet() || strings.HasPrefix(sf.Name, "XXX_")
 }
 
 // isUnset checks if the proto field has not been set.
